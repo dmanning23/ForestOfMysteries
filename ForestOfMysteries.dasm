@@ -12,6 +12,8 @@
 
     include "Constants.dasm"
 
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Variables segment
@@ -22,6 +24,8 @@
     org $80
 
     include "Variables.dasm"
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -84,10 +88,14 @@ BankSwitch
 ;----End of bank-identical code----
 
 Reset_0
+
     CLEAN_START
 
-    lda #15
-    sta YPos
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ; Startup code
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 NextFrame
 
@@ -108,24 +116,17 @@ NextFrame
     ; 192 lines of frame
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 LinesOfFrame
-    ldx #192	; X = 192 scanlines
+
+    ldx #192 ; X = 192 scanlines
+
 LVScan
-    txa		; X -> A
-    sec		; set carry for subtract
-    sbc YPos	; local coordinate
-    cmp #SpriteHeight ; in sprite?
-    bcc InSprite	; yes, skip over next
-    lda #0		; not in sprite, load 0
-InSprite
-    tay		; local coord -> Y
-    lda Frame0,y	; lookup color
-    sta WSYNC	; sync w/ scanline
-    sta GRP0	; store bitmap
-    lda ColorFrame0,y ; lookup color
-    sta COLUP0	; store color
-    dex		; decrement X
-    bne LVScan	; repeat until 192 lines
+
+    sta WSYNC ; sync w/ scanline
+
+    dex ; decrement X
+    bne LVScan ; repeat until 192 lines
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -139,30 +140,6 @@ OverScan
 
     ; total = 262 lines, go to next frame
     jmp NextFrame
-
-; Cat-head graphics data
-Frame0
-        .byte #0        ; zero padding, also clears register
-        .byte #%00111100
-        .byte #%01000010
-        .byte #%11100111
-        .byte #%11111111
-        .byte #%10011001
-        .byte #%01111110
-        .byte #%11000011
-        .byte #%10000001
-
-; Cat-head color data
-ColorFrame0
-        .byte #0        ; unused (for now)
-        .byte #$AE
-        .byte #$AC
-        .byte #$A8
-        .byte #$AC
-        .byte #$8E
-        .byte #$8E
-        .byte #$98
-        .byte #$94
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
