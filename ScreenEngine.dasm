@@ -1,0 +1,217 @@
+;This is a screen engine of a grid of 32 screens
+;They are arranged in 4 rows of 8 columns
+;There is no world-wraparound (going left off row 0 will not wrap to row 3)
+
+;These go in your Constants section
+
+; ;Screen edges, adjust to match your game
+; SCREEN_LEFT_EDGE equ #0
+; SCREEN_TOP_EDGE equ #0
+; SCREEN_RIGHT_EDGE equ #159
+; SCREEN_BOTTOM_EDGE equ #191
+
+;Include these in your Variables section
+
+; ;The screen coordinates of the player
+;playerX .byte
+;playerY .byte
+
+; ;The row/column coordinates of the current screen
+;screenRow .byte  ; 0-3
+;screenCol .byte  ; 0-7
+;TempWord .word
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Call this in the initialization part of your game to initialize 
+; all the variables used in the screen engine
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+InitializeScreenInput
+    lda #SCREEN_RIGHT_EDGE
+    lsr ;divide by 2
+    sta playerX ;center horizontally
+
+    lda #SCREEN_BOTTOM_EDGE
+    lsr ;divide by 2
+    sta playerY ;center vertically
+
+    lda #0
+    sta screenRow
+    sta screenCol
+    sta TempWord
+    sta TempWord+1
+    rts
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Call this in the game loop part of your game to perform the screen logic
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ScreenLogic
+    lda screenRow
+    asl
+    asl
+    asl             ; multiply by 8 (columns per row)
+    clc
+    adc screenCol   ; add column offset
+    tax
+    
+    lda ScreenJumpTableLo,x
+    sta TempWord
+    lda ScreenJumpTableHi,x
+    sta TempWord+1
+    jmp (TempWord)
+EndScreenLogic
+    rts
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Call this to trigger the screen to move right
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ScreenMoveRight subroutine
+    lda screenCol
+    cmp #7          ; already at rightmost column?
+    beq .blocked    ; yes, don't allow
+    inc screenCol   ; move to next screen right
+    lda #SCREEN_LEFT_EDGE
+    sta playerX     ; reset player X position to left edge
+    rts
+.blocked
+    ; TODO: restore player position or handle collision
+    rts
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Call this to trigger the screen to move left
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ScreenMovedLeft subroutine
+    lda screenCol
+    beq .blocked    ; already at leftmost column (0)?
+    dec screenCol
+    lda #SCREEN_RIGHT_EDGE        ; Atari screen width (adjust for your game)
+    sta playerX     ; reset player X position to right edge
+    rts
+.blocked
+    rts
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Call this to trigger the screen to move down
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ScreenMovedDown subroutine
+    lda screenRow
+    cmp #3          ; already at bottom row?
+    beq .blocked    ; yes, don't allow
+    inc screenRow   ; move to next screen down
+    lda #SCREEN_TOP_EDGE
+    sta playerY     ; reset player Y position to top edge
+    rts
+.blocked
+    rts
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Call this to trigger the screen to move up
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ScreenMovedUp subroutine
+    lda screenRow
+    beq .blocked    ; already at top row (0)?
+    dec screenRow
+    lda #SCREEN_BOTTOM_EDGE        ; Atari screen height (adjust for your game)
+    sta playerY     ; reset player Y position to bottom edge
+    rts
+.blocked
+    rts
+
+; Jump tables (32 entries)
+ScreenJumpTableLo
+    .byte <Screen00, <Screen01, <Screen02, <Screen03
+    .byte <Screen04, <Screen05, <Screen06, <Screen07
+    .byte <Screen10, <Screen11, <Screen12, <Screen13
+    .byte <Screen14, <Screen15, <Screen16, <Screen17
+    .byte <Screen20, <Screen21, <Screen22, <Screen23
+    .byte <Screen24, <Screen25, <Screen26, <Screen27
+    .byte <Screen30, <Screen31, <Screen32, <Screen33
+    .byte <Screen34, <Screen35, <Screen36, <Screen37
+
+ScreenJumpTableHi
+    .byte >Screen00, >Screen01, >Screen02, >Screen03
+    .byte >Screen04, >Screen05, >Screen06, >Screen07
+    .byte >Screen10, >Screen11, >Screen12, >Screen13
+    .byte >Screen14, >Screen15, >Screen16, >Screen17
+    .byte >Screen20, >Screen21, >Screen22, >Screen23
+    .byte >Screen24, >Screen25, >Screen26, >Screen27
+    .byte >Screen30, >Screen31, >Screen32, >Screen33
+    .byte >Screen34, >Screen35, >Screen36, >Screen37
+
+; ;These memory locations are where all the screen logic is performed
+; ;Copy this block at the bottom of your game and add logic for each screen
+; Screen00
+;     jmp EndScreenLogic
+; Screen01
+;     jmp EndScreenLogic
+; Screen02
+;     jmp EndScreenLogic
+; Screen03
+;     jmp EndScreenLogic
+; Screen04
+;     jmp EndScreenLogic
+; Screen05
+;     jmp EndScreenLogic
+; Screen06
+;     jmp EndScreenLogic
+; Screen07
+;     jmp EndScreenLogic
+; Screen10
+;     jmp EndScreenLogic
+; Screen11
+;     jmp EndScreenLogic
+; Screen12
+;     jmp EndScreenLogic
+; Screen13
+;     jmp EndScreenLogic
+; Screen14
+;     jmp EndScreenLogic
+; Screen15
+;     jmp EndScreenLogic
+; Screen16
+;     jmp EndScreenLogic
+; Screen17
+;     jmp EndScreenLogic
+; Screen20
+;     jmp EndScreenLogic
+; Screen21
+;     jmp EndScreenLogic
+; Screen22
+;     jmp EndScreenLogic
+; Screen23
+;     jmp EndScreenLogic
+; Screen24
+;     jmp EndScreenLogic
+; Screen25
+;     jmp EndScreenLogic
+; Screen26
+;     jmp EndScreenLogic
+; Screen27
+;     jmp EndScreenLogic
+; Screen30
+;     jmp EndScreenLogic
+; Screen31
+;     jmp EndScreenLogic
+; Screen32
+;     jmp EndScreenLogic
+; Screen33
+;     jmp EndScreenLogic
+; Screen34
+;     jmp EndScreenLogic
+; Screen35
+;     jmp EndScreenLogic
+; Screen36
+;     jmp EndScreenLogic
+; Screen37
+;     jmp EndScreenLogic

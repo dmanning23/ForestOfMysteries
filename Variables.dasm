@@ -1,1 +1,8 @@
-YPos .byte
+;The screen coordinates of the player
+playerX .byte
+playerY .byte
+
+;The row/column coordinates of the current screen
+screenRow .byte  ; 0-3
+screenCol .byte  ; 0-7
+TempWord .word
