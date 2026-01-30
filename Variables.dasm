@@ -6,3 +6,14 @@ playerY .byte
 screenRow .byte  ; 0-3
 screenCol .byte  ; 0-7
 TempWord .word
+
+;The player's input from the previous frame
+p1PrevInput byte
+p2PrevInput byte
+
+;The player's input from the current frame
+p1Input byte
+p2Input byte
+
+;This variable is used to mask the controller input to map to p1 or p2
+controllerMask .byte 

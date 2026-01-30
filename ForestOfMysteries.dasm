@@ -97,11 +97,7 @@ Reset_0
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     jsr InitializeScreenInput
-
-    lda #1
-    sta screenRow
-    lda #7
-    sta screenCol
+    jsr InitializeInput
 
 NextFrame
 
@@ -117,6 +113,9 @@ NextFrame
     TIMER_SETUP 35
 
     jsr ScreenLogic
+    jsr UpdateInput
+
+    jsr CheckInput
 
     TIMER_WAIT
 
@@ -151,6 +150,57 @@ OverScan
     jmp NextFrame
 
     include "ScreenEngine.dasm"
+    include "Input.dasm"
+
+CheckInput subroutine
+    lda p1Input,y
+    bit CONTROLLER_UP
+    beq .doneCheckUp
+
+    eor p1PrevInput,y
+    bit CONTROLLER_UP
+    beq .doneCheckUp
+
+    jsr ScreenMoveUp
+
+.doneCheckUp
+
+    lda p1Input,y
+    bit CONTROLLER_DOWN
+    beq .doneCheckDown
+
+    eor p1PrevInput,y
+    bit CONTROLLER_DOWN
+    beq .doneCheckDown
+
+    jsr ScreenMoveDown
+
+.doneCheckDown
+
+    lda p1Input,y
+    bit CONTROLLER_LEFT
+    beq .doneCheckLeft
+
+    eor p1PrevInput,y
+    bit CONTROLLER_LEFT
+    beq .doneCheckLeft
+
+    jsr ScreenMoveLeft
+
+.doneCheckLeft
+
+    lda p1Input,y
+    bit CONTROLLER_RIGHT
+    beq .doneCheckRight
+
+    eor p1PrevInput,y
+    bit CONTROLLER_RIGHT
+    beq .doneCheckRight
+
+    jsr ScreenMoveRight
+
+.doneCheckRight
+    rts
 
 Screen00
     lda #$40
@@ -233,82 +283,82 @@ Screen17
     
     jmp EndScreenLogic
 Screen20
-    lda #$4F
+    lda #$80
     sta COLUBK
     
     jmp EndScreenLogic
 Screen21
-    lda #$4F
+    lda #$82
     sta COLUBK
     
     jmp EndScreenLogic
 Screen22
-    lda #$4F
+    lda #$84
     sta COLUBK
     
     jmp EndScreenLogic
 Screen23
-    lda #$4F
+    lda #$86
     sta COLUBK
     
     jmp EndScreenLogic
 Screen24
-    lda #$4F
+    lda #$88
     sta COLUBK
     
     jmp EndScreenLogic
 Screen25
-    lda #$4F
+    lda #$8A
     sta COLUBK
     
     jmp EndScreenLogic
 Screen26
-    lda #$4F
+    lda #$8C
     sta COLUBK
     
     jmp EndScreenLogic
 Screen27
-    lda #$4F
+    lda #$8F
     sta COLUBK
     
     jmp EndScreenLogic
 Screen30
-    lda #$4F
+    lda #$60
     sta COLUBK
     
     jmp EndScreenLogic
 Screen31
-    lda #$4F
+    lda #$62
     sta COLUBK
     
     jmp EndScreenLogic
 Screen32
-    lda #$4F
+    lda #$64
     sta COLUBK
     
     jmp EndScreenLogic
 Screen33
-    lda #$4F
+    lda #$66
     sta COLUBK
     
     jmp EndScreenLogic
 Screen34
-    lda #$4F
+    lda #$68
     sta COLUBK
     
     jmp EndScreenLogic
 Screen35
-    lda #$4F
+    lda #$6A
     sta COLUBK
     
     jmp EndScreenLogic
 Screen36
-    lda #$4F
+    lda #$6C
     sta COLUBK
     
     jmp EndScreenLogic
 Screen37
-    lda #$4F
+    lda #$6F
     sta COLUBK
     
     jmp EndScreenLogic
