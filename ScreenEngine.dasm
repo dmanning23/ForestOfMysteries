@@ -13,8 +13,8 @@
 ;Include these in your Variables section
 
 ; ;The screen coordinates of the player
-;playerX .byte
-;playerY .byte
+;playerXPos .byte
+;playerYPos .byte
 
 ; ;The row/column coordinates of the current screen
 ;screenRow .byte  ; 0-3
@@ -30,11 +30,11 @@
 InitializeScreenInput
     lda #SCREEN_RIGHT_EDGE
     lsr ;divide by 2
-    sta playerX ;center horizontally
+    sta playerXPos ;center horizontally
 
     lda #SCREEN_BOTTOM_EDGE
     lsr ;divide by 2
-    sta playerY ;center vertically
+    sta playerYPos ;center vertically
 
     lda #0
     sta screenRow
@@ -76,7 +76,7 @@ ScreenMoveRight subroutine
     beq .blocked    ; yes, don't allow
     inc screenCol   ; move to next screen right
     lda #SCREEN_LEFT_EDGE
-    sta playerX     ; reset player X position to left edge
+    sta playerXPos     ; reset player X position to left edge
     rts
 .blocked
     ; TODO: restore player position or handle collision
@@ -92,7 +92,7 @@ ScreenMoveLeft subroutine
     beq .blocked    ; already at leftmost column (0)?
     dec screenCol
     lda #SCREEN_RIGHT_EDGE        ; Atari screen width (adjust for your game)
-    sta playerX     ; reset player X position to right edge
+    sta playerXPos     ; reset player X position to right edge
     rts
 .blocked
     rts
@@ -108,7 +108,7 @@ ScreenMoveDown subroutine
     beq .blocked    ; yes, don't allow
     inc screenRow   ; move to next screen down
     lda #SCREEN_TOP_EDGE
-    sta playerY     ; reset player Y position to top edge
+    sta playerYPos     ; reset player Y position to top edge
     rts
 .blocked
     rts
@@ -123,7 +123,7 @@ ScreenMoveUp subroutine
     beq .blocked    ; already at top row (0)?
     dec screenRow
     lda #SCREEN_BOTTOM_EDGE        ; Atari screen height (adjust for your game)
-    sta playerY     ; reset player Y position to bottom edge
+    sta playerYPos     ; reset player Y position to bottom edge
     rts
 .blocked
     rts
