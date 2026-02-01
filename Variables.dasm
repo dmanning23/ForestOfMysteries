@@ -17,3 +17,7 @@ p2Input byte
 
 ;This variable is used to mask the controller input to map to p1 or p2
 controllerMask .byte 
+
+playerYPos .byte
+spritePtr .word
+spriteColorPtr .word

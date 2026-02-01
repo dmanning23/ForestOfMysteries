@@ -1,0 +1,26 @@
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ; SetHorizPos routine
+    ; A = X coordinate of the object
+    ; X = index of the desired object:
+    ;  0: player 1
+    ;  1: player 2
+    ;  2: missile 1
+    ;  3: missile 2
+    ;  4: ball
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+SetHorizPos subroutine
+    sta WSYNC ; start a new line
+    sec ; set carry flag
+.DivideLoop
+    sbc #15 ; subtract 15
+    bcs .DivideLoop ; branch until negative
+    eor #7 ; calculate fine offset
+    asl
+    asl
+    asl
+    asl
+    sta RESP0,x ; fix coarse position
+    sta HMP0,x ; set fine offset
+    rts ; return to caller

@@ -99,6 +99,8 @@ Reset_0
     jsr InitializeScreenInput
     jsr InitializeInput
 
+
+
 NextFrame
 
     ; 1 + 3 lines of VSYNC
@@ -117,6 +119,34 @@ NextFrame
 
     jsr CheckInput
 
+    ;clear the player registers
+    lda #0
+    sta GRP0
+    sta COLUP0
+
+    ;set player position
+    lda #150
+    sta playerYPos
+
+    lda #<Frame0        ; load low byte of Frame0 address
+    sta spritePtr
+    lda #>Frame0        ; load high byte of Frame0 address
+    sta spritePtr+1
+
+    lda #<ColorFrame0        ; load low byte of Frame0 address
+    sta spriteColorPtr
+    lda #>ColorFrame0        ; load high byte of Frame0 address
+    sta spriteColorPtr+1
+
+    ;Set the x position of the player
+    lda #75
+    ldx #0
+    jsr SetHorizPos
+
+    ;Load the player number into Y
+    lda #0
+    tay
+
     TIMER_WAIT
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -131,7 +161,8 @@ LinesOfFrame
 
 LVScan
 
-    sta WSYNC ; sync w/ scanline
+    jsr DrawPlayer
+    sta WSYNC
 
     dex ; decrement X
     bne LVScan ; repeat until 192 lines
@@ -150,7 +181,10 @@ OverScan
     jmp NextFrame
 
     include "ScreenEngine.dasm"
-    include "Input.dasm"
+    include "InputEngine.dasm"
+    include "DrawCharacter.dasm"
+    include "Assets/Graphics/player.dasm"
+    include "SetHorizPos.dasm"
 
 CheckInput subroutine
     lda p1Input,y
