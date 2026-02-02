@@ -2,19 +2,7 @@
 ;They are arranged in 4 rows of 8 columns
 ;There is no world-wraparound (going left off row 0 will not wrap to row 3)
 
-;These go in your Constants section
-
-; ;Screen edges, adjust to match your game
-; SCREEN_LEFT_EDGE equ #0
-; SCREEN_TOP_EDGE equ #0
-; SCREEN_RIGHT_EDGE equ #159
-; SCREEN_BOTTOM_EDGE equ #191
-
 ;Include these in your Variables section
-
-; ;The screen coordinates of the player
-;playerXPos .byte
-;playerYPos .byte
 
 ; ;The row/column coordinates of the current screen
 ;screenRow .byte  ; 0-3
@@ -28,14 +16,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 InitializeScreenInput
-    lda #SCREEN_RIGHT_EDGE
-    lsr ;divide by 2
-    sta playerXPos ;center horizontally
-
-    lda #SCREEN_BOTTOM_EDGE
-    lsr ;divide by 2
-    sta playerYPos ;center vertically
-
     lda #0
     sta screenRow
     sta screenCol
@@ -75,11 +55,7 @@ ScreenMoveRight subroutine
     cmp #7          ; already at rightmost column?
     beq .blocked    ; yes, don't allow
     inc screenCol   ; move to next screen right
-    lda #SCREEN_LEFT_EDGE
-    sta playerXPos     ; reset player X position to left edge
-    rts
 .blocked
-    ; TODO: restore player position or handle collision
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -91,9 +67,6 @@ ScreenMoveLeft subroutine
     lda screenCol
     beq .blocked    ; already at leftmost column (0)?
     dec screenCol
-    lda #SCREEN_RIGHT_EDGE        ; Atari screen width (adjust for your game)
-    sta playerXPos     ; reset player X position to right edge
-    rts
 .blocked
     rts
 
@@ -107,9 +80,6 @@ ScreenMoveDown subroutine
     cmp #3          ; already at bottom row?
     beq .blocked    ; yes, don't allow
     inc screenRow   ; move to next screen down
-    lda #SCREEN_TOP_EDGE
-    sta playerYPos     ; reset player Y position to top edge
-    rts
 .blocked
     rts
 
@@ -122,9 +92,6 @@ ScreenMoveUp subroutine
     lda screenRow
     beq .blocked    ; already at top row (0)?
     dec screenRow
-    lda #SCREEN_BOTTOM_EDGE        ; Atari screen height (adjust for your game)
-    sta playerYPos     ; reset player Y position to bottom edge
-    rts
 .blocked
     rts
 

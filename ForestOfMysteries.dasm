@@ -98,8 +98,13 @@ Reset_0
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     jsr InitializeScreenInput
     jsr InitializeInput
+    jsr CenterPlayerX
+    jsr CenterPlayerY
 
-
+    ;initialize the player velocity
+    lda #0
+    sta playerXVel
+    sta playerYVel
 
 NextFrame
 
@@ -114,19 +119,24 @@ NextFrame
 
     TIMER_SETUP 35
 
+    ;reset the player velocity before checking input
+    lda #0
+    sta playerXVel
+    sta playerYVel
+
     jsr ScreenLogic
     jsr UpdateInput
 
     jsr CheckInput
 
+    ;update the player positions from velocity
+    jsr UpdateCharacterX
+    jsr UpdateCharacterY
+
     ;clear the player registers
     lda #0
     sta GRP0
     sta COLUP0
-
-    ;set player position
-    lda #150
-    sta playerYPos
 
     lda #<Frame0        ; load low byte of Frame0 address
     sta spritePtr
@@ -139,9 +149,12 @@ NextFrame
     sta spriteColorPtr+1
 
     ;Set the x position of the player
-    lda #75
+    lda playerXPos
     ldx #0
     jsr SetHorizPos
+
+    sta WSYNC	; sync w/ scanline
+    sta HMOVE	; apply fine offsets
 
     ;Load the player number into Y
     lda #0
@@ -175,6 +188,12 @@ LVScan
 
 OverScan
     TIMER_SETUP 29
+
+    ;clear the player registers
+    lda #0
+    sta GRP0
+    sta COLUP0
+
     TIMER_WAIT
 
     ; total = 262 lines, go to next frame
@@ -186,56 +205,8 @@ OverScan
     include "Assets/Graphics/player.dasm"
     include "SetHorizPos.dasm"
     include "ScreenData.dasm"
-
-CheckInput subroutine
-    lda p1Input,y
-    bit CONTROLLER_UP
-    beq .doneCheckUp
-
-    eor p1PrevInput,y
-    bit CONTROLLER_UP
-    beq .doneCheckUp
-
-    jsr ScreenMoveUp
-
-.doneCheckUp
-
-    lda p1Input,y
-    bit CONTROLLER_DOWN
-    beq .doneCheckDown
-
-    eor p1PrevInput,y
-    bit CONTROLLER_DOWN
-    beq .doneCheckDown
-
-    jsr ScreenMoveDown
-
-.doneCheckDown
-
-    lda p1Input,y
-    bit CONTROLLER_LEFT
-    beq .doneCheckLeft
-
-    eor p1PrevInput,y
-    bit CONTROLLER_LEFT
-    beq .doneCheckLeft
-
-    jsr ScreenMoveLeft
-
-.doneCheckLeft
-
-    lda p1Input,y
-    bit CONTROLLER_RIGHT
-    beq .doneCheckRight
-
-    eor p1PrevInput,y
-    bit CONTROLLER_RIGHT
-    beq .doneCheckRight
-
-    jsr ScreenMoveRight
-
-.doneCheckRight
-    rts
+    include "CheckInput.dasm"
+    include "CharacterMovement.dasm"
 
 
 

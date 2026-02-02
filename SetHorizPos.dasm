@@ -24,3 +24,9 @@ SetHorizPos subroutine
     sta RESP0,x ; fix coarse position
     sta HMP0,x ; set fine offset
     rts ; return to caller
+
+    ; ;After done calling SetHorizPos in the update loop for all your objects,
+    ; ;make sure to call the following bit of code to sync everything
+    ; ;Otherwise the fine offset will not be set and your objects will appear to jump
+    ; sta WSYNC	; sync w/ scanline
+    ; sta HMOVE	; apply fine offsets
