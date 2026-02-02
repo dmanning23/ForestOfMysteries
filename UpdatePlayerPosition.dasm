@@ -1,0 +1,34 @@
+UpdatePlayerPositionTopLeftCorner subroutine
+    jsr UpdateCharacterX
+    bne .doneX
+
+    ;character went off screen horizontally
+    jsr CheckHorizontalDirectionOffscreen
+    bne .right
+
+    ;hit the left wall
+    jsr SetPlayerPosLeftEdge
+
+.right
+    ;Went off the right side of the screen
+    jsr ScreenMoveRight
+    jsr SetPlayerPosLeftEdge
+
+.doneX
+;     jsr UpdateCharacterY
+;     bne .doneY
+
+;     ;character went off screen horizontally
+;     jsr CheckVer
+;     bne .right
+
+;     ;hit the left wall
+;     SetPlayerPosLeftEdge
+
+; .right
+;     ;Went off the right side of the screen
+;     jsr ScreenMoveRight
+;     jsr SetPlayerPosLeftEdge
+
+; .doneY
+    rts

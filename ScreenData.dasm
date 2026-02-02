@@ -2,7 +2,10 @@ Screen00
     lda #$40
     sta COLUBK
 
+    jsr UpdatePlayerPositionTopLeftCorner
+
     jmp EndScreenLogic
+
 Screen01
     lda #$42
     sta COLUBK

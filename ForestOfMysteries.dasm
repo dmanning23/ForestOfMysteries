@@ -124,14 +124,14 @@ NextFrame
     sta playerXVel
     sta playerYVel
 
-    jsr ScreenLogic
     jsr UpdateInput
 
     jsr CheckInput
 
+    jsr ScreenLogic
+
     ;update the player positions from velocity
-    jsr UpdateCharacterX
-    jsr UpdateCharacterY
+    ;jsr UpdatePlayerPosition
 
     ;clear the player registers
     lda #0
@@ -207,6 +207,7 @@ OverScan
     include "ScreenData.dasm"
     include "CheckInput.dasm"
     include "CharacterMovement.dasm"
+    include "UpdatePlayerPosition.dasm"
 
 
 
