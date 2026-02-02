@@ -26,9 +26,6 @@ UpdateCharacterX subroutine
     adc playerXVel,y ; Add signed velocity (works for both positive and negative)
     sta playerXPos,y
 
-    ;Check for under/overflow
-    cmp #SCREEN_RIGHT_EDGE
-
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,31 +41,6 @@ UpdateCharacterY subroutine
     adc playerYVel,y
     sta playerYPos,y
 
-    cmp #SCREEN_BOTTOM_EDGE
-
-    rts
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; The player has gone off the screen horzontally
-; Did they go off left or right?
-; Y = player number (0 for p1, 1 for p2)
-; Returns: A will be 0 for left, 1 for right
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-CheckHorizontalDirectionOffscreen subroutine
-    ;Check if velocity is positive or negative
-    lda playerXVel,y
-    bmi .negativeHoriz  ; Branch if minus (bit 7 set)
-
-    ;the player went off the right side of the screen
-    lda #1
-
-.negativeHoriz
-    ;player went off the left side of the screen
-    lda #0
-
-.done
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -78,7 +50,7 @@ CheckHorizontalDirectionOffscreen subroutine
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 SetPlayerPosLeftEdge
-    lda #SCREEN_LEFT_EDGE
+    lda #SCREEN_LEFT_EDGE+1
     sta playerXPos,y
     rts
 
@@ -100,7 +72,7 @@ SetPlayerPosRightEdge
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 SetPlayerPosCeiling
-    lda #SCREEN_TOP_EDGE-1
+    lda #SCREEN_TOP_EDGE-2
     sta playerYPos,y
     rts
 
@@ -111,7 +83,7 @@ SetPlayerPosCeiling
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 SetPlayerPosFloor
-    lda #SCREEN_BOTTOM_EDGE
+    lda #SCREEN_BOTTOM_EDGE+2
     sta playerYPos,y
     rts
 
@@ -134,7 +106,7 @@ CenterPlayerX
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 CenterPlayerY
-    lda #SCREEN_BOTTOM_EDGE
+    lda #SCREEN_TOP_EDGE
     lsr ;divide by 2
     sta playerYPos,y ;center vertically
     rts

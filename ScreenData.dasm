@@ -2,162 +2,260 @@ Screen00
     lda #$40
     sta COLUBK
 
-    jsr UpdatePlayerPositionTopLeftCorner
+    jsr UpdatePlayerPosition
+
+    ;TODO: check for left wall
+    ;TODO: check for ceiling
+    
+    jsr ScreenWraparound
 
     jmp EndScreenLogic
 
 Screen01
     lda #$42
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen02
     lda #$44
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen03
     lda #$46
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen04
     lda #$48
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen05
     lda #$4A
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen06
     lda #$4C
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen07
     lda #$4F
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen10
     lda #$B0
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen11
     lda #$B2
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen12
     lda #$B4
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen13
     lda #$B6
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen14
     lda #$B8
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen15
     lda #$BA
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen16
     lda #$BC
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen17
     lda #$BF
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen20
     lda #$80
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen21
     lda #$82
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen22
     lda #$84
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen23
     lda #$86
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen24
     lda #$88
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen25
     lda #$8A
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen26
     lda #$8C
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen27
     lda #$8F
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen30
     lda #$60
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen31
     lda #$62
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen32
     lda #$64
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen33
     lda #$66
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen34
     lda #$68
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen35
     lda #$6A
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen36
     lda #$6C
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic
 Screen37
     lda #$6F
     sta COLUBK
+
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
     jmp EndScreenLogic

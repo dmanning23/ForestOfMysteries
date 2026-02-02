@@ -1,34 +1,74 @@
-UpdatePlayerPositionTopLeftCorner subroutine
+UpdatePlayerPosition subroutine
     jsr UpdateCharacterX
-    bne .doneX
+    jsr UpdateCharacterY
+    rts
 
-    ;character went off screen horizontally
-    jsr CheckHorizontalDirectionOffscreen
-    bne .right
+ScreenWraparound subroutine
 
-    ;hit the left wall
-    jsr SetPlayerPosLeftEdge
+    lda playerXPos,y    ; Reload the position after update
+    
+    ; Check right edge first
+    cmp #SCREEN_RIGHT_EDGE
+    beq .stillOnScreenX
+    bcs .hitEdgeX        ; >= 160 means either wrapped left or went right
+    
+    ; Position is 0-159, we're good
+    jmp .doneX
 
-.right
+.hitEdgeX:
+    ; Now determine if we wrapped left (>= 160) or went right
+    cmp #200            ; Arbitrary threshold - if > 200, assume wrapped left
+    bcs .hitLeft
+
+.hitRight
     ;Went off the right side of the screen
     jsr ScreenMoveRight
     jsr SetPlayerPosLeftEdge
+    jmp .doneX
+
+.stillOnScreenX
+    ;The player is still on the screen
+    jmp .doneX
+
+.hitLeft:
+    ;Went off the left side of the screen
+    jsr ScreenMoveLeft
+    jsr SetPlayerPosRightEdge
 
 .doneX
-;     jsr UpdateCharacterY
-;     bne .doneY
 
-;     ;character went off screen horizontally
-;     jsr CheckVer
-;     bne .right
+    ;update y position
+    
 
-;     ;hit the left wall
-;     SetPlayerPosLeftEdge
+    lda playerYPos,y    ; Reload the position after update
+    
+    ; Check ceiling first
+    cmp #SCREEN_TOP_EDGE
+    beq .stillOnScreenY
+    bcs .hitEdgeY        ; >= 160 means either wrapped left or went right
+    
+    ; Position is 0-159, we're good
+    jmp .doneY
 
-; .right
-;     ;Went off the right side of the screen
-;     jsr ScreenMoveRight
-;     jsr SetPlayerPosLeftEdge
+.hitEdgeY:
+    ; Now determine if we wrapped bottom (>= 160) or went over the top
+    cmp #240            ; Arbitrary threshold - if > 200, assume wrapped left
+    bcs .hitBottom
 
-; .doneY
+.hitTop
+    ;Went off the top of the screen
+    ;jsr ScreenMoveUp
+    ;jsr SetPlayerPosFloor
+    jmp .doneY
+
+.stillOnScreenY
+    ;The player is still on the screen
+    jmp .doneY
+
+.hitBottom:
+    ;Went off the bottom of the screen
+    ;jsr ScreenMoveDown
+    ;jsr SetPlayerPosCeiling
+
+.doneY
     rts

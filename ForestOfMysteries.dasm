@@ -130,9 +130,6 @@ NextFrame
 
     jsr ScreenLogic
 
-    ;update the player positions from velocity
-    ;jsr UpdatePlayerPosition
-
     ;clear the player registers
     lda #0
     sta GRP0
