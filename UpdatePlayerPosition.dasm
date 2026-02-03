@@ -43,31 +43,32 @@ ScreenWraparound subroutine
 
 .doneX
 
-    lda playerYPos,y
-
     ;Check if we are above the ceiling
+    lda playerYPos,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
 
 .belowCeiling
 
-    ;If the player is below the ceiling...they are probably still on the screen?
+    ;If the player is below the ceiling
+
+    ;Check if the player is below the floor
+    lda playerYPos,y
+    cmp #SCREEN_BOTTOM_EDGE
+    bcc .belowFloor
+
+    ;...they are probably still on the screen?
     jmp .doneY
 
 .aboveCeiling
-    ;The player has ended up above the ceiling. Which direction did they step?
-    lda playerYVel,y
-    bmi .hitBottom
-
-.hitTop:
+    ;The player has ended up above the ceiling
     jsr ScreenMoveUp
     jsr SetPlayerPosFloor
     jmp .doneY
 
-.hitBottom:
-    ;The player ended up underflowing 
-    ;(above the ceiling while walking towards the floor (-1 velocity))
+.belowFloor:
+    ;The player is below the floor
     jsr ScreenMoveDown
     jsr SetPlayerPosCeiling
 
