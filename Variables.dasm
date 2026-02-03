@@ -2,6 +2,9 @@
 playerXPos .byte
 playerYPos .byte
 
+playerPrevXPos .byte
+playerPrevYPos .byte
+
 ;The velocity of the player
 playerXVel .byte
 playerYVel .byte

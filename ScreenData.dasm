@@ -6,7 +6,7 @@ Screen00
 
     ;TODO: check for left wall
     ;TODO: check for ceiling
-    
+
     jsr ScreenWraparound
 
     jmp EndScreenLogic

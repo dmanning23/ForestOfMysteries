@@ -2,8 +2,8 @@
 
 ; ;Screen edges, adjust to match your game
 ; SCREEN_LEFT_EDGE equ #0
-; SCREEN_TOP_EDGE equ #191
-; SCREEN_RIGHT_EDGE equ #159
+; SCREEN_TOP_EDGE equ #185 ;#$B9
+; SCREEN_RIGHT_EDGE equ #159 ;#$9F
 ; SCREEN_BOTTOM_EDGE equ #0
 
 
@@ -50,7 +50,9 @@ UpdateCharacterY subroutine
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 SetPlayerPosLeftEdge
-    lda #SCREEN_LEFT_EDGE+1
+    lda #SCREEN_LEFT_EDGE
+    clc
+    adc #1
     sta playerXPos,y
     rts
 
@@ -61,7 +63,9 @@ SetPlayerPosLeftEdge
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 SetPlayerPosRightEdge
-    lda #SCREEN_RIGHT_EDGE-1
+    lda #SCREEN_RIGHT_EDGE
+    sec
+    sbc #1
     sta playerXPos,y
     rts
 
@@ -72,7 +76,9 @@ SetPlayerPosRightEdge
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 SetPlayerPosCeiling
-    lda #SCREEN_TOP_EDGE-2
+    lda #SCREEN_TOP_EDGE
+    sec
+    sbc #1
     sta playerYPos,y
     rts
 
@@ -83,7 +89,9 @@ SetPlayerPosCeiling
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 SetPlayerPosFloor
-    lda #SCREEN_BOTTOM_EDGE+2
+    lda #SCREEN_BOTTOM_EDGE
+    clc
+    adc #1
     sta playerYPos,y
     rts
 

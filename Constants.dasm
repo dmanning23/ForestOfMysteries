@@ -1,7 +1,7 @@
 ;Screen edges, adjust to match your game
 SCREEN_LEFT_EDGE equ #0
-SCREEN_TOP_EDGE equ #185
-SCREEN_RIGHT_EDGE equ #159
+SCREEN_TOP_EDGE equ #185 ;#$B9
+SCREEN_RIGHT_EDGE equ #159 ;#$9F
 SCREEN_BOTTOM_EDGE equ #0
 
 ;The input flags are as follows:

@@ -101,6 +101,11 @@ Reset_0
     jsr CenterPlayerX
     jsr CenterPlayerY
 
+    lda playerXPos
+    sta playerPrevXPos
+    lda playerYPos
+    sta playerPrevYPos
+
     ;initialize the player velocity
     lda #0
     sta playerXVel

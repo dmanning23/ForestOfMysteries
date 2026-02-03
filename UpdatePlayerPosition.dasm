@@ -1,17 +1,23 @@
 UpdatePlayerPosition subroutine
-    jsr UpdateCharacterX
+    lda playerXPos
+    sta playerPrevXPos
+    lda playerYPos
+    sta playerPrevYPos
+    
     jsr UpdateCharacterY
+    jsr UpdateCharacterX
+    
     rts
 
 ScreenWraparound subroutine
 
     lda playerXPos,y    ; Reload the position after update
-    
+
     ; Check right edge first
     cmp #SCREEN_RIGHT_EDGE
     beq .stillOnScreenX
     bcs .hitEdgeX        ; >= 160 means either wrapped left or went right
-    
+
     ; Position is 0-159, we're good
     jmp .doneX
 
@@ -37,38 +43,33 @@ ScreenWraparound subroutine
 
 .doneX
 
-    ;update y position
-    
+    lda playerYPos,y
 
-    lda playerYPos,y    ; Reload the position after update
-    
-    ; Check ceiling first
+    ;Check if we are above the ceiling
     cmp #SCREEN_TOP_EDGE
-    beq .stillOnScreenY
-    bcs .hitEdgeY        ; >= 160 means either wrapped left or went right
-    
-    ; Position is 0-159, we're good
+    beq .belowCeiling
+    bcs .aboveCeiling
+
+.belowCeiling
+
+    ;If the player is below the ceiling...they are probably still on the screen?
     jmp .doneY
 
-.hitEdgeY:
-    ; Now determine if we wrapped bottom (>= 160) or went over the top
-    cmp #240            ; Arbitrary threshold - if > 200, assume wrapped left
-    bcs .hitBottom
+.aboveCeiling
+    ;The player has ended up above the ceiling. Which direction did they step?
+    lda playerYVel,y
+    bmi .hitBottom
 
-.hitTop
-    ;Went off the top of the screen
-    ;jsr ScreenMoveUp
-    ;jsr SetPlayerPosFloor
-    jmp .doneY
-
-.stillOnScreenY
-    ;The player is still on the screen
+.hitTop:
+    jsr ScreenMoveUp
+    jsr SetPlayerPosFloor
     jmp .doneY
 
 .hitBottom:
-    ;Went off the bottom of the screen
-    ;jsr ScreenMoveDown
-    ;jsr SetPlayerPosCeiling
+    ;The player ended up underflowing 
+    ;(above the ceiling while walking towards the floor (-1 velocity))
+    jsr ScreenMoveDown
+    jsr SetPlayerPosCeiling
 
 .doneY
     rts
