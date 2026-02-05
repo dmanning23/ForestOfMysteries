@@ -111,6 +111,9 @@ Reset_0
     sta playerXVel
     sta playerYVel
 
+    lda #$00
+    sta COLUBK
+
 NextFrame
 
     ; 1 + 3 lines of VSYNC
@@ -177,7 +180,6 @@ LinesOfFrame
 LVScan
 
     jsr DrawPlayer
-    sta WSYNC
 
     dex ; decrement X
     bne LVScan ; repeat until 192 lines
@@ -190,6 +192,9 @@ LVScan
 
 OverScan
     TIMER_SETUP 29
+
+    lda #$00
+    sta COLUBK
 
     ;clear the player registers
     lda #0

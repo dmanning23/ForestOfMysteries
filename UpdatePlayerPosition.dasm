@@ -11,32 +11,31 @@ UpdatePlayerPosition subroutine
 
 ScreenWraparound subroutine
 
-    lda playerXPos,y    ; Reload the position after update
-
-    ; Check right edge first
+    ;check if the player is behind the right wall
+    lda playerXPos,y
     cmp #SCREEN_RIGHT_EDGE
-    beq .stillOnScreenX
-    bcs .hitEdgeX        ; >= 160 means either wrapped left or went right
+    beq .leftOfRightEdge
+    bcs .rightOfRightEdge
 
-    ; Position is 0-159, we're good
+.leftOfRightEdge
+
+    ;If the player is on the left side of the right wall
+
+    ;Check if the player is behind the left wall
+    lda playerXPos,y
+    cmp #SCREEN_LEFT_EDGE
+    bcc .leftOfLeftEdge
+
+    ;...they are probably still on the screen?
     jmp .doneX
 
-.hitEdgeX:
-    ; Now determine if we wrapped left (>= 160) or went right
-    cmp #200            ; Arbitrary threshold - if > 200, assume wrapped left
-    bcs .hitLeft
-
-.hitRight
-    ;Went off the right side of the screen
+.rightOfRightEdge
+    ;The player has walked off the right side of the screen
     jsr ScreenMoveRight
     jsr SetPlayerPosLeftEdge
     jmp .doneX
 
-.stillOnScreenX
-    ;The player is still on the screen
-    jmp .doneX
-
-.hitLeft:
+.leftOfLeftEdge
     ;Went off the left side of the screen
     jsr ScreenMoveLeft
     jsr SetPlayerPosRightEdge

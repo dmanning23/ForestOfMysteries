@@ -31,6 +31,7 @@ DrawPlayer subroutine
     tay ; local coord -> Y
 
     lda (spritePtr),y ; lookup sprite pattern
+    sta WSYNC
     sta GRP0 ; store bitmap
     lda (spriteColorPtr),y ; lookup color
     sta COLUP0 ; store color
