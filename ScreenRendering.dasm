@@ -3,7 +3,7 @@
 ; Call this in the game loop part of your game to draw the screen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-ScreenDraw
+PerformScreenDraw subroutine
     lda screenRow
     asl
     asl
@@ -12,9 +12,9 @@ ScreenDraw
     adc screenCol   ; add column offset
     tax
     
-    lda ScreenJumpTableLo,x
+    lda ScreenDrawJumpTableLo,x
     sta TempWord
-    lda ScreenJumpTableHi,x
+    lda ScreenDrawJumpTableHi,x
     sta TempWord+1
     jmp (TempWord)
 EndScreenDraw
@@ -32,14 +32,14 @@ ScreenDrawJumpTableLo
     .byte <ScreenDraw34, <ScreenDraw35, <ScreenDraw36, <ScreenDraw37
 
 ScreenDrawJumpTableHi
-    .byte <ScreenDraw00, <ScreenDraw01, <ScreenDraw02, <ScreenDraw03
-    .byte <ScreenDraw04, <ScreenDraw05, <ScreenDraw06, <ScreenDraw07
-    .byte <ScreenDraw10, <ScreenDraw11, <ScreenDraw12, <ScreenDraw13
-    .byte <ScreenDraw14, <ScreenDraw15, <ScreenDraw16, <ScreenDraw17
-    .byte <ScreenDraw20, <ScreenDraw21, <ScreenDraw22, <ScreenDraw23
-    .byte <ScreenDraw24, <ScreenDraw25, <ScreenDraw26, <ScreenDraw27
-    .byte <ScreenDraw30, <ScreenDraw31, <ScreenDraw32, <ScreenDraw33
-    .byte <ScreenDraw34, <ScreenDraw35, <ScreenDraw36, <ScreenDraw37
+    .byte >ScreenDraw00, >ScreenDraw01, >ScreenDraw02, >ScreenDraw03
+    .byte >ScreenDraw04, >ScreenDraw05, >ScreenDraw06, >ScreenDraw07
+    .byte >ScreenDraw10, >ScreenDraw11, >ScreenDraw12, >ScreenDraw13
+    .byte >ScreenDraw14, >ScreenDraw15, >ScreenDraw16, >ScreenDraw17
+    .byte >ScreenDraw20, >ScreenDraw21, >ScreenDraw22, >ScreenDraw23
+    .byte >ScreenDraw24, >ScreenDraw25, >ScreenDraw26, >ScreenDraw27
+    .byte >ScreenDraw30, >ScreenDraw31, >ScreenDraw32, >ScreenDraw33
+    .byte >ScreenDraw34, >ScreenDraw35, >ScreenDraw36, >ScreenDraw37
 
 ; ;These memory locations are where all the screen logic is performed
 ; ;Copy this block at the bottom of your game and add logic for each screen
