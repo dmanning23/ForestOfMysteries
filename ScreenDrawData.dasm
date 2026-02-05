@@ -1,0 +1,161 @@
+ScreenDraw00
+    lda #$40
+    sta COLUBK
+
+    jmp EndScreenDraw
+
+ScreenDraw01
+    lda #$42
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw02
+    lda #$44
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw03
+    lda #$46
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw04
+    lda #$48
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw05
+    lda #$4A
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw06
+    lda #$4C
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw07
+    lda #$4F
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw10
+    lda #$B0
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw11
+    lda #$B2
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw12
+    lda #$B4
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw13
+    lda #$B6
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw14
+    lda #$B8
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw15
+    lda #$BA
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw16
+    lda #$BC
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw17
+    lda #$BF
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw20
+    lda #$80
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw21
+    lda #$82
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw22
+    lda #$84
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw23
+    lda #$86
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw24
+    lda #$88
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw25
+    lda #$8A
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw26
+    lda #$8C
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw27
+    lda #$8F
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw30
+    lda #$60
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw31
+    lda #$62
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw32
+    lda #$64
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw33
+    lda #$66
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw34
+    lda #$68
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw35
+    lda #$6A
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw36
+    lda #$6C
+    sta COLUBK
+
+    jmp EndScreenDraw
+ScreenDraw37
+    lda #$6F
+    sta COLUBK
+
+    jmp EndScreenDraw

@@ -211,10 +211,12 @@ OverScan
     include "DrawCharacter.dasm"
     include "Assets/Graphics/player.dasm"
     include "SetHorizPos.dasm"
-    include "ScreenData.dasm"
+    include "ScreenLogicData.dasm"
     include "CheckInput.dasm"
     include "CharacterMovement.dasm"
     include "UpdatePlayerPosition.dasm"
+    include "ScreenRendering.dasm"
+    include "ScreenDrawData.dasm"
 
 
 
