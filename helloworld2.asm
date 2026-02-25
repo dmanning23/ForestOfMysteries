@@ -93,14 +93,6 @@ LinesOfFrame
     lda PFBitmap5,Y
     sta PF2
 
-    dex
-
-    sta WSYNC
-    lda #0
-    sta PF0
-    sta PF1
-    sta PF2
-
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)
     sty temp
     
@@ -112,13 +104,21 @@ LinesOfFrame
      lda #0                  ; no, use row 0 (transparent)
 InSprite
      tay                     ; sprite row -> Y
-;     lda (spritePtr),y       ; lookup sprite pattern
-     
+     lda #0       ; lookup sprite pattern
+     sta WSYNC
      sta GRP0                ; write sprite bitmap
-;     lda (spriteColorPtr),y  ; lookup sprite color
+     lda #0  ; lookup sprite color
      sta COLUP0              ; write color
+
+     
+    lda #0
+    sta PF0
+    sta PF1
+    sta PF2
+
     ldy temp               ; restore bitmap row index
 
+    dex
     dex
     txa
     and #$03

@@ -35,14 +35,6 @@ DrawTop subroutine
     lda PFBitmap5,Y
     sta PF2
 
-    dex
-
-    sta WSYNC
-    lda #0
-    sta PF0
-    sta PF1
-    sta PF2
-
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)
     sty temp
     
@@ -53,15 +45,27 @@ DrawTop subroutine
     bcc .InSprite           ; yes
     lda #0                  ; no, use row 0 (transparent)
 .InSprite
+
+    
     lsr
     tay                     ; sprite row -> Y
+
+    sta WSYNC
+    
     lda (spritePtr),y       ; lookup sprite pattern
     
     sta GRP0                ; write sprite bitmap
     lda (spriteColorPtr),y  ; lookup sprite color
     sta COLUP0              ; write color
+
+    lda #0
+    sta PF0
+    sta PF1
+    sta PF2
+
     ldy temp               ; restore bitmap row index
 
+    dex
     dex
     txa
     and #$03

@@ -19,6 +19,8 @@ PerformScreenDraw subroutine
     sta TempWord
     lda ScreenDrawJumpTableHi,x
     sta TempWord+1
+
+    sta WSYNC ;add a line here
     jmp (TempWord)
 EndScreenDraw
     rts

@@ -6,8 +6,11 @@ ScreenDraw00 subroutine
     jmp EndScreenDraw
     
 ScreenDraw01
-    lda #$42
+
+    lda #0
     sta COLUBK
+    lda #$42
+    sta COLUPF
     jsr DrawTop
 
     jmp EndScreenDraw
