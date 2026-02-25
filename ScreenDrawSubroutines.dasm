@@ -37,6 +37,12 @@ DrawTop subroutine
 
     dex
 
+    sta WSYNC
+    lda #0
+    sta PF0
+    sta PF1
+    sta PF2
+
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)
     sty temp
     
@@ -47,9 +53,10 @@ DrawTop subroutine
     bcc .InSprite           ; yes
     lda #0                  ; no, use row 0 (transparent)
 .InSprite
+    lsr
     tay                     ; sprite row -> Y
     lda (spritePtr),y       ; lookup sprite pattern
-    sta WSYNC
+    
     sta GRP0                ; write sprite bitmap
     lda (spriteColorPtr),y  ; lookup sprite color
     sta COLUP0              ; write color

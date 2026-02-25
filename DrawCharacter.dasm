@@ -26,7 +26,7 @@ DrawPlayer subroutine
     bcc .InSprite ; yes, skip to sprite drawing
     lda #0 ; not in sprite, load 0
 .InSprite
-    ;lsr ; Uncomment this line if 2pixel tall sprite, Shift right (divide by 2)
+    lsr ; Uncomment this line if 2pixel tall sprite, Shift right (divide by 2)
     ;lsr ; Also uncomment this line if 4pixel tall sprite, Shift right again (divide by 4)
     tay ; local coord -> Y
 

@@ -11,4 +11,5 @@ CONTROLLER_LEFT     equ #%00000100
 CONTROLLER_RIGHT    equ #%00001000
 CONTROLLER_BUTTON   equ #%00010000
 
-SPRITE_HEIGHT equ #9
+;SPRITE_HEIGHT equ #9 ; single size sprite
+SPRITE_HEIGHT equ #9*2 ; double size pixel
