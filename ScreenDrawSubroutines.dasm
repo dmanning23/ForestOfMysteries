@@ -46,12 +46,11 @@ DrawTop subroutine
     lda #0                  ; no, use row 0 (transparent)
 .InSprite
 
-    
     lsr
     tay                     ; sprite row -> Y
 
     sta WSYNC
-    
+
     lda (spritePtr),y       ; lookup sprite pattern
     
     sta GRP0                ; write sprite bitmap
