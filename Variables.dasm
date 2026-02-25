@@ -28,3 +28,5 @@ controllerMask .byte
 ; Pointer used to draw the character
 spritePtr .word
 spriteColorPtr .word
+
+temp byte

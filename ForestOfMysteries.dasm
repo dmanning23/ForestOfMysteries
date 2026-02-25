@@ -209,6 +209,7 @@ OverScan
     include "UpdatePlayerPosition.dasm"
     include "ScreenRendering.dasm"
     include "ScreenDrawData.dasm"
+    include "Assets/Graphics/helloworld.asm"
 
 
 

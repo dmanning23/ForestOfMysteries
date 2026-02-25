@@ -91,13 +91,11 @@ LVScan
     dex
     txa
     and #$03
-    beq divisible_by_4
-    jmp nextline
-
-divisible_by_4
+    bne notDivisible_by_4
+    
     dey
 
-nextline
+notDivisible_by_4
     cpx #0 ;sets the Z flag based on X
     bne LVScan
 
@@ -115,26 +113,6 @@ OverScan
     jmp NextFrame
 
     include "Assets/Graphics/helloworld.asm"
-
-DrawScene
-
-    sta WSYNC ; sync w/ scanline
-    lda PFBitmap0,Y
-    sta PF0
-    lda PFBitmap1,Y
-    sta PF1
-    lda PFBitmap2,Y
-    sta PF2
-    nop
-    nop
-    nop
-    lda PFBitmap3,Y
-    sta PF0
-    lda PFBitmap4,Y
-    sta PF1
-    lda PFBitmap5,Y
-    sta PF2
-    rts
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
