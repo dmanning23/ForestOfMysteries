@@ -146,7 +146,7 @@ OverScan
     ; total = 262 lines, go to next frame
     jmp NextFrame
 
-    include "Assets/Graphics/helloworld.asm"
+    include "Assets/Graphics/helloworldData.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

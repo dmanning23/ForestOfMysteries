@@ -72,20 +72,20 @@ LinesOfFrame
 
 LVScan
     sta WSYNC
-    lda PFBitmap0,Y
+    lda wowMuchHelloBitmap0,Y
     sta PF0
-    lda PFBitmap1,Y
+    lda wowMuchHelloBitmap1,Y
     sta PF1
-    lda PFBitmap2,Y
+    lda wowMuchHelloBitmap2,Y
     sta PF2
     nop
     nop
     nop
-    lda PFBitmap3,Y
+    lda wowMuchHelloBitmap3,Y
     sta PF0
-    lda PFBitmap4,Y
+    lda wowMuchHelloBitmap4,Y
     sta PF1
-    lda PFBitmap5,Y
+    lda wowMuchHelloBitmap5,Y
     sta PF2
 
     dex
@@ -112,7 +112,7 @@ OverScan
     ; total = 262 lines, go to next frame
     jmp NextFrame
 
-    include "Assets/Graphics/helloworldData.asm"
+    include "Assets/Graphics/wowMuchHelloData.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
