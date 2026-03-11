@@ -25,7 +25,7 @@ PerformScreenDraw subroutine
 EndScreenDraw
     rts
 
-; Jump tables (32 entries)
+; Jump tables (64 entries)
 ScreenDrawJumpTableLo
     .byte <ScreenDraw00, <ScreenDraw01, <ScreenDraw02, <ScreenDraw03
     .byte <ScreenDraw04, <ScreenDraw05, <ScreenDraw06, <ScreenDraw07
@@ -35,6 +35,14 @@ ScreenDrawJumpTableLo
     .byte <ScreenDraw24, <ScreenDraw25, <ScreenDraw26, <ScreenDraw27
     .byte <ScreenDraw30, <ScreenDraw31, <ScreenDraw32, <ScreenDraw33
     .byte <ScreenDraw34, <ScreenDraw35, <ScreenDraw36, <ScreenDraw37
+    .byte <ScreenDraw40, <ScreenDraw41, <ScreenDraw42, <ScreenDraw43
+    .byte <ScreenDraw44, <ScreenDraw45, <ScreenDraw46, <ScreenDraw47
+    .byte <ScreenDraw50, <ScreenDraw51, <ScreenDraw52, <ScreenDraw53
+    .byte <ScreenDraw54, <ScreenDraw55, <ScreenDraw56, <ScreenDraw57
+    .byte <ScreenDraw60, <ScreenDraw61, <ScreenDraw62, <ScreenDraw63
+    .byte <ScreenDraw64, <ScreenDraw65, <ScreenDraw66, <ScreenDraw67
+    .byte <ScreenDraw70, <ScreenDraw71, <ScreenDraw72, <ScreenDraw73
+    .byte <ScreenDraw74, <ScreenDraw75, <ScreenDraw76, <ScreenDraw77
 
 ScreenDrawJumpTableHi
     .byte >ScreenDraw00, >ScreenDraw01, >ScreenDraw02, >ScreenDraw03
@@ -45,6 +53,14 @@ ScreenDrawJumpTableHi
     .byte >ScreenDraw24, >ScreenDraw25, >ScreenDraw26, >ScreenDraw27
     .byte >ScreenDraw30, >ScreenDraw31, >ScreenDraw32, >ScreenDraw33
     .byte >ScreenDraw34, >ScreenDraw35, >ScreenDraw36, >ScreenDraw37
+    .byte >ScreenDraw40, >ScreenDraw41, >ScreenDraw42, >ScreenDraw43
+    .byte >ScreenDraw44, >ScreenDraw45, >ScreenDraw46, >ScreenDraw47
+    .byte >ScreenDraw50, >ScreenDraw51, >ScreenDraw52, >ScreenDraw53
+    .byte >ScreenDraw54, >ScreenDraw55, >ScreenDraw56, >ScreenDraw57
+    .byte >ScreenDraw60, >ScreenDraw61, >ScreenDraw62, >ScreenDraw63
+    .byte >ScreenDraw64, >ScreenDraw65, >ScreenDraw66, >ScreenDraw67
+    .byte >ScreenDraw70, >ScreenDraw71, >ScreenDraw72, >ScreenDraw73
+    .byte >ScreenDraw74, >ScreenDraw75, >ScreenDraw76, >ScreenDraw77
 
 ; ;These memory locations are where all the screen logic is performed
 ; ;Copy this block at the bottom of your game and add logic for each screen

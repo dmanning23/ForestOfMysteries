@@ -193,4 +193,199 @@ Screen37
     jsr ScreenWraparound
     
     jmp EndScreenLogic
+
+Screen40 subroutine
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
     
+    jmp EndScreenLogic
+
+Screen41
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen42
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen43
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen44
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen45
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen46
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen47
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen50
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen51
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen52
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen53
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen54
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen55
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen56
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen57
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen60
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen61
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen62
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen63
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen64
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen65
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen66
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen67
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen70
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen71
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen72
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen73
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen74
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen75
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen76
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+Screen77
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
+    jmp EndScreenLogic
+
+
+
+

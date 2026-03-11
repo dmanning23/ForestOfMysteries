@@ -95,7 +95,8 @@ ScreenMoveUp subroutine
 .blocked
     rts
 
-; Jump tables (32 entries)
+; Jump tables (64 entries)
+
 ScreenJumpTableLo
     .byte <Screen00, <Screen01, <Screen02, <Screen03
     .byte <Screen04, <Screen05, <Screen06, <Screen07
@@ -105,6 +106,14 @@ ScreenJumpTableLo
     .byte <Screen24, <Screen25, <Screen26, <Screen27
     .byte <Screen30, <Screen31, <Screen32, <Screen33
     .byte <Screen34, <Screen35, <Screen36, <Screen37
+    .byte <Screen40, <Screen41, <Screen42, <Screen43
+    .byte <Screen44, <Screen45, <Screen46, <Screen47
+    .byte <Screen50, <Screen51, <Screen52, <Screen53
+    .byte <Screen54, <Screen55, <Screen56, <Screen57
+    .byte <Screen60, <Screen61, <Screen62, <Screen63
+    .byte <Screen64, <Screen65, <Screen66, <Screen67
+    .byte <Screen70, <Screen71, <Screen72, <Screen73
+    .byte <Screen74, <Screen75, <Screen76, <Screen77
 
 ScreenJumpTableHi
     .byte >Screen00, >Screen01, >Screen02, >Screen03
@@ -115,6 +124,14 @@ ScreenJumpTableHi
     .byte >Screen24, >Screen25, >Screen26, >Screen27
     .byte >Screen30, >Screen31, >Screen32, >Screen33
     .byte >Screen34, >Screen35, >Screen36, >Screen37
+    .byte >Screen40, >Screen41, >Screen42, >Screen43
+    .byte >Screen44, >Screen45, >Screen46, >Screen47
+    .byte >Screen50, >Screen51, >Screen52, >Screen53
+    .byte >Screen54, >Screen55, >Screen56, >Screen57
+    .byte >Screen60, >Screen61, >Screen62, >Screen63
+    .byte >Screen64, >Screen65, >Screen66, >Screen67
+    .byte >Screen70, >Screen71, >Screen72, >Screen73
+    .byte >Screen74, >Screen75, >Screen76, >Screen77
 
 ; ;These memory locations are where all the screen logic is performed
 ; ;Copy this block at the bottom of your game and add logic for each screen
