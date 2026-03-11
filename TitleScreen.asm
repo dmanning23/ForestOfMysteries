@@ -1,5 +1,6 @@
 
 
+TitleScreen subroutine
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; 35 lines of underscan
@@ -11,6 +12,8 @@
     lda #192
     sta COLUPF
 
+    jsr MUSIC_UPDATE
+
     TIMER_WAIT
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -19,12 +22,12 @@
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-LinesOfFrame
+.linesOfFrame
 
     ldy #192
     ldx #192
 
-LVScan
+.lVScan
     sta WSYNC
     lda FoM_TitleScreenBitmap0,Y
     sta PF0
@@ -45,13 +48,13 @@ LVScan
     dex
     txa
     and #$03
-    bne notDivisible_by_4
+    bne .notDivisible_by_4
     
     dey
 
-notDivisible_by_4
+.notDivisible_by_4
     cpx #0 ;sets the Z flag based on X
-    bne LVScan
+    bne .lVScan
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -59,8 +62,10 @@ notDivisible_by_4
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-OverScan
+.overScan
     TIMER_SETUP 29
     TIMER_WAIT
 
     include "Assets/Graphics/FoM_TitleScreenData.asm"
+
+    rts

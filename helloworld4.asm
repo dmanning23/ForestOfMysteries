@@ -21,7 +21,11 @@
     seg.u Variables
     org $80
 
-
+MUS_FRAME .byte;   - frame countdown (1 byte)
+MUS_STEP .byte;    - step within pattern (1 byte)
+MUS_PAT_IDX .byte; - arrangement index (1 byte)
+MUS_PLAYING .byte; - 0=stopped, 1=playing (1 byte)
+MUS_PTR .word;     - temp zero-page pointer (2 bytes)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,78 +45,30 @@ Start
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+    lda #0
+    sta MUS_FRAME
+    sta MUS_STEP
+    sta MUS_PAT_IDX
+    sta MUS_PLAYING
+    sta MUS_PTR
+
+
+
+    jsr MUSIC_INIT
+
 NextFrame
 
     ; 1 + 3 lines of VSYNC
     VERTICAL_SYNC
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; 35 lines of underscan
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    jsr TitleScreen
 
-    TIMER_SETUP 35
-
-    lda #192
-    sta COLUPF
-
-    TIMER_WAIT
-
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; 192 lines of frame
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-LinesOfFrame
-
-    ldy #192
-    ldx #192
-
-LVScan
-    sta WSYNC
-    lda wowMuchHelloBitmap0,Y
-    sta PF0
-    lda wowMuchHelloBitmap1,Y
-    sta PF1
-    lda wowMuchHelloBitmap2,Y
-    sta PF2
-    nop
-    nop
-    nop
-    lda wowMuchHelloBitmap3,Y
-    sta PF0
-    lda wowMuchHelloBitmap4,Y
-    sta PF1
-    lda wowMuchHelloBitmap5,Y
-    sta PF2
-
-    dex
-    txa
-    and #$03
-    bne notDivisible_by_4
-    
-    dey
-
-notDivisible_by_4
-    cpx #0 ;sets the Z flag based on X
-    bne LVScan
-
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; 29 lines of overscan
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-OverScan
-    TIMER_SETUP 29
-    TIMER_WAIT
 
     ; total = 262 lines, go to next frame
     jmp NextFrame
 
-    include "Assets/Graphics/wowMuchHelloData.asm"
+    include "TitleScreen.asm"
+    include "Assets/Music/shadows_gather-music.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
