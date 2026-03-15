@@ -7,23 +7,30 @@ TitleScreenLogic subroutine
     sta COLUBK
 
     ;Set the foreground color to green
-    lda #192
-    sta COLUPF
+    
 
     ;Is music playing?
     lda MUS_PLAYING
-    bne .startMusic
+    beq .startMusic
+
+    lda #190
+    sta COLUPF
 
     jsr MUSIC_UPDATE_Shadows_Gather
     jmp .doneMusic
 
 .startMusic
 
+    lda #120
+    sta COLUPF
+
     jsr SFX_OFF
     jsr MUSIC_STOP_Shadows_Gather
     jsr MUSIC_INIT_Shadows_Gather
 
 .doneMusic
+
+    jsr SFX_UPDATE
 
     BANK_SWITCH 0,DoneTitleScreenLogic
 

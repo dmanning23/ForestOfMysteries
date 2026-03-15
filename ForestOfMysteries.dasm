@@ -111,6 +111,19 @@ Reset_0
     sta playerXVel
     sta playerYVel
 
+    lda #0
+    sta MUS_FRAME
+    sta MUS_STEP
+    sta MUS_PAT_IDX
+    sta MUS_PLAYING
+    sta MUS_ARR_OFF
+    sta MUS_PTR
+
+    sta SFX_LEFT
+    sta SFX_RIGHT
+    sta SFX_LEFT_TIMER
+    sta SFX_RIGHT_TIMER
+
     ;start at the title screen
     lda #7
     sta screenRow
