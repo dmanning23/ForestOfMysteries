@@ -381,11 +381,12 @@ Screen76
     jmp EndScreenLogic
 
 Screen77
-    jsr UpdatePlayerPosition
-    jsr ScreenWraparound
-    
-    jmp EndScreenLogic
+    ;Title Screen
+    BANK_SWITCH 1,TitleScreenLogic
 
+DoneTitleScreenLogic
+
+    jmp EndScreenLogic
 
 
 

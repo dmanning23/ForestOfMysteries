@@ -387,10 +387,11 @@ ScreenDraw76
     jsr DrawBottom
 
     jmp EndScreenDraw
+
 ScreenDraw77
-    lda #$6F
-    sta COLUBK
-    jsr DrawBottom
+    BANK_SWITCH 1,TitleScreenDraw
+
+DoneTitleScreenDraw
 
     jmp EndScreenDraw
 

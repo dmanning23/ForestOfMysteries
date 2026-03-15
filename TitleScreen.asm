@@ -1,26 +1,35 @@
 
 
-TitleScreen subroutine
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; 35 lines of underscan
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+TitleScreenLogic subroutine
 
-    TIMER_SETUP 35
+    ;Set the background to black
+    lda #0
+    sta COLUBK
 
+    ;Set the foreground color to green
     lda #192
     sta COLUPF
 
-    jsr MUSIC_UPDATE
+    ;Is music playing?
+    lda MUS_PLAYING
+    bne .startMusic
 
-    TIMER_WAIT
+    jsr MUSIC_UPDATE_Shadows_Gather
+    jmp .doneMusic
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; 192 lines of frame
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.startMusic
+
+    jsr SFX_OFF
+    jsr MUSIC_STOP_Shadows_Gather
+    jsr MUSIC_INIT_Shadows_Gather
+
+.doneMusic
+
+    BANK_SWITCH 0,DoneTitleScreenLogic
+
+
+
+TitleScreenDraw subroutine
 
 .linesOfFrame
 
@@ -56,16 +65,14 @@ TitleScreen subroutine
     cpx #0 ;sets the Z flag based on X
     bne .lVScan
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ; 29 lines of overscan
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    BANK_SWITCH 0,DoneTitleScreenDraw
 
-.overScan
-    TIMER_SETUP 29
-    TIMER_WAIT
+
 
     include "Assets/Graphics/FoM_TitleScreenData.asm"
+    include "Sound/shadows_gather-music.asm"
+    include "Sound/MusicEngine.asm"
+    include "Sound/SoundEngine.asm"
+    include "Sound/aliens2600-sfx.asm"
 
-    rts
+

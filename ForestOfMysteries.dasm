@@ -76,7 +76,7 @@
     seg Code
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; BANK 0
+;;; BANK 0: Scaffolding to run game
 
     org  $1000
     rorg $F000
@@ -110,6 +110,11 @@ Reset_0
     lda #0
     sta playerXVel
     sta playerYVel
+
+    ;start at the title screen
+    lda #7
+    sta screenRow
+    sta screenCol
 
 NextFrame
 
@@ -198,18 +203,18 @@ OverScan
     ; total = 262 lines, go to next frame
     jmp NextFrame
 
-    include "ScreenEngine.dasm"
+    include "ScreenEngine/ScreenEngine.dasm"
     include "InputEngine.dasm"
     include "DrawCharacter.dasm"
     include "Assets/Graphics/player.dasm"
     include "SetHorizPos.dasm"
-    include "ScreenLogicData.dasm"
+    include "ScreenEngine/ScreenLogicData.dasm"
     include "CheckInput.dasm"
     include "CharacterMovement.dasm"
     include "UpdatePlayerPosition.dasm"
-    include "ScreenDrawEngine.dasm"
-    include "ScreenDrawData.dasm"
-    include "ScreenDrawSubroutines.dasm"
+    include "ScreenEngine/ScreenDrawEngine.dasm"
+    include "ScreenEngine/ScreenDrawData.dasm"
+    include "ScreenEngine/ScreenDrawSubroutines.dasm"
     include "Assets/Graphics/helloworldData.asm"
 
 
@@ -226,7 +231,7 @@ OverScan
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; BANK 1
+;;; BANK 1: Title Screen
 
     org  $2000
     rorg $F000
@@ -237,6 +242,7 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
+    include "TitleScreen.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

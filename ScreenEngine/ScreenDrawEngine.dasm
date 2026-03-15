@@ -5,8 +5,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 PerformScreenDraw subroutine
 
-    
-
     lda screenRow
     asl
     asl
@@ -61,70 +59,3 @@ ScreenDrawJumpTableHi
     .byte >ScreenDraw64, >ScreenDraw65, >ScreenDraw66, >ScreenDraw67
     .byte >ScreenDraw70, >ScreenDraw71, >ScreenDraw72, >ScreenDraw73
     .byte >ScreenDraw74, >ScreenDraw75, >ScreenDraw76, >ScreenDraw77
-
-; ;These memory locations are where all the screen logic is performed
-; ;Copy this block at the bottom of your game and add logic for each screen
-; ScreenDraw00
-;     jmp EndScreenDraw
-; ScreenDraw01
-;     jmp EndScreenDraw
-; ScreenDraw02
-;     jmp EndScreenDraw
-; ScreenDraw03
-;     jmp EndScreenDraw
-; ScreenDraw04
-;     jmp EndScreenDraw
-; ScreenDraw05
-;     jmp EndScreenDraw
-; ScreenDraw06
-;     jmp EndScreenDraw
-; ScreenDraw07
-;     jmp EndScreenDraw
-; ScreenDraw10
-;     jmp EndScreenDraw
-; ScreenDraw11
-;     jmp EndScreenDraw
-; ScreenDraw12
-;     jmp EndScreenDraw
-; ScreenDraw13
-;     jmp EndScreenDraw
-; ScreenDraw14
-;     jmp EndScreenDraw
-; ScreenDraw15
-;     jmp EndScreenDraw
-; ScreenDraw16
-;     jmp EndScreenDraw
-; ScreenDraw17
-;     jmp EndScreenDraw
-; ScreenDraw20
-;     jmp EndScreenDraw
-; ScreenDraw21
-;     jmp EndScreenDraw
-; ScreenDraw22
-;     jmp EndScreenDraw
-; ScreenDraw23
-;     jmp EndScreenDraw
-; ScreenDraw24
-;     jmp EndScreenDraw
-; ScreenDraw25
-;     jmp EndScreenDraw
-; ScreenDraw26
-;     jmp EndScreenDraw
-; ScreenDraw27
-;     jmp EndScreenDraw
-; ScreenDraw30
-;     jmp EndScreenDraw
-; ScreenDraw31
-;     jmp EndScreenDraw
-; ScreenDraw32
-;     jmp EndScreenDraw
-; ScreenDraw33
-;     jmp EndScreenDraw
-; ScreenDraw34
-;     jmp EndScreenDraw
-; ScreenDraw35
-;     jmp EndScreenDraw
-; ScreenDraw36
-;     jmp EndScreenDraw
-; ScreenDraw37
-;     jmp EndScreenDraw
