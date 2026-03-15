@@ -24,13 +24,10 @@ TitleScreenLogic subroutine
     lda #120
     sta COLUPF
 
-    jsr SFX_OFF
     jsr MUSIC_STOP_Shadows_Gather
     jsr MUSIC_INIT_Shadows_Gather
 
 .doneMusic
-
-    jsr SFX_UPDATE
 
     BANK_SWITCH 0,DoneTitleScreenLogic
 
@@ -78,8 +75,6 @@ TitleScreenDraw subroutine
 
     include "Assets/Graphics/FoM_TitleScreenData.asm"
     include "Sound/shadows_gather-music.asm"
-    include "Sound/MusicEngine.asm"
-    include "Sound/SoundEngine.asm"
-    include "Sound/aliens2600-sfx.asm"
+    include "Sound/shadows_gather-MusicEngine.asm"
 
 
