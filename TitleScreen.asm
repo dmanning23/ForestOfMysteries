@@ -26,6 +26,18 @@ TitleScreenLogic subroutine
 
 .doneMusic
 
+    ;Start the game if the button is down
+    bit INPT4
+    bmi .skipButton
+
+    ;change the current screen
+    lda #0
+    sta screenRow
+    sta screenCol
+    jsr MUSIC_STOP_Shadows_Gather
+
+.skipButton
+
     BANK_SWITCH 0,DoneTitleScreenLogic
 
 

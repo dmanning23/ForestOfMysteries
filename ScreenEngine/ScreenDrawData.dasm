@@ -198,194 +198,98 @@ ScreenDraw37
 
 
 ScreenDraw40 subroutine
-    lda #$40
-    sta COLUBK
     jsr DrawTopLeft
-
     jmp EndScreenDraw
     
 ScreenDraw41
-
-    lda #0
-    sta COLUBK
-    lda #$42
-    sta COLUPF
     jsr DrawTop
-
     jmp EndScreenDraw
 ScreenDraw42
-    lda #$44
-    sta COLUBK
     jsr DrawTop
-
     jmp EndScreenDraw
 ScreenDraw43
-    lda #$46
-    sta COLUBK
     jsr DrawTop
-
     jmp EndScreenDraw
 ScreenDraw44
-    lda #$48
-    sta COLUBK
     jsr DrawTop
-
     jmp EndScreenDraw
 ScreenDraw45
-    lda #$4A
-    sta COLUBK
     jsr DrawTop
-
     jmp EndScreenDraw
 ScreenDraw46
-    lda #$4C
-    sta COLUBK
     jsr DrawTop
-
     jmp EndScreenDraw
 ScreenDraw47
-    lda #$4F
-    sta COLUBK
     jsr DrawTopRight
-
     jmp EndScreenDraw
 ScreenDraw50
-    lda #$B0
-    sta COLUBK
     jsr DrawMiddleLeft
-
     jmp EndScreenDraw
 ScreenDraw51
-    lda #$B2
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw52
-    lda #$B4
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw53
-    lda #$B6
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw54
-    lda #$B8
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw55
-    lda #$BA
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw56
-    lda #$BC
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw57
-    lda #$BF
-    sta COLUBK
     jsr DrawMiddleRight
-
     jmp EndScreenDraw
 ScreenDraw60
-    lda #$80
-    sta COLUBK
     jsr DrawMiddleLeft
-
     jmp EndScreenDraw
 ScreenDraw61
-    lda #$82
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw62
-    lda #$84
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw63
-    lda #$86
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw64
-    lda #$88
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw65
-    lda #$8A
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw66
-    lda #$8C
-    sta COLUBK
     jsr DrawMiddle
-
     jmp EndScreenDraw
 ScreenDraw67
-    lda #$8F
-    sta COLUBK
     jsr DrawMiddleRight
-
     jmp EndScreenDraw
 ScreenDraw70
-    lda #$60
-    sta COLUBK
     jsr DrawBottomLeft
-
     jmp EndScreenDraw
 ScreenDraw71
-    lda #$62
-    sta COLUBK
     jsr DrawBottom
-
     jmp EndScreenDraw
 ScreenDraw72
-    lda #$64
-    sta COLUBK
     jsr DrawBottom
-
     jmp EndScreenDraw
 ScreenDraw73
-    lda #$66
-    sta COLUBK
     jsr DrawBottom
-
     jmp EndScreenDraw
 ScreenDraw74
-    lda #$68
-    sta COLUBK
     jsr DrawBottom
-
     jmp EndScreenDraw
 ScreenDraw75
-    lda #$6A
-    sta COLUBK
     jsr DrawBottom
-
     jmp EndScreenDraw
 ScreenDraw76
-    lda #$6C
-    sta COLUBK
     jsr DrawBottom
-
     jmp EndScreenDraw
 
 ScreenDraw77

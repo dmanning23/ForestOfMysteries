@@ -37,6 +37,9 @@ MUS_PAT_IDX .byte;  - arrangement index (1 byte)
 MUS_PLAYING .byte;  - 0=stopped, 1=playing (1 byte)
 MUS_ARR_OFF .byte;  - saved arrangement byte offset (1 byte)
 MUS_PTR .word;      - temp zero-page pointer (2 bytes)
+MUS_ARR_PTR .word;  - pointer to current song's arrangement table (2 bytes)
+MUS_TEMPO .byte;    - frames per step for current song (1 byte)
+MUS_NUM_PATS .byte; - number of patterns in current song (1 byte)
 
 SFX_LEFT .byte
 SFX_RIGHT .byte
