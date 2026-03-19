@@ -13,16 +13,13 @@ TitleScreenLogic subroutine
     lda MUS_PLAYING
     beq .startMusic
 
-    lda #190
+    lda #$0B
     sta COLUPF
 
     jsr MUSIC_UPDATE_Shadows_Gather
     jmp .doneMusic
 
 .startMusic
-
-    lda #120
-    sta COLUPF
 
     jsr MUSIC_STOP_Shadows_Gather
     jsr MUSIC_INIT_Shadows_Gather
