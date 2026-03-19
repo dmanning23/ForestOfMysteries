@@ -229,7 +229,7 @@ OverScan
     include "ScreenEngine/ScreenDrawData.dasm"
     include "ScreenEngine/ScreenDrawSubroutines.dasm"
     include "Assets/Graphics/helloworldData.asm"
-
+    include "Sound/MusicEngine.asm"
 
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -12,8 +12,8 @@
 ;   110 = Saw     (AUDC=1)    111 = Engine  (AUDC=3)
 ;   $00 = Rest (silence)
 
-MUSIC_TEMPO     = 7   ; frames per step (NTSC 60fps)
-MUSIC_NUM_PATS  = 9
+Shadows_Gather_TEMPO    = 8   ; frames per step (NTSC 60fps)
+Shadows_Gather_NUM_PATS = 9
 
 ; ============================================================
 ; PATTERN DATA
@@ -124,3 +124,17 @@ Shadows_Gather_arrangement:
     .word Shadows_Gather_Into_Darkness_v1_notes
     .word Shadows_Gather_Into_Darkness_v1_vols
     .byte Shadows_Gather_Into_Darkness_len
+
+; ── MUSIC_INIT_SHADOWS_GATHER ────────────────────────────────────────────
+; Set song parameters and reset playback to the beginning.
+; Clobbers: A
+MUSIC_INIT_SHADOWS_GATHER:
+    lda #<Shadows_Gather_arrangement
+    sta MUS_ARR_PTR
+    lda #>Shadows_Gather_arrangement
+    sta MUS_ARR_PTR+1
+    lda #Shadows_Gather_TEMPO
+    sta MUS_TEMPO
+    lda #Shadows_Gather_NUM_PATS
+    sta MUS_NUM_PATS
+    jmp MUSIC_INIT

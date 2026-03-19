@@ -25,7 +25,7 @@ musCtrlTable_Shadows_Gather
 ; ── MUSIC_INIT ─────────────────────────────────────────────────────────
 ; Call once at startup to begin playback from the beginning
 MUSIC_INIT_Shadows_Gather
-    lda #MUSIC_TEMPO
+    lda #Shadows_Gather_TEMPO
     sta MUS_FRAME
     lda #0
     sta MUS_STEP
@@ -53,7 +53,7 @@ MUSIC_UPDATE_Shadows_Gather subroutine
     rts
 
 .musStep
-    lda #MUSIC_TEMPO
+    lda #Shadows_Gather_TEMPO
     sta MUS_FRAME
 
     ; Calculate arrangement entry byte offset (9 bytes per entry)
@@ -144,7 +144,7 @@ MUSIC_UPDATE_Shadows_Gather subroutine
     sta MUS_STEP
     inc MUS_PAT_IDX
     lda MUS_PAT_IDX
-    cmp #MUSIC_NUM_PATS
+    cmp #Shadows_Gather_NUM_PATS
     bne .musEnd
     lda #0
     sta MUS_PAT_IDX
