@@ -4,6 +4,36 @@ Screen00
     ;TODO: check for left wall
     ;TODO: check for ceiling
 
+    lda #<FoM_1Bitmap0        ; load low byte of Frame0 address
+    sta backgroundPtr0
+    lda #>FoM_1Bitmap0        ; load high byte of Frame0 address
+    sta backgroundPtr0+1
+
+    lda #<FoM_1Bitmap1        ; load low byte of Frame0 address
+    sta backgroundPtr1
+    lda #>FoM_1Bitmap1        ; load high byte of Frame0 address
+    sta backgroundPtr1+1
+
+    lda #<FoM_1Bitmap2        ; load low byte of Frame0 address
+    sta backgroundPtr2
+    lda #>FoM_1Bitmap2        ; load high byte of Frame0 address
+    sta backgroundPtr2+1
+
+    lda #<FoM_1Bitmap3        ; load low byte of Frame0 address
+    sta backgroundPtr3
+    lda #>FoM_1Bitmap3        ; load high byte of Frame0 address
+    sta backgroundPtr3+1
+
+    lda #<FoM_1Bitmap4        ; load low byte of Frame0 address
+    sta backgroundPtr4
+    lda #>FoM_1Bitmap4        ; load high byte of Frame0 address
+    sta backgroundPtr4+1
+
+    lda #<FoM_1Bitmap5        ; load low byte of Frame0 address
+    sta backgroundPtr5
+    lda #>FoM_1Bitmap5        ; load high byte of Frame0 address
+    sta backgroundPtr5+1
+
     jsr ScreenWraparound
 
     jmp EndScreenLogic
@@ -381,12 +411,7 @@ Screen76
     jmp EndScreenLogic
 
 Screen77
-    ;Title Screen
-    BANK_SWITCH 1,TitleScreenLogic
-
-DoneTitleScreenLogic
-
+    jsr UpdatePlayerPosition
+    jsr ScreenWraparound
+    
     jmp EndScreenLogic
-
-
-

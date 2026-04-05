@@ -293,11 +293,5 @@ ScreenDraw76
     jmp EndScreenDraw
 
 ScreenDraw77
-    BANK_SWITCH 1,TitleScreenDraw
-
-DoneTitleScreenDraw
-
+    jsr DrawBottom
     jmp EndScreenDraw
-
-
-

@@ -13,3 +13,6 @@ CONTROLLER_BUTTON   equ #%00010000
 
 ;SPRITE_HEIGHT equ #9 ; single size sprite
 SPRITE_HEIGHT equ #9*2 ; double size pixel
+
+TITLE_SCREEN equ #0
+GAMEPLAY_SCREEN equ #1

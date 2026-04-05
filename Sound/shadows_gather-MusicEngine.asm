@@ -24,7 +24,7 @@ musCtrlTable_Shadows_Gather
 
 ; ── MUSIC_INIT ─────────────────────────────────────────────────────────
 ; Call once at startup to begin playback from the beginning
-MUSIC_INIT_Shadows_Gather
+MUSIC_INIT_Shadows_Gather1
     lda #Shadows_Gather_TEMPO
     sta MUS_FRAME
     lda #0

@@ -7,20 +7,20 @@ DrawTopLeft subroutine
 
     ; even lines: draw the bitmap background
     sta WSYNC
-    lda PFBitmap0,Y
+    lda (backgroundPtr0),Y
     sta PF0
-    lda PFBitmap1,Y
+    lda (backgroundPtr1),Y
     sta PF1
-    lda PFBitmap2,Y
+    lda (backgroundPtr2),Y
     sta PF2
     nop
     nop
     nop
-    lda PFBitmap3,Y
+    lda (backgroundPtr3),Y
     sta PF0
-    lda PFBitmap4,Y
+    lda (backgroundPtr4),Y
     sta PF1
-    lda PFBitmap5,Y
+    lda (backgroundPtr5),Y
     sta PF2
 
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)
@@ -77,20 +77,20 @@ DrawTop subroutine
 
     ; even lines: draw the bitmap background
     sta WSYNC
-    lda PFBitmap0,Y
+    ;lda PFBitmap0,Y
     sta PF0
-    lda PFBitmap1,Y
+    ;lda PFBitmap1,Y
     sta PF1
-    lda PFBitmap2,Y
+    ;lda PFBitmap2,Y
     sta PF2
     nop
     nop
     nop
-    lda PFBitmap3,Y
+    ;lda PFBitmap3,Y
     sta PF0
-    lda PFBitmap4,Y
+    ;lda PFBitmap4,Y
     sta PF1
-    lda PFBitmap5,Y
+    ;lda PFBitmap5,Y
     sta PF2
 
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)

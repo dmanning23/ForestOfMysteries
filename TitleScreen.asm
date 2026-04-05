@@ -7,14 +7,12 @@ TitleScreenLogic subroutine
     sta COLUBK
 
     ;Set the foreground color to green
-    
+    lda #192
+    sta COLUPF
 
     ;Is music playing?
     lda MUS_PLAYING
     beq .startMusic
-
-    lda #$0B
-    sta COLUPF
 
     jsr MUSIC_UPDATE_Shadows_Gather
     jmp .doneMusic
@@ -22,21 +20,28 @@ TitleScreenLogic subroutine
 .startMusic
 
     jsr MUSIC_STOP_Shadows_Gather
-    jsr MUSIC_INIT_Shadows_Gather
+    jsr MUSIC_INIT_SHADOWS_GATHER
 
 .doneMusic
 
     ;Start the game if the button is down
-    bit INPT4
-    bmi .skipButton
+    ;bit INPT4
+    ;bmi .skipButton
 
+    ;TODO: reset the game
     ;change the current screen
-    lda #0
-    sta screenRow
-    sta screenCol
-    jsr MUSIC_STOP_Shadows_Gather
+   ; lda #0
+  ;  sta screenRow
+   ; sta screenCol
 
-.skipButton
+    ;stop the title screen music
+;    jsr MUSIC_STOP_Shadows_Gather
+
+    ;change to gameplay mode
+  ;  lda #1
+  ;  sta gameMode
+
+;.skipButton
 
     BANK_SWITCH 0,DoneTitleScreenLogic
 
@@ -85,5 +90,3 @@ TitleScreenDraw subroutine
     include "Assets/Graphics/FoM_TitleScreenData.asm"
     include "Sound/shadows_gather-music.asm"
     include "Sound/shadows_gather-MusicEngine.asm"
-
-

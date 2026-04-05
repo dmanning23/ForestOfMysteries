@@ -137,4 +137,4 @@ MUSIC_INIT_SHADOWS_GATHER:
     sta MUS_TEMPO
     lda #Shadows_Gather_NUM_PATS
     sta MUS_NUM_PATS
-    jmp MUSIC_INIT
+    jmp MUSIC_INIT_Shadows_Gather1

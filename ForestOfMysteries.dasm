@@ -96,10 +96,10 @@ Reset_0
     ; Startup code
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    jsr InitializeScreenInput
-    jsr InitializeInput
-    jsr CenterPlayerX
-    jsr CenterPlayerY
+ ;   jsr InitializeScreenInput
+  ;  jsr InitializeInput
+  ;  jsr CenterPlayerX
+  ;  jsr CenterPlayerY
 
     lda playerXPos
     sta playerPrevXPos
@@ -124,10 +124,14 @@ Reset_0
     sta SFX_LEFT_TIMER
     sta SFX_RIGHT_TIMER
 
-    ;start at the title screen
-    lda #7
+    ;initialize the screen engine
+    lda #0
     sta screenRow
     sta screenCol
+
+    ;start on the title screen
+    lda #0
+    sta gameMode
 
 NextFrame
 
@@ -149,38 +153,31 @@ NextFrame
     sta COLUBK
     sta COLUPF
 
-    ;reset the player velocity before checking input
-    lda #0
-    sta playerXVel
-    sta playerYVel
+    ;are we on the title screen?
+;    lda gameMode
+;    cmp #TITLE_SCREEN
+;    bne CheckGameplayScreenLogic
 
-    jsr UpdateInput
+    ;Title Screen
+    BANK_SWITCH 1,TitleScreenLogic
 
-    jsr CheckInput
+DoneTitleScreenLogic
+;    jmp DoneCheckingScreenLogic
 
-    jsr ScreenLogic
+;CheckGameplayScreenLogic
 
-    lda #<Frame0        ; load low byte of Frame0 address
-    sta spritePtr
-    lda #>Frame0        ; load high byte of Frame0 address
-    sta spritePtr+1
+;     cmp #GAMEPLAY_SCREEN
+;     bne CheckNextScreenLogicTODO
 
-    lda #<ColorFrame0        ; load low byte of Frame0 address
-    sta spriteColorPtr
-    lda #>ColorFrame0        ; load high byte of Frame0 address
-    sta spriteColorPtr+1
+;     ;Gameplay Screen
+;     BANK_SWITCH 2,GameplayScreenLogic
 
-    ;Set the x position of the player
-    lda playerXPos
-    ldx #0
-    jsr SetHorizPos
+;DoneGameplayScreenLogic
+;     jmp DoneCheckingScreenLogic
 
-    sta WSYNC	; sync w/ scanline
-    sta HMOVE	; apply fine offsets
+;CheckNextScreenLogicTODO
 
-    ;Load the player number into Y
-    lda #0
-    tay
+;DoneCheckingScreenLogic
 
     TIMER_WAIT
 
@@ -190,7 +187,31 @@ NextFrame
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    jsr PerformScreenDraw
+    ;are we on the title screen?
+;    lda gameMode
+;    cmp #TITLE_SCREEN
+;    bne CheckGameplayScreenDraw
+
+    ;Title Screen
+    BANK_SWITCH 1,TitleScreenDraw
+
+DoneTitleScreenDraw
+;    jmp DoneCheckingScreenDraw
+
+;CheckGameplayScreenDraw
+
+;    cmp #GAMEPLAY_SCREEN
+;    bne CheckNextScreenDrawTODO
+
+    ;Gameplay Screen
+;    BANK_SWITCH 2,GameplayScreenDraw
+
+;DoneGameplayScreenDraw
+;    jmp DoneCheckingScreenDraw
+
+;CheckNextScreenDrawTODO
+
+;DoneCheckingScreenDraw
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -216,21 +237,7 @@ OverScan
     ; total = 262 lines, go to next frame
     jmp NextFrame
 
-    include "ScreenEngine/ScreenEngine.dasm"
-    include "InputEngine.dasm"
-    include "DrawCharacter.dasm"
-    include "Assets/Graphics/player.dasm"
-    include "SetHorizPos.dasm"
-    include "ScreenEngine/ScreenLogicData.dasm"
-    include "CheckInput.dasm"
-    include "CharacterMovement.dasm"
-    include "UpdatePlayerPosition.dasm"
-    include "ScreenEngine/ScreenDrawEngine.dasm"
-    include "ScreenEngine/ScreenDrawData.dasm"
-    include "ScreenEngine/ScreenDrawSubroutines.dasm"
-    include "Assets/Graphics/helloworldData.asm"
-    include "Sound/MusicEngine.asm"
-
+    ;include "ScreenEngine/ScreenEngine.dasm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -280,7 +287,8 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
-
+   ; include "GameplayScreen.dasm"
+    
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; Bank 2 epilogue

@@ -29,6 +29,19 @@ controllerMask .byte
 spritePtr .word
 spriteColorPtr .word
 
+; pointer used to draw the background
+backgroundPtr0 .word
+backgroundPtr1 .word
+backgroundPtr2 .word
+backgroundPtr3 .word
+backgroundPtr4 .word
+backgroundPtr5 .word
+
+;variable used to tell which game mode it is
+;0: title screen
+;1: gameplay
+gameMode .byte
+
 temp byte
 
 MUS_FRAME .byte;    - frame countdown (1 byte)
