@@ -145,3 +145,17 @@ Whispering_Trees_arrangement:
     .word Whispering_Trees_Night_Air_v1_notes
     .word Whispering_Trees_Night_Air_v1_vols
     .byte Whispering_Trees_Night_Air_len
+
+; ── MUSIC_INIT_WHISPERING_TREES ──────────────────────────────────────────
+; Set song parameters and reset playback to the beginning.
+; Clobbers: A
+MUSIC_INIT_WHISPERING_TREES:
+    lda #<Whispering_Trees_arrangement
+    sta MUS_ARR_PTR
+    lda #>Whispering_Trees_arrangement
+    sta MUS_ARR_PTR+1
+    lda #Whispering_Trees_TEMPO
+    sta MUS_TEMPO
+    lda #Whispering_Trees_NUM_PATS
+    sta MUS_NUM_PATS
+    jmp MUSIC_INIT
