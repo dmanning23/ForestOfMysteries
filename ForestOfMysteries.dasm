@@ -96,20 +96,7 @@ Reset_0
     ; Startup code
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;   jsr InitializeScreenInput
-  ;  jsr InitializeInput
-  ;  jsr CenterPlayerX
-  ;  jsr CenterPlayerY
 
-    lda playerXPos
-    sta playerPrevXPos
-    lda playerYPos
-    sta playerPrevYPos
-
-    ;initialize the player velocity
-    lda #0
-    sta playerXVel
-    sta playerYVel
 
     lda #0
     sta MUS_FRAME
@@ -123,11 +110,6 @@ Reset_0
     sta SFX_RIGHT
     sta SFX_LEFT_TIMER
     sta SFX_RIGHT_TIMER
-
-    ;initialize the screen engine
-    lda #0
-    sta screenRow
-    sta screenCol
 
     ;start on the title screen
     lda #0
@@ -154,30 +136,31 @@ NextFrame
     sta COLUPF
 
     ;are we on the title screen?
-;    lda gameMode
-;    cmp #TITLE_SCREEN
-;    bne CheckGameplayScreenLogic
+    lda gameMode
+    cmp #TITLE_SCREEN
+    bne CheckGameplayScreenLogic
 
     ;Title Screen
     BANK_SWITCH 1,TitleScreenLogic
 
 DoneTitleScreenLogic
-;    jmp DoneCheckingScreenLogic
+    jmp DoneCheckingScreenLogic
 
-;CheckGameplayScreenLogic
+CheckGameplayScreenLogic
 
-;     cmp #GAMEPLAY_SCREEN
-;     bne CheckNextScreenLogicTODO
+    lda gameMode
+    cmp #GAMEPLAY_SCREEN
+    bne CheckNextScreenLogicTODO
 
-;     ;Gameplay Screen
-;     BANK_SWITCH 2,GameplayScreenLogic
+    ;Gameplay Screen
+    BANK_SWITCH 2,GameplayScreenLogic
 
-;DoneGameplayScreenLogic
-;     jmp DoneCheckingScreenLogic
+DoneGameplayScreenLogic
+    jmp DoneCheckingScreenLogic
 
-;CheckNextScreenLogicTODO
+CheckNextScreenLogicTODO
 
-;DoneCheckingScreenLogic
+DoneCheckingScreenLogic
 
     TIMER_WAIT
 
@@ -188,30 +171,31 @@ DoneTitleScreenLogic
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     ;are we on the title screen?
-;    lda gameMode
-;    cmp #TITLE_SCREEN
-;    bne CheckGameplayScreenDraw
+    lda gameMode
+    cmp #TITLE_SCREEN
+    bne CheckGameplayScreenDraw
 
     ;Title Screen
     BANK_SWITCH 1,TitleScreenDraw
 
 DoneTitleScreenDraw
-;    jmp DoneCheckingScreenDraw
+    jmp DoneCheckingScreenDraw
 
-;CheckGameplayScreenDraw
+CheckGameplayScreenDraw
 
-;    cmp #GAMEPLAY_SCREEN
-;    bne CheckNextScreenDrawTODO
+    lda gameMode
+    cmp #GAMEPLAY_SCREEN
+    bne CheckNextScreenDrawTODO
 
     ;Gameplay Screen
-;    BANK_SWITCH 2,GameplayScreenDraw
+    BANK_SWITCH 2,GameplayScreenDraw
 
-;DoneGameplayScreenDraw
-;    jmp DoneCheckingScreenDraw
+DoneGameplayScreenDraw
+    jmp DoneCheckingScreenDraw
 
-;CheckNextScreenDrawTODO
+CheckNextScreenDrawTODO
 
-;DoneCheckingScreenDraw
+DoneCheckingScreenDraw
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -236,8 +220,6 @@ OverScan
 
     ; total = 262 lines, go to next frame
     jmp NextFrame
-
-    ;include "ScreenEngine/ScreenEngine.dasm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -287,7 +269,7 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
-   ; include "GameplayScreen.dasm"
+    include "GameplayScreen.dasm"
     
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -403,6 +385,8 @@ Start
 BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
+
+    include "ResetGame.dasm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

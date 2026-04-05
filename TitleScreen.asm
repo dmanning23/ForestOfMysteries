@@ -25,23 +25,22 @@ TitleScreenLogic subroutine
 .doneMusic
 
     ;Start the game if the button is down
-    ;bit INPT4
-    ;bmi .skipButton
-
-    ;TODO: reset the game
-    ;change the current screen
-   ; lda #0
-  ;  sta screenRow
-   ; sta screenCol
+    bit INPT4
+    bmi .skipButton
 
     ;stop the title screen music
-;    jsr MUSIC_STOP_Shadows_Gather
+    jsr MUSIC_STOP_Shadows_Gather
 
     ;change to gameplay mode
-  ;  lda #1
-  ;  sta gameMode
+    lda #1
+    sta gameMode
 
-;.skipButton
+    ;TODO: reset the game
+    BANK_SWITCH 7,ResetGameplay
+
+.skipButton
+
+DoneResetGameplay
 
     BANK_SWITCH 0,DoneTitleScreenLogic
 

@@ -1,6 +1,8 @@
 ScreenDraw00 subroutine
-    lda #$40
+    lda #0
     sta COLUBK
+    lda #192
+    sta COLUPF
     jsr DrawTopLeft
 
     jmp EndScreenDraw

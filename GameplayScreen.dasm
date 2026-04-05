@@ -57,6 +57,7 @@ GameplayScreenDraw subroutine
     include "ScreenEngine/ScreenDrawData.dasm"
     include "ScreenEngine/ScreenDrawEngine.dasm"
     include "ScreenEngine/ScreenDrawSubroutines.dasm"
+    include "ScreenEngine/ScreenEngine.dasm"
     include "ScreenEngine/ScreenLogicData.dasm"
     include "ScreenEngine/ScreenLogicEngine.dasm"
     include "Assets/Graphics/Backgrounds/FoM_1Data.asm"

@@ -7,20 +7,20 @@ DrawTopLeft subroutine
 
     ; even lines: draw the bitmap background
     sta WSYNC
-    lda (backgroundPtr0),Y
+    lda FoM_1Bitmap0,Y
     sta PF0
-    lda (backgroundPtr1),Y
+    lda FoM_1Bitmap1,Y
     sta PF1
-    lda (backgroundPtr2),Y
+    lda FoM_1Bitmap2,Y
     sta PF2
     nop
     nop
     nop
-    lda (backgroundPtr3),Y
+    lda FoM_1Bitmap3,Y
     sta PF0
-    lda (backgroundPtr4),Y
+    lda FoM_1Bitmap4,Y
     sta PF1
-    lda (backgroundPtr5),Y
+    lda FoM_1Bitmap5,Y
     sta PF2
 
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)
