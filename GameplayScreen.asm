@@ -7,10 +7,15 @@ GameplayScreenLogic subroutine
     sta playerXVel
     sta playerYVel
 
+    tay
     jsr UpdateInput
 
+    lda #0
+    tay
     jsr CheckInput
 
+    lda #0
+    tay
     jsr PerformScreenLogic
 
     lda #<Frame0        ; load low byte of Frame0 address
@@ -61,4 +66,3 @@ GameplayScreenDraw subroutine
     include "ScreenEngine/ScreenLogicData.asm"
     include "ScreenEngine/ScreenLogicEngine.asm"
     include "Assets/Graphics/Backgrounds/FoM_1Data.asm"
-    

@@ -1,5 +1,5 @@
 Screen00
-    ;jsr UpdatePlayerPosition
+    jsr UpdatePlayerPosition
 
     ;TODO: check for left wall
     ;TODO: check for ceiling
@@ -34,7 +34,7 @@ Screen00
     lda #>FoM_1Bitmap5        ; load high byte of Frame0 address
     sta backgroundPtr5+1
 
-    ;jsr ScreenWraparound
+    jsr ScreenWraparound
 
     jmp EndScreenLogic
 

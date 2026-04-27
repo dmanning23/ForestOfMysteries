@@ -35,7 +35,7 @@ TitleScreenLogic subroutine
     lda #1
     sta gameMode
 
-    ;TODO: reset the game
+    ;Reset the game
     BANK_SWITCH 7,ResetGameplay
 
 .skipButton
