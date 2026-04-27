@@ -47,19 +47,18 @@ GameplayScreenDraw subroutine
 
 
 
-    include "InputEngine.dasm"
-    include "DrawCharacter.dasm"
+    include "InputEngine.asm"
+    include "DrawCharacter.asm"
     include "Assets/Graphics/player.dasm"
-    include "SetHorizPos.dasm"
-    include "CheckInput.dasm"
-    include "CharacterMovement.dasm"
-    include "UpdatePlayerPosition.dasm"
-    include "ScreenEngine/ScreenDrawData.dasm"
-    include "ScreenEngine/ScreenDrawEngine.dasm"
-    include "ScreenEngine/ScreenDrawSubroutines.dasm"
-    include "ScreenEngine/ScreenEngine.dasm"
-    include "ScreenEngine/ScreenLogicData.dasm"
-    include "ScreenEngine/ScreenLogicEngine.dasm"
+    include "SetHorizPos.asm"
+    include "CheckInput.asm"
+    include "CharacterMovement.asm"
+    include "UpdatePlayerPosition.asm"
+    include "ScreenEngine/ScreenDrawData.asm"
+    include "ScreenEngine/ScreenDrawEngine.asm"
+    include "ScreenEngine/ScreenDrawSubroutines.asm"
+    include "ScreenEngine/ScreenEngine.asm"
+    include "ScreenEngine/ScreenLogicData.asm"
+    include "ScreenEngine/ScreenLogicEngine.asm"
     include "Assets/Graphics/Backgrounds/FoM_1Data.asm"
-
-
+    

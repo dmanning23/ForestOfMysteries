@@ -21,13 +21,15 @@ ResetGameplay subroutine
     sta p2Input
 
     ;jsr CenterPlayerX
-    lda #SCREEN_RIGHT_EDGE
-    lsr ;divide by 2
+    ;lda #SCREEN_RIGHT_EDGE
+    ;lsr ;divide by 2
+    lda #32
     sta playerXPos,y ;center horizontally
 
     ;jsr CenterPlayerY
-    lda #SCREEN_TOP_EDGE
-    lsr ;divide by 2
+    ;lda #SCREEN_TOP_EDGE
+    ;lsr ;divide by 2
+    lda #32
     sta playerYPos,y ;center vertically
 
     lda playerXPos

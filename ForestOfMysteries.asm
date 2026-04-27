@@ -10,7 +10,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    include "Constants.dasm"
+    include "Constants.asm"
 
 
 
@@ -23,7 +23,7 @@
     seg.u Variables
     org $80
 
-    include "Variables.dasm"
+    include "Variables.asm"
 
 
 
@@ -269,7 +269,7 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
-    include "GameplayScreen.dasm"
+    include "GameplayScreen.asm"
     
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -386,7 +386,7 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
-    include "ResetGame.dasm"
+    include "ResetGame.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

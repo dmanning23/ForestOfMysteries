@@ -24,7 +24,7 @@ UpdateCharacterX subroutine
     clc ; Clear carry before addition
     lda playerXPos,y
     adc playerXVel,y ; Add signed velocity (works for both positive and negative)
-    sta playerXPos,y
+    sta playerXPos,y ;TODO: player pos not working?
 
     rts
 
@@ -39,7 +39,7 @@ UpdateCharacterY subroutine
     clc
     lda playerYPos,y
     adc playerYVel,y
-    sta playerYPos,y
+    sta playerYPos,y;TODO: player pos not working?
 
     rts
 
@@ -53,7 +53,7 @@ SetPlayerPosLeftEdge
     lda #SCREEN_LEFT_EDGE+1
     ;clc
     ;adc #1
-    sta playerXPos,y
+    ;sta playerXPos,y;TODO: player pos not working?
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -66,7 +66,7 @@ SetPlayerPosRightEdge
     lda #SCREEN_RIGHT_EDGE-1
     ;sec
     ;sbc #1
-    sta playerXPos,y
+    ;sta playerXPos,y;TODO: player pos not working?
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -79,7 +79,7 @@ SetPlayerPosCeiling
     lda #SCREEN_TOP_EDGE-1
     ;sec
     ;sbc #1
-    sta playerYPos,y
+    ;sta playerYPos,y;TODO: player pos not working?
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -92,7 +92,7 @@ SetPlayerPosFloor
     lda #SCREEN_BOTTOM_EDGE+1
     ;clc
     ;adc #1
-    sta playerYPos,y
+    ;sta playerYPos,y;TODO: player pos not working?
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -104,7 +104,7 @@ SetPlayerPosFloor
 CenterPlayerX
     lda #SCREEN_RIGHT_EDGE
     lsr ;divide by 2
-    sta playerXPos,y ;center horizontally
+    ;sta playerXPos,y ;center horizontally ;TODO: player pos not working?
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -116,5 +116,5 @@ CenterPlayerX
 CenterPlayerY
     lda #SCREEN_TOP_EDGE
     lsr ;divide by 2
-    sta playerYPos,y ;center vertically
+    ;sta playerYPos,y ;center vertically;TODO: player pos not working?
     rts
