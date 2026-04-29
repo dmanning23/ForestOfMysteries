@@ -20,8 +20,6 @@ PerformScreenDraw subroutine
 
     sta WSYNC ;add a line here
     jmp (TempWord)
-EndScreenDraw
-    rts
 
 ; Jump tables (64 entries)
 ScreenDrawJumpTableLo

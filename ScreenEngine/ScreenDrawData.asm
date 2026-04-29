@@ -3,10 +3,9 @@ ScreenDraw00 subroutine
     sta COLUBK
     lda #192
     sta COLUPF
-    jsr DrawTopLeft
 
-    jmp EndScreenDraw
-    
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw01
 
     lda #0
@@ -15,285 +14,284 @@ ScreenDraw01
     sta COLUPF
     jsr DrawTop
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw02
     lda #$44
     sta COLUBK
     jsr DrawTop
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw03
     lda #$46
     sta COLUBK
     jsr DrawTop
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw04
     lda #$48
     sta COLUBK
     jsr DrawTop
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw05
     lda #$4A
     sta COLUBK
     jsr DrawTop
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw06
     lda #$4C
     sta COLUBK
     jsr DrawTop
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw07
     lda #$4F
     sta COLUBK
     jsr DrawTopRight
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw10
     lda #$B0
     sta COLUBK
     jsr DrawMiddleLeft
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw11
     lda #$B2
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw12
     lda #$B4
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw13
     lda #$B6
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw14
     lda #$B8
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw15
     lda #$BA
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw16
     lda #$BC
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw17
     lda #$BF
     sta COLUBK
     jsr DrawMiddleRight
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw20
     lda #$80
     sta COLUBK
     jsr DrawMiddleLeft
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw21
     lda #$82
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw22
     lda #$84
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw23
     lda #$86
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw24
     lda #$88
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw25
     lda #$8A
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw26
     lda #$8C
     sta COLUBK
     jsr DrawMiddle
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw27
     lda #$8F
     sta COLUBK
     jsr DrawMiddleRight
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw30
     lda #$60
     sta COLUBK
     jsr DrawBottomLeft
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw31
     lda #$62
     sta COLUBK
     jsr DrawBottom
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw32
     lda #$64
     sta COLUBK
     jsr DrawBottom
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw33
     lda #$66
     sta COLUBK
     jsr DrawBottom
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw34
     lda #$68
     sta COLUBK
     jsr DrawBottom
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw35
     lda #$6A
     sta COLUBK
     jsr DrawBottom
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw36
     lda #$6C
     sta COLUBK
     jsr DrawBottom
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw37
     lda #$6F
     sta COLUBK
     jsr DrawBottom
 
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 
 
 
 ScreenDraw40 subroutine
-    jsr DrawTopLeft
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
     
 ScreenDraw41
     jsr DrawTop
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw42
     jsr DrawTop
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw43
     jsr DrawTop
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw44
     jsr DrawTop
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw45
     jsr DrawTop
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw46
     jsr DrawTop
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw47
     jsr DrawTopRight
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw50
     jsr DrawMiddleLeft
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw51
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw52
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw53
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw54
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw55
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw56
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw57
     jsr DrawMiddleRight
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw60
     jsr DrawMiddleLeft
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw61
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw62
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw63
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw64
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw65
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw66
     jsr DrawMiddle
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw67
     jsr DrawMiddleRight
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw70
     jsr DrawBottomLeft
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw71
     jsr DrawBottom
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw72
     jsr DrawBottom
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw73
     jsr DrawBottom
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw74
     jsr DrawBottom
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw75
     jsr DrawBottom
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 ScreenDraw76
     jsr DrawBottom
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw
 
 ScreenDraw77
     jsr DrawBottom
-    jmp EndScreenDraw
+    ;jmp EndScreenDraw

@@ -188,7 +188,7 @@ CheckGameplayScreenDraw
     bne CheckNextScreenDrawTODO
 
     ;Gameplay Screen
-    BANK_SWITCH 2,GameplayScreenDraw
+    BANK_SWITCH 2,PerformScreenDraw
 
 DoneGameplayScreenDraw
     jmp DoneCheckingScreenDraw
@@ -258,7 +258,7 @@ BankSwitch
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; BANK 2
+;;; BANK 2 Gameplay Screen Logic
 
     org  $3000
     rorg $F000
@@ -270,7 +270,7 @@ BankSwitch
 ;----End of bank-identical code----
 
     include "GameplayScreen.asm"
-    
+
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; Bank 2 epilogue
@@ -283,7 +283,7 @@ BankSwitch
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; BANK 3
+;;; BANK 3 Gameplay Screen Drawing
 
     org  $4000
     rorg $F000
@@ -293,6 +293,8 @@ Start
 BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
+
+    include "ScreenEngine/ScreenDrawSubroutines123.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -36,25 +36,15 @@ GameplayScreenLogic subroutine
     sta WSYNC	; sync w/ scanline
     sta HMOVE	; apply fine offsets
 
-    ;Load the player number into Y
-    lda #0
-    tay
-
     BANK_SWITCH 0,DoneGameplayScreenLogic
-
-
 
 GameplayScreenDraw subroutine
 
-    jsr PerformScreenDraw
-
-    BANK_SWITCH 0,DoneGameplayScreenDraw
-
-
+    ;should never get here
+    ;jmp PerformScreenDraw
 
     include "InputEngine.asm"
     include "DrawCharacter.asm"
-    include "Assets/Graphics/player.dasm"
     include "SetHorizPos.asm"
     include "CheckInput.asm"
     include "CharacterMovement.asm"
@@ -62,7 +52,7 @@ GameplayScreenDraw subroutine
     include "ScreenEngine/ScreenDrawData.asm"
     include "ScreenEngine/ScreenDrawEngine.asm"
     include "ScreenEngine/ScreenDrawSubroutines.asm"
+
     include "ScreenEngine/ScreenEngine.asm"
     include "ScreenEngine/ScreenLogicData.asm"
     include "ScreenEngine/ScreenLogicEngine.asm"
-    include "Assets/Graphics/Backgrounds/FoM_1Data.asm"
