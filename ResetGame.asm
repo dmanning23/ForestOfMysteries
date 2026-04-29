@@ -1,5 +1,4 @@
 
-
 ResetGameplay subroutine
     ;change the current screen
     lda #0
@@ -66,4 +65,4 @@ ResetGameplay subroutine
     sta backgroundPtr5+1
     sta temp
 
-    BANK_SWITCH 1,DoneResetGameplay
+    rts

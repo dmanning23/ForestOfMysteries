@@ -36,7 +36,7 @@ TitleScreenLogic subroutine
     sta gameMode
 
     ;Reset the game
-    BANK_SWITCH 7,ResetGameplay
+    jsr ResetGameplay
 
 .skipButton
 
@@ -89,3 +89,4 @@ TitleScreenDraw subroutine
     include "Assets/Graphics/FoM_TitleScreenData.asm"
     include "Sound/shadows_gather-music.asm"
     include "Sound/shadows_gather-MusicEngine.asm"
+    include "ResetGame.asm"
