@@ -319,6 +319,8 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
+    include "ScreenEngine/ScreenDrawSubroutines456.asm"
+
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; Bank 4 epilogue
@@ -342,6 +344,8 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
+    include "ScreenEngine/ScreenDrawSubroutines789.asm"
+
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ; Bank 5 epilogue
@@ -364,6 +368,8 @@ Start
 BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
+
+    include "ScreenEngine/ScreenDrawSubroutines101112.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

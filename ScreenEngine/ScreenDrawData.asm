@@ -12,286 +12,316 @@ ScreenDraw01
     sta COLUBK
     lda #$42
     sta COLUPF
-    jsr DrawTop
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen2
+
 ScreenDraw02
     lda #$44
     sta COLUBK
-    jsr DrawTop
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 4,DrawScreen5
+
 ScreenDraw03
     lda #$46
     sta COLUBK
-    jsr DrawTop
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 4,DrawScreen5
+
 ScreenDraw04
     lda #$48
     sta COLUBK
-    jsr DrawTop
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 4,DrawScreen5
+
 ScreenDraw05
     lda #$4A
     sta COLUBK
-    jsr DrawTop
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 4,DrawScreen5
+
 ScreenDraw06
     lda #$4C
     sta COLUBK
-    jsr DrawTop
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen2
+
 ScreenDraw07
     lda #$4F
     sta COLUBK
-    jsr DrawTopRight
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 4,DrawScreen6
+
 ScreenDraw10
     lda #$B0
     sta COLUBK
-    jsr DrawMiddleLeft
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen3
+
 ScreenDraw11
     lda #$B2
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw12
     lda #$B4
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw13
     lda #$B6
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw14
     lda #$B8
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw15
     lda #$BA
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw16
     lda #$BC
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw17
     lda #$BF
     sta COLUBK
-    jsr DrawMiddleRight
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw20
     lda #$80
     sta COLUBK
-    jsr DrawMiddleLeft
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw21
     lda #$82
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw22
     lda #$84
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw23
     lda #$86
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw24
     lda #$88
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw25
     lda #$8A
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw26
     lda #$8C
     sta COLUBK
-    jsr DrawMiddle
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw27
     lda #$8F
     sta COLUBK
-    jsr DrawMiddleRight
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw30
     lda #$60
     sta COLUBK
-    jsr DrawBottomLeft
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw31
     lda #$62
     sta COLUBK
-    jsr DrawBottom
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw32
     lda #$64
     sta COLUBK
-    jsr DrawBottom
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw33
     lda #$66
     sta COLUBK
-    jsr DrawBottom
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw34
     lda #$68
     sta COLUBK
-    jsr DrawBottom
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw35
     lda #$6A
     sta COLUBK
-    jsr DrawBottom
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw36
     lda #$6C
     sta COLUBK
-    jsr DrawBottom
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw37
     lda #$6F
     sta COLUBK
-    jsr DrawBottom
 
-    ;jmp EndScreenDraw
+    BANK_SWITCH 3,DrawScreen1
+
 
 
 
 ScreenDraw40 subroutine
-    ;jmp EndScreenDraw
-    
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw41
-    jsr DrawTop
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw42
-    jsr DrawTop
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw43
-    jsr DrawTop
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw44
-    jsr DrawTop
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw45
-    jsr DrawTop
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw46
-    jsr DrawTop
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw47
-    jsr DrawTopRight
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw50
-    jsr DrawMiddleLeft
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw51
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw52
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw53
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw54
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw55
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw56
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw57
-    jsr DrawMiddleRight
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw60
-    jsr DrawMiddleLeft
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw61
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw62
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw63
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw64
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw65
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw66
-    jsr DrawMiddle
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw67
-    jsr DrawMiddleRight
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw70
-    jsr DrawBottomLeft
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw71
-    jsr DrawBottom
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw72
-    jsr DrawBottom
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw73
-    jsr DrawBottom
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw74
-    jsr DrawBottom
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw75
-    jsr DrawBottom
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
+
 ScreenDraw76
-    jsr DrawBottom
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1
 
 ScreenDraw77
-    jsr DrawBottom
-    ;jmp EndScreenDraw
+
+    BANK_SWITCH 3,DrawScreen1

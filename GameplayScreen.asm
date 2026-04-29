@@ -51,7 +51,6 @@ GameplayScreenDraw subroutine
     include "UpdatePlayerPosition.asm"
     include "ScreenEngine/ScreenDrawData.asm"
     include "ScreenEngine/ScreenDrawEngine.asm"
-    include "ScreenEngine/ScreenDrawSubroutines.asm"
 
     include "ScreenEngine/ScreenEngine.asm"
     include "ScreenEngine/ScreenLogicData.asm"

@@ -1,4 +1,4 @@
-DrawScreen1 subroutine
+DrawScreen7 subroutine
 
     ldy #192
     ldx #192
@@ -69,7 +69,7 @@ DrawScreen1 subroutine
 
     BANK_SWITCH 0,DoneGameplayScreenDraw
 
-DrawScreen2 subroutine
+DrawScreen8 subroutine
 
     ldy #192
     ldx #192
@@ -140,7 +140,7 @@ DrawScreen2 subroutine
 
     BANK_SWITCH 0,DoneGameplayScreenDraw
 
-DrawScreen3 subroutine
+DrawScreen9 subroutine
     ldy #192
     ldx #192
 
@@ -210,7 +210,7 @@ DrawScreen3 subroutine
 
     BANK_SWITCH 0,DoneGameplayScreenDraw
 
-    include "Assets/Graphics/Backgrounds/FoM_1Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_2Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_3Data.asm"
+    include "Assets/Graphics/Backgrounds/FoM_7Data.asm"
+    include "Assets/Graphics/Backgrounds/FoM_8Data.asm"
+    include "Assets/Graphics/Backgrounds/FoM_9Data.asm"
     include "Assets/Graphics/player.dasm"
