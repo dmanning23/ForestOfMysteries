@@ -7,20 +7,20 @@ DrawScreen10 subroutine
 
     ; even lines: draw the bitmap background
     sta WSYNC
-    lda FoM_1Bitmap0,Y
+    lda FoM_10Bitmap0,Y
     sta PF0
-    lda FoM_1Bitmap1,Y
+    lda FoM_10Bitmap1,Y
     sta PF1
-    lda FoM_1Bitmap2,Y
+    lda FoM_10Bitmap2,Y
     sta PF2
     nop
     nop
     nop
-    lda FoM_1Bitmap3,Y
+    lda FoM_10Bitmap3,Y
     sta PF0
-    lda FoM_1Bitmap4,Y
+    lda FoM_10Bitmap4,Y
     sta PF1
-    lda FoM_1Bitmap5,Y
+    lda FoM_10Bitmap5,Y
     sta PF2
 
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)
@@ -78,11 +78,11 @@ DrawScreen11 subroutine
 
     ; even lines: draw the bitmap background
     sta WSYNC
-    lda FoM_2Bitmap0,Y
+    lda FoM_11Bitmap0,Y
     sta PF0
-    lda FoM_2Bitmap1,Y
+    lda FoM_11Bitmap1,Y
     sta PF1
-    lda FoM_2Bitmap2,Y
+    lda FoM_11Bitmap2,Y
     sta PF2
     nop
     nop
@@ -148,20 +148,20 @@ DrawScreen12 subroutine
 
     ; even lines: draw the bitmap background
     sta WSYNC
-    lda FoM_3Bitmap0,Y
+    lda FoM_12Bitmap0,Y
     sta PF0
-    lda FoM_3Bitmap1,Y
+    lda FoM_12Bitmap1,Y
     sta PF1
-    lda FoM_3Bitmap2,Y
+    lda FoM_12Bitmap2,Y
     sta PF2
     nop
     nop
     nop
-    lda FoM_3Bitmap3,Y
+    lda FoM_12Bitmap3,Y
     sta PF0
-    lda FoM_3Bitmap4,Y
+    lda FoM_12Bitmap4,Y
     sta PF1
-    lda FoM_3Bitmap5,Y
+    lda FoM_12Bitmap5,Y
     sta PF2
 
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)

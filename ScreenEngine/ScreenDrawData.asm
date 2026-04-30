@@ -1,7 +1,7 @@
 ScreenDraw00 subroutine
     lda #0
     sta COLUBK
-    lda #192
+    lda #$C8
     sta COLUPF
 
     BANK_SWITCH 3,DrawScreen1
@@ -10,190 +10,250 @@ ScreenDraw01
 
     lda #0
     sta COLUBK
-    lda #$42
+    lda #$C6
     sta COLUPF
 
     BANK_SWITCH 3,DrawScreen2
 
 ScreenDraw02
-    lda #$44
+    lda #0
     sta COLUBK
+    lda #$C4
+    sta COLUPF
 
     BANK_SWITCH 4,DrawScreen5
 
 ScreenDraw03
-    lda #$46
+    lda #0
     sta COLUBK
+    lda #$C2
+    sta COLUPF
 
     BANK_SWITCH 4,DrawScreen5
 
 ScreenDraw04
-    lda #$48
+    lda #0
     sta COLUBK
+    lda #$D2
+    sta COLUPF
 
     BANK_SWITCH 4,DrawScreen5
 
 ScreenDraw05
-    lda #$4A
+    lda #0
     sta COLUBK
+    lda #$D4
+    sta COLUPF
 
     BANK_SWITCH 4,DrawScreen5
 
 ScreenDraw06
-    lda #$4C
+    lda #0
     sta COLUBK
+    lda #$D6
+    sta COLUPF
 
     BANK_SWITCH 3,DrawScreen2
 
 ScreenDraw07
-    lda #$4F
+    lda #0
     sta COLUBK
+    lda #$D8
+    sta COLUPF
 
     BANK_SWITCH 4,DrawScreen6
 
 ScreenDraw10
-    lda #$B0
+    lda #0
     sta COLUBK
+    lda #$C6
+    sta COLUPF
 
     BANK_SWITCH 3,DrawScreen3
 
 ScreenDraw11
-    lda #$B2
+    lda #0
     sta COLUBK
+    lda #$C4
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 4,DrawScreen4
 
 ScreenDraw12
-    lda #$B4
+    lda #0
     sta COLUBK
+    lda #$C2
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen8
 
 ScreenDraw13
-    lda #$B6
+    lda #0
     sta COLUBK
+    lda #$C0
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen8
 
 ScreenDraw14
-    lda #$B8
+    lda #0
     sta COLUBK
+    lda #$D0
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen8
 
 ScreenDraw15
-    lda #$BA
+    lda #0
     sta COLUBK
+    lda #$D2
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen8
 
 ScreenDraw16
-    lda #$BC
+    lda #0
     sta COLUBK
+    lda #$D4
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 4,DrawScreen4
 
 ScreenDraw17
-    lda #$BF
+    lda #0
     sta COLUBK
+    lda #$D6
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen7
 
 ScreenDraw20
-    lda #$80
+    lda #0
     sta COLUBK
+    lda #$C6
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 3,DrawScreen3
 
 ScreenDraw21
-    lda #$82
+    lda #0
     sta COLUBK
+    lda #$C4
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 4,DrawScreen4
 
 ScreenDraw22
-    lda #$84
+    lda #0
     sta COLUBK
+    lda #$C2
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen8
 
 ScreenDraw23
-    lda #$86
+    lda #0
     sta COLUBK
+    lda #$C0
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen8
 
 ScreenDraw24
-    lda #$88
+    lda #0
     sta COLUBK
+    lda #$D0
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen8
 
 ScreenDraw25
-    lda #$8A
+    lda #0
     sta COLUBK
+    lda #$D2
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen8
 
 ScreenDraw26
-    lda #$8C
+    lda #0
     sta COLUBK
+    lda #$D4
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 4,DrawScreen4
 
 ScreenDraw27
-    lda #$8F
+    lda #0
     sta COLUBK
+    lda #$D6
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen7
 
 ScreenDraw30
-    lda #$60
+    lda #0
     sta COLUBK
+    lda #$C8
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 5,DrawScreen9
 
 ScreenDraw31
-    lda #$62
+    lda #0
     sta COLUBK
+    lda #$C6
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 6,DrawScreen10
 
 ScreenDraw32
-    lda #$64
+    lda #0
     sta COLUBK
+    lda #$C4
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 6,DrawScreen12
 
 ScreenDraw33
-    lda #$66
+    lda #0
     sta COLUBK
+    lda #$C2
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 6,DrawScreen12
 
 ScreenDraw34
-    lda #$68
+    lda #0
     sta COLUBK
+    lda #$D2
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 6,DrawScreen12
 
 ScreenDraw35
-    lda #$6A
+    lda #0
     sta COLUBK
+    lda #$D4
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 6,DrawScreen12
 
 ScreenDraw36
-    lda #$6C
+    lda #0
     sta COLUBK
+    lda #$D6
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 6,DrawScreen10
 
 ScreenDraw37
-    lda #$6F
+    lda #0
     sta COLUBK
+    lda #$D8
+    sta COLUPF
 
-    BANK_SWITCH 3,DrawScreen1
+    BANK_SWITCH 6,DrawScreen11
 
 
 
