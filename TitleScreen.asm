@@ -50,7 +50,7 @@ TitleScreenDraw subroutine
 
 .linesOfFrame
 
-    ldy #192
+    ldy #48
     ldx #192
 
 .lVScan

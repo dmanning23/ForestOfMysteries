@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dasm:*)"
+      "Bash(dasm:*)",
+      "Bash(awk '{gsub\\(/hex /, \"\"\\); gsub\\(/\\\\t/, \"\"\\); total += length\\($0\\)/2} END {print \"approx bytes:\", total}')",
+      "Bash(awk '{s=$0; sub\\(/.*hex /, \"\", s\\); gsub\\(/[^0-9a-fA-F]/, \"\", s\\); total += length\\(s\\)/2} END {print \"approx bytes:\", total}')",
+      "Bash(awk '{s=$0; sub\\(/.*hex /, \"\", s\\); gsub\\(/[^0-9a-fA-F]/, \"\", s\\); total += length\\(s\\)/2} END {print \"FoM_2Data bytes:\", total}')",
+      "Bash(awk '{s=$0; sub\\(/.*hex /, \"\", s\\); gsub\\(/[^0-9a-fA-F]/, \"\", s\\); total += length\\(s\\)/2} END {print \"FoM_3Data bytes:\", total}')",
+      "Bash(git -C /Users/danmanning/Documents/Source/ForestOfMysteries diff ScreenEngine/ScreenDrawSubroutines123.asm)",
+      "Bash(git -C /Users/danmanning/Documents/Source/ForestOfMysteries show HEAD:ScreenEngine/ScreenDrawSubroutines123.asm)",
+      "Bash(git stash *)",
+      "Bash(cp /tmp/sub123_head.asm /Users/danmanning/Documents/Source/ForestOfMysteries/ScreenEngine/ScreenDrawSubroutines123.asm)"
+    ],
+    "additionalDirectories": [
+      "/private/tmp"
     ]
   }
 }

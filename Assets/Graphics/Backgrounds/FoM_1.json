@@ -2,6 +2,7 @@
   "name": "FoM_1",
   "cols": 40,
   "rows": 48,
+  "kernelLines": 4,
   "cells": [
     [
       true,
