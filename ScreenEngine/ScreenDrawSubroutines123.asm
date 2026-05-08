@@ -13,9 +13,9 @@ DrawScreen1 subroutine
     sta PF1
     lda (backgroundPtr2),Y
     sta PF2
-    ;nop
-    ;nop
     nop
+    ;nop
+    ;nop
     lda (backgroundPtr3),Y
     sta PF0
     lda (backgroundPtr4),Y
@@ -39,8 +39,9 @@ DrawScreen1 subroutine
 
     sta WSYNC
 
+    nop
+
     lda (spritePtr),y       ; lookup sprite pattern
-    
     sta GRP0                ; write sprite bitmap
     lda (spriteColorPtr),y  ; lookup sprite color
     sta COLUP0              ; write color
