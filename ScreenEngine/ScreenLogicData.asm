@@ -1,12 +1,8 @@
 Screen00
     jsr UpdatePlayerPosition
-
-    ;TODO: check for left wall
-    ;TODO: check for ceiling
+    jsr ScreenWraparoundRightBottom
     
     jsr SetupScreen1
-
-    jsr ScreenWraparoundRightBottom
 
     jmp EndScreenLogic
 

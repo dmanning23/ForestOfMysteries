@@ -1,6 +1,6 @@
 ;Screen edges, adjust to match your game
-SCREEN_LEFT_EDGE equ #1
-SCREEN_TOP_EDGE equ #185 ;#$B9
+SCREEN_LEFT_EDGE equ #3
+SCREEN_TOP_EDGE equ #180 ;#$B9
 SCREEN_RIGHT_EDGE equ #159 ;#$9F
 SCREEN_BOTTOM_EDGE equ #2
 
