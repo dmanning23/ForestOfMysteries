@@ -9,7 +9,7 @@ UpdatePlayerPosition subroutine
     
     rts
 
-ScreenWraparound subroutine
+ScreenWraparoundAll subroutine
 
     ;check if the player is behind the right wall
     lda playerXPos,y

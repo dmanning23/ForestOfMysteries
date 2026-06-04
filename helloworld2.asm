@@ -131,7 +131,7 @@ InSprite
     cpx #0 ;sets the Z flag based on X
     bne .lvscan
 
-    ldy #0  ; restore Y so ScreenWraparound/CheckInput index player 0 correctly
+    ldy #0  ; restore Y so ScreenWraparoundAll/CheckInput index player 0 correctly
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

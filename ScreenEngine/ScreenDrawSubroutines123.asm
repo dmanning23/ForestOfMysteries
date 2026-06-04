@@ -39,8 +39,6 @@ DrawScreen1 subroutine
 
     sta WSYNC
 
-    nop
-
     lda (spritePtr),y       ; lookup sprite pattern
     sta GRP0                ; write sprite bitmap
     lda (spriteColorPtr),y  ; lookup sprite color
@@ -66,7 +64,7 @@ DrawScreen1 subroutine
     cpx #0 ;sets the Z flag based on X
     bne .lvscan
 
-    ldy #0  ; restore Y so ScreenWraparound/CheckInput index player 0 correctly
+    ldy #0  ; restore Y so ScreenWraparoundAll/CheckInput index player 0 correctly
 
     BANK_SWITCH 0,DoneGameplayScreenDraw
 

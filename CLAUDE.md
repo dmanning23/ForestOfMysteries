@@ -36,7 +36,7 @@ Standard Atari 2600 frame structure in `ForestOfMysteries.dasm`:
 `ScreenEngine/ScreenEngine.dasm` — 8×8 grid of 64 screens.
 Current position: `screenRow` (0–7), `screenCol` (0–7).
 Each screen dispatches to its own subroutine in `ScreenLogicData.dasm` via a jump table.
-Screen transitions happen in `ScreenWraparound` when the player walks off an edge.
+Screen transitions happen in `ScreenWraparoundAll` when the player walks off an edge.
 
 Title screen is at row=7, col=7 (set at startup).
 
