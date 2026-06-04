@@ -6,13 +6,13 @@ Screen00
     
     jsr SetupScreen1
 
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundRightBottom
 
     jmp EndScreenLogic
 
 Screen01
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightBottom
     
     jsr SetupScreen2
 
@@ -20,7 +20,7 @@ Screen01
 
 Screen02
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightBottom
     
     jsr SetupScreen5
 
@@ -28,7 +28,7 @@ Screen02
 
 Screen03
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightBottom
     
     jsr SetupScreen5
 
@@ -36,7 +36,7 @@ Screen03
 
 Screen04
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightBottom
     
     jsr SetupScreen5
 
@@ -44,7 +44,7 @@ Screen04
 
 Screen05
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightBottom
     
     jsr SetupScreen5
 
@@ -52,7 +52,7 @@ Screen05
 
 Screen06
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightBottom
     
     jsr SetupScreen2
 
@@ -60,7 +60,7 @@ Screen06
 
 Screen07
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftBottom
     
     jsr SetupScreen6
 
@@ -68,7 +68,7 @@ Screen07
 
 Screen10
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundRightTopBottom
     
     jsr SetupScreen3
 
@@ -124,7 +124,7 @@ Screen16
 
 Screen17
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftTopBottom
     
     jsr SetupScreen7
 
@@ -132,7 +132,7 @@ Screen17
 
 Screen20
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundRightTopBottom
     
     jsr SetupScreen3
 
@@ -188,7 +188,7 @@ Screen26
 
 Screen27
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftTopBottom
     
     jsr SetupScreen7
 
@@ -196,7 +196,7 @@ Screen27
 
 Screen30
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundRightTop
     
     jsr SetupScreen9
 
@@ -204,7 +204,7 @@ Screen30
 
 Screen31
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightTop
     
     jsr SetupScreen10
 
@@ -212,7 +212,7 @@ Screen31
 
 Screen32
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightTop
     
     jsr SetupScreen12
 
@@ -220,7 +220,7 @@ Screen32
 
 Screen33
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightTop
     
     jsr SetupScreen12
 
@@ -228,7 +228,7 @@ Screen33
 
 Screen34
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightTop
     
     jsr SetupScreen12
 
@@ -236,7 +236,7 @@ Screen34
 
 Screen35
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightTop
     
     jsr SetupScreen12
 
@@ -244,7 +244,7 @@ Screen35
 
 Screen36
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftRightTop
     
     jsr SetupScreen10
 
@@ -252,7 +252,7 @@ Screen36
 
 Screen37
     jsr UpdatePlayerPosition
-    jsr ScreenWraparoundAll
+    jsr ScreenWraparoundLeftTop
     
     jsr SetupScreen11
 
