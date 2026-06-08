@@ -158,4 +158,5 @@ MUSIC_INIT_WHISPERING_TREES:
     sta MUS_TEMPO
     lda #Whispering_Trees_NUM_PATS
     sta MUS_NUM_PATS
-    jmp MUSIC_INIT
+    jsr MUSIC_INIT
+    rts

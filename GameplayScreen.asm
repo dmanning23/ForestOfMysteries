@@ -36,6 +36,11 @@ GameplayScreenLogic subroutine
     sta WSYNC	; sync w/ scanline
     sta HMOVE	; apply fine offsets
 
+    ;Update the sound engine
+    BANK_SWITCH 4,UpdateWhisperingTrees
+
+DoneUpdateGameplayScreenLogic
+
     BANK_SWITCH 0,DoneGameplayScreenLogic
 
 GameplayScreenDraw subroutine

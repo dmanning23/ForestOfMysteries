@@ -308,7 +308,7 @@ BankSwitch
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; BANK 4
+;;; BANK 4 Gameplay Music
 
     org  $5000
     rorg $F000
@@ -319,7 +319,17 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
-    ;include "ScreenEngine/ScreenDrawSubroutines456.asm"
+StartWhisperingTrees subroutine
+
+    jsr MUSIC_INIT_WHISPERING_TREES
+    BANK_SWITCH 1,DoneResetGameplay
+
+UpdateWhisperingTrees subroutine
+    jsr MUSIC_UPDATE
+    BANK_SWITCH 2,DoneUpdateGameplayScreenLogic
+
+    include "Sound/MusicEngine.asm"
+    include "Sound/Whispering_trees-music.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -38,6 +38,9 @@ TitleScreenLogic subroutine
     ;Reset the game
     jsr ResetGameplay
 
+    ;Start the music
+    BANK_SWITCH 4,StartWhisperingTrees
+
 .skipButton
 
 DoneResetGameplay
