@@ -1,5 +1,3 @@
-
-
 TitleScreenLogic subroutine
 
     ;Set the background to black

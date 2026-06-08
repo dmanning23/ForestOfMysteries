@@ -1,5 +1,3 @@
-
-
 GameplayScreenLogic subroutine
 
     ;update the frame counter
@@ -43,6 +41,21 @@ GameplayScreenLogic subroutine
     BANK_SWITCH 4,UpdateWhisperingTrees
 
 DoneUpdateGameplayScreenLogic
+
+    ;TEST: Show the win screen if the button is down
+    bit INPT4
+    bmi .skipButton
+
+    ;change to gameplay mode
+    lda #2
+    sta gameMode
+
+    ;Start the music
+    BANK_SWITCH 4,StartIntoTheLight
+
+.skipButton
+
+DoneWinScreenHack
 
     BANK_SWITCH 0,DoneGameplayScreenLogic
 

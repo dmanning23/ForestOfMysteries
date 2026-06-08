@@ -16,3 +16,4 @@ SPRITE_HEIGHT equ #9*2 ; double size pixel
 
 TITLE_SCREEN equ #0
 GAMEPLAY_SCREEN equ #1
+WIN_SCREEN equ #2

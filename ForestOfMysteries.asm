@@ -150,12 +150,24 @@ CheckGameplayScreenLogic
 
     lda gameMode
     cmp #GAMEPLAY_SCREEN
-    bne CheckNextScreenLogicTODO
+    bne CheckWinScreenLogic
 
     ;Gameplay Screen
     BANK_SWITCH 2,GameplayScreenLogic
 
 DoneGameplayScreenLogic
+    jmp DoneCheckingScreenLogic
+
+CheckWinScreenLogic
+
+    lda gameMode
+    cmp #WIN_SCREEN
+    bne CheckNextScreenLogicTODO
+
+    ;Gameplay Screen
+    BANK_SWITCH 5,WinScreenLogic
+
+DoneWinScreenLogic
     jmp DoneCheckingScreenLogic
 
 CheckNextScreenLogicTODO
@@ -185,12 +197,24 @@ CheckGameplayScreenDraw
 
     lda gameMode
     cmp #GAMEPLAY_SCREEN
-    bne CheckNextScreenDrawTODO
+    bne CheckWinScreenDraw
 
     ;Gameplay Screen
     BANK_SWITCH 2,PerformScreenDraw
 
 DoneGameplayScreenDraw
+    jmp DoneCheckingScreenDraw
+
+CheckWinScreenDraw
+
+    lda gameMode
+    cmp #WIN_SCREEN
+    bne CheckNextScreenDrawTODO
+
+    ;Gameplay Screen
+    BANK_SWITCH 5,WinScreenDraw
+
+DoneWinScreenDraw
     jmp DoneCheckingScreenDraw
 
 CheckNextScreenDrawTODO
@@ -320,7 +344,6 @@ BankSwitch
 ;----End of bank-identical code----
 
 StartWhisperingTrees subroutine
-
     jsr MUSIC_INIT_WHISPERING_TREES
     BANK_SWITCH 1,DoneResetGameplay
 
@@ -328,8 +351,18 @@ UpdateWhisperingTrees subroutine
     jsr MUSIC_UPDATE
     BANK_SWITCH 2,DoneUpdateGameplayScreenLogic
 
+StartIntoTheLight subroutine
+    jsr MUSIC_STOP
+    jsr MUSIC_INIT_INTO_THE_LIGHT
+    BANK_SWITCH 2,DoneWinScreenHack
+
+UpdateIntoTheLight subroutine
+    jsr MUSIC_UPDATE
+    BANK_SWITCH 5,DoneUpdateWinScreenLogic
+
     include "Sound/MusicEngine.asm"
     include "Sound/Whispering_trees-music.asm"
+    include "Sound/into_the_light-music.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -343,7 +376,7 @@ UpdateWhisperingTrees subroutine
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; BANK 5
+;;; BANK 5 Win Screen
 
     org  $6000
     rorg $F000
@@ -354,7 +387,7 @@ BankSwitch
     BANK_SWITCH_TRAMPOLINE
 ;----End of bank-identical code----
 
-    ;include "ScreenEngine/ScreenDrawSubroutines789.asm"
+    include "WinScreen.asm"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
