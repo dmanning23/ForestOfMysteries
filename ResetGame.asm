@@ -64,5 +64,6 @@ ResetGameplay subroutine
     sta backgroundPtr5
     sta backgroundPtr5+1
     sta temp
+    sta frameCounter
 
     rts

@@ -42,6 +42,9 @@ backgroundPtr5 .word
 ;1: gameplay
 gameMode .byte
 
+;Variable used to time the frames. Counts up +1 every frame
+frameCounter .byte
+
 temp byte
 
 MUS_FRAME .byte;    - frame countdown (1 byte)

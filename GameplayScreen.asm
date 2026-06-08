@@ -2,6 +2,9 @@
 
 GameplayScreenLogic subroutine
 
+    ;update the frame counter
+    inc frameCounter
+
     ;reset the player velocity before checking input
     lda #0
     sta playerXVel
