@@ -20,6 +20,16 @@ Frame1
         .byte #%00111000;$0C
         .byte #%00111100;$A4
         .byte #%01100000;$0E
+Frame2
+        .byte #%00000000;--
+        .byte #%00000000;--
+        .byte #%00000000;--
+        .byte #%00000000;--
+        .byte #%00000000;--
+        .byte #%00000000;--
+        .byte #%00101000;--
+        .byte #%00000000;--
+        .byte #%00000000;--
 ;---End Graphics Data---
 
 
@@ -44,5 +54,15 @@ ColorFrame1
         .byte #$0A;
         .byte #$0C;
         .byte #$A4;
+        .byte #$0E;
+ColorFrame2
+        .byte #$0E;
+        .byte #$0E;
+        .byte #$0E;
+        .byte #$0E;
+        .byte #$0E;
+        .byte #$0E;
+        .byte #$0E;
+        .byte #$0E;
         .byte #$0E;
 ;---End Color Data---
