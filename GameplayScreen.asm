@@ -28,9 +28,9 @@ GameplayScreenLogic subroutine
     lda #>Frame2        ; load high byte of Frame0 address
     sta spritePtr+1
 
-    lda #<ColorFrame0        ; load low byte of Frame0 address
+    lda #<ColorFrame2        ; load low byte of Frame0 address
     sta spriteColorPtr
-    lda #>ColorFrame0        ; load high byte of Frame0 address
+    lda #>ColorFrame2        ; load high byte of Frame0 address
     sta spriteColorPtr+1
     jmp .DoneCollision
 
