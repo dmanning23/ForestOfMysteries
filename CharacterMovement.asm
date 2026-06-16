@@ -22,22 +22,35 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UpdateCharacterX subroutine
 
-    ;Only update the characters position every fourth frame
+    lda p1State,y
+    cmp PLAYER_SNEAKING
+    beq .sneak
+
+    lda p1State,y
+    cmp PLAYER_SNEAK_HIDING
+    beq .sneak
+
+    ;Only update the characters position every other frame
     lda frameCounter
     lsr
-    lsr
-    bcs .odd    ; carry set = bit 0 was 1 = odd
+    bcs .skip    ; carry set = bit 0 was 1 = odd
+    jmp .done
 
-    ; Arithmetic shift right on signed playerYVel
+.sneak
+
+    ;Only update the characters position every fourth frame frame to walk half speed
+    lda frameCounter
+    and #%00000011  ; mask the lower 2 bits
+    bne .skip       ; skip unless both bits are zero
+
+.done
+
+    clc
     lda playerXVel,y
-    cmp #$80        ; sets carry if negative (bit 7 set)
-    ror             ; shift right, carry goes into bit 7
-    
-    clc ; Clear carry before addition
     adc playerXPos,y
     sta playerXPos,y
 
-.odd
+.skip
 
     rts
 
@@ -50,19 +63,35 @@ UpdateCharacterX subroutine
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UpdateCharacterY subroutine
 
+    lda p1State,y
+    cmp PLAYER_SNEAKING
+    beq .sneak
+
+    lda p1State,y
+    cmp PLAYER_SNEAK_HIDING
+    beq .sneak
+
+    ;Only update the characters position every other frame
     lda frameCounter
     lsr
-    bcs .odd
+    bcs .skip    ; carry set = bit 0 was 1 = odd
+    jmp .done
 
-    lda playerYVel,y
-    cmp #$80
-    ror
-    
+.sneak
+
+    ;Only update the characters position every fourth frame frame to walk half speed
+    lda frameCounter
+    and #%00000011  ; mask the lower 2 bits
+    bne .skip       ; skip unless both bits are zero
+
+.done
+
     clc
+    lda playerYVel,y
     adc playerYPos,y
     sta playerYPos,y
 
-.odd
+.skip
 
     rts
 
