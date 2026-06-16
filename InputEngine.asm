@@ -28,9 +28,9 @@
 InitializeInput
     lda #0
     sta p1PrevInput
-    sta p2PrevInput
+    ;sta p2PrevInput
     sta p1Input
-    sta p2Input
+    ;sta p2Input
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

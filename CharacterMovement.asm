@@ -22,14 +22,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UpdateCharacterX subroutine
 
-    ;Only update the characters position every other frame
+    ;Only update the characters position every fourth frame
     lda frameCounter
+    lsr
     lsr
     bcs .odd    ; carry set = bit 0 was 1 = odd
 
+    ; Arithmetic shift right on signed playerYVel
+    lda playerXVel,y
+    cmp #$80        ; sets carry if negative (bit 7 set)
+    ror             ; shift right, carry goes into bit 7
+    
     clc ; Clear carry before addition
-    lda playerXPos,y
-    adc playerXVel,y ; Add signed velocity (works for both positive and negative)
+    adc playerXPos,y
     sta playerXPos,y
 
 .odd
@@ -45,14 +50,16 @@ UpdateCharacterX subroutine
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UpdateCharacterY subroutine
 
-    ;Only update the characters position every other frame
     lda frameCounter
     lsr
-    bcs .odd    ; carry set = bit 0 was 1 = odd
+    bcs .odd
 
+    lda playerYVel,y
+    cmp #$80
+    ror
+    
     clc
-    lda playerYPos,y
-    adc playerYVel,y
+    adc playerYPos,y
     sta playerYPos,y
 
 .odd

@@ -8,8 +8,14 @@ GameplayScreenLogic subroutine
     sta playerXVel
     sta playerYVel
 
+    ;Grab the input from the controller
     tay
     jsr UpdateInput
+
+    ;Set the state based on the current game and controller states
+    lda #0
+    tay
+    jsr SetPlayerState
 
     lda #0
     tay
@@ -19,20 +25,20 @@ GameplayScreenLogic subroutine
     tay
     jsr PerformScreenLogic
 
-    ;Check if the player is hiding
-    bit CXP0FB
-    bpl .NoCollion
-    ;yes, use eyball sprite
-    lda #<Frame2        ; load low byte of Frame0 address
-    sta spritePtr
-    lda #>Frame2        ; load high byte of Frame0 address
-    sta spritePtr+1
+    ; ;Check if the player is hiding
+    ; bit CXP0FB
+    ; bpl .NoCollion
+    ; ;yes, use eyball sprite
+    ; lda #<Frame2        ; load low byte of Frame0 address
+    ; sta spritePtr
+    ; lda #>Frame2        ; load high byte of Frame0 address
+    ; sta spritePtr+1
 
-    lda #<ColorFrame2        ; load low byte of Frame0 address
-    sta spriteColorPtr
-    lda #>ColorFrame2        ; load high byte of Frame0 address
-    sta spriteColorPtr+1
-    jmp .DoneCollision
+    ; lda #<ColorFrame2        ; load low byte of Frame0 address
+    ; sta spriteColorPtr
+    ; lda #>ColorFrame2        ; load high byte of Frame0 address
+    ; sta spriteColorPtr+1
+    ; jmp .DoneCollision
 
 .NoCollion
     ;no, use walking sprite
@@ -56,8 +62,6 @@ GameplayScreenLogic subroutine
 
     sta WSYNC	; sync w/ scanline
     sta HMOVE	; apply fine offsets
-
-    sta CXCLR ;clear collision
 
     ;Update the sound engine
     BANK_SWITCH 4,UpdateWhisperingTrees
@@ -98,3 +102,5 @@ GameplayScreenDraw subroutine
     include "ScreenEngine/ScreenEngine.asm"
     include "ScreenEngine/ScreenLogicData.asm"
     include "ScreenEngine/ScreenLogicEngine.asm"
+
+    include "SetPlayerState.asm"

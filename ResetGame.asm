@@ -15,9 +15,9 @@ ResetGameplay subroutine
     ;jsr InitializeInput
     lda #0
     sta p1PrevInput
-    sta p2PrevInput
+    ;sta p2PrevInput
     sta p1Input
-    sta p2Input
+    ;sta p2Input
 
     ;jsr CenterPlayerX
     lda #SCREEN_RIGHT_EDGE
@@ -39,11 +39,8 @@ ResetGameplay subroutine
     lda #0
     sta playerXVel
     sta playerYVel
+    sta p1State
 
-    sta p1PrevInput
-    sta p2PrevInput
-    sta p1Input
-    sta p2Input
     sta controllerMask
 
     sta spritePtr

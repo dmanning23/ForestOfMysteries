@@ -14,13 +14,16 @@ screenRow .byte  ; 0-3
 screenCol .byte  ; 0-7
 TempWord .word
 
+;The player's current state. Enumerated in the PLAYER_ constants
+p1State .byte
+
 ;The player's input from the previous frame
-p1PrevInput byte
-p2PrevInput byte
+p1PrevInput .byte
 
 ;The player's input from the current frame
-p1Input byte
-p2Input byte
+p1Input .byte
+
+
 
 ;This variable is used to mask the controller input to map to p1 or p2
 controllerMask .byte 
@@ -45,7 +48,7 @@ gameMode .byte
 ;Variable used to time the frames. Counts up +1 every frame
 frameCounter .byte
 
-temp byte
+temp .byte
 
 MUS_FRAME .byte;    - frame countdown (1 byte)
 MUS_STEP .byte;     - step within pattern (1 byte)
