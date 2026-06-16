@@ -80,4 +80,4 @@ DrawScreen1 subroutine
     include "Assets/Graphics/Backgrounds/FoM_10Data.asm"
     include "Assets/Graphics/Backgrounds/FoM_11Data.asm"
     include "Assets/Graphics/Backgrounds/FoM_12Data.asm"
-    include "Assets/Graphics/player.dasm"
+    include "Assets/Graphics/player_sprite.asm"

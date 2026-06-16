@@ -25,35 +25,7 @@ GameplayScreenLogic subroutine
     tay
     jsr PerformScreenLogic
 
-    ; ;Check if the player is hiding
-    ; bit CXP0FB
-    ; bpl .NoCollion
-    ; ;yes, use eyball sprite
-    ; lda #<Frame2        ; load low byte of Frame0 address
-    ; sta spritePtr
-    ; lda #>Frame2        ; load high byte of Frame0 address
-    ; sta spritePtr+1
-
-    ; lda #<ColorFrame2        ; load low byte of Frame0 address
-    ; sta spriteColorPtr
-    ; lda #>ColorFrame2        ; load high byte of Frame0 address
-    ; sta spriteColorPtr+1
-    ; jmp .DoneCollision
-
-.NoCollion
-    ;no, use walking sprite
-
-    lda #<Frame0        ; load low byte of Frame0 address
-    sta spritePtr
-    lda #>Frame0        ; load high byte of Frame0 address
-    sta spritePtr+1
-
-    lda #<ColorFrame0        ; load low byte of Frame0 address
-    sta spriteColorPtr
-    lda #>ColorFrame0        ; load high byte of Frame0 address
-    sta spriteColorPtr+1
-
-.DoneCollision
+    jsr SetPlayerAnimation
 
     ;Set the x position of the player
     lda playerXPos
@@ -104,3 +76,4 @@ GameplayScreenDraw subroutine
     include "ScreenEngine/ScreenLogicEngine.asm"
 
     include "SetPlayerState.asm"
+    include "SetPlayerAnimation.asm"

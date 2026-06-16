@@ -40,7 +40,7 @@ UpdateCharacterX subroutine
 
     ;Only update the characters position every fourth frame frame to walk half speed
     lda frameCounter
-    and #%00000011  ; mask the lower 2 bits
+    and #%00000111  ; mask the lower 2 bits
     bne .skip       ; skip unless both bits are zero
 
 .done
@@ -81,7 +81,7 @@ UpdateCharacterY subroutine
 
     ;Only update the characters position every fourth frame frame to walk half speed
     lda frameCounter
-    and #%00000011  ; mask the lower 2 bits
+    and #%00000111  ; mask the lower 2 bits
     bne .skip       ; skip unless both bits are zero
 
 .done
