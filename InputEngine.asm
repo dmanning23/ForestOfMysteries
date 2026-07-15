@@ -10,11 +10,11 @@
 ;This will be required in the Variables section of your game:
 
 ; ;The player's input from the previous frame
-; p1PrevInput byte
+; playerPrevInput1 byte
 ; p2PrevInput byte
 
 ; ;The player's input from the current frame
-; p1Input byte
+; playerInput1 byte
 ; p2Input byte
 
 ; ;This variable is used to mask the controller input to map to p1 or p2
@@ -27,9 +27,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 InitializeInput
     lda #0
-    sta p1PrevInput
+    sta playerPrevInput1
     ;sta p2PrevInput
-    sta p1Input
+    sta playerInput1
     ;sta p2Input
     rts
 
@@ -42,12 +42,12 @@ InitializeInput
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UpdateInput subroutine
     ;copy current input to prev
-    lda p1Input,y
-    sta p1PrevInput,y
+    lda playerInput1,y
+    sta playerPrevInput1,y
 
     ;blank out the current input
     lda #0
-    sta p1Input,y
+    sta playerInput1,y
 
 .SetControllerMask 
 
@@ -71,9 +71,9 @@ UpdateInput subroutine
     bne .CheckUp
 
     ;set the down flag for the current input
-    lda p1Input,y
+    lda playerInput1,y
     ora #CONTROLLER_DOWN
-    sta p1Input,y
+    sta playerInput1,y
 
 .CheckUp
     ;check if the up direction is being held
@@ -83,9 +83,9 @@ UpdateInput subroutine
     bne .CheckLeft
 
     ;set the up flag for teh current input
-    lda p1Input,y
+    lda playerInput1,y
     ora #CONTROLLER_UP
-    sta p1Input,y
+    sta playerInput1,y
 
 .CheckLeft
     ;check if the left direction is being held
@@ -95,9 +95,9 @@ UpdateInput subroutine
     bne .CheckRight
 
     ;set the "left" flag for teh current input
-    lda p1Input,y
+    lda playerInput1,y
     ora #CONTROLLER_LEFT
-    sta p1Input,y
+    sta playerInput1,y
 
 .CheckRight
     ;check if the left direction is being held
@@ -107,9 +107,9 @@ UpdateInput subroutine
     bne .CheckButton
 
     ;set the "right" flag for teh current input
-    lda p1Input,y
+    lda playerInput1,y
     ora #CONTROLLER_RIGHT
-    sta p1Input,y
+    sta playerInput1,y
 
 .CheckButton
     ;are we checking p1 or p2? There is a different register depending on which one.
@@ -131,9 +131,9 @@ UpdateInput subroutine
 
 .setButtonFlag
     ;set the "button" flag for teh current input
-    lda p1Input,y
+    lda playerInput1,y
     ora #CONTROLLER_BUTTON
-    sta p1Input,y
+    sta playerInput1,y
 
 .DoneCheckingInput
     rts
@@ -142,7 +142,7 @@ UpdateInput subroutine
 
 ;CheckMoveLeft
     ;;load the player's input to the accumulator
-    ;lda p1Input,y
+    ;lda playerInput1,y
 
     ;;Check if the left direction is being held down
     ;bit CONTROLLER_LEFT
@@ -158,12 +158,12 @@ UpdateInput subroutine
 
 ;CheckButtonAttack subroutine
     ;;check for the button press
-    ;lda p1Input,y ;is the button currently held?
+    ;lda playerInput1,y ;is the button currently held?
     ;bit CONTROLLER_BUTTON
     ;beq .doneCheckButtonAttack
 
     ;;The button direction is currently being held, but is it a new input?
-    ;eor p1PrevInput,y
+    ;eor playerPrevInput1,y
     ;bit CONTROLLER_BUTTON
     ;beq .doneCheckButtonAttack
 

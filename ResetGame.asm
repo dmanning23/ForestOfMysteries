@@ -14,39 +14,39 @@ ResetGameplay subroutine
 
     ;jsr InitializeInput
     lda #0
-    sta p1PrevInput
+    sta playerPrevInput1
     ;sta p2PrevInput
-    sta p1Input
+    sta playerInput1
     ;sta p2Input
 
     ;jsr CenterPlayerX
     lda #SCREEN_RIGHT_EDGE
     lsr ;divide by 2
     
-    sta playerXPos ;center horizontally
+    sta playerXPos1 ;center horizontally
 
     ;jsr CenterPlayerY
     lda #SCREEN_TOP_EDGE
     lsr ;divide by 2
-    sta playerYPos ;center vertically
+    sta playerYPos1 ;center vertically
 
-    lda playerXPos
+    lda playerXPos1
     sta playerPrevXPos
-    lda playerYPos
+    lda playerYPos1
     sta playerPrevYPos
 
     ;initialize the player velocity
     lda #0
     sta playerXVel
     sta playerYVel
-    sta p1State
+    sta playerState1
 
     sta controllerMask
 
-    sta spritePtr
-    sta spritePtr+1
-    sta spriteColorPtr
-    sta spriteColorPtr+1
+    sta spritePtr1
+    sta spritePtr1+1
+    sta spriteColorPtr1
+    sta spriteColorPtr1+1
 
     sta backgroundPtr0
     sta backgroundPtr0+1

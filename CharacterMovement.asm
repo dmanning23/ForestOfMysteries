@@ -8,8 +8,8 @@
 
 
 ; ;These are in the variables section
-;playerXPos .byte
-;playerYPos .byte
+;playerXPos1 .byte
+;playerYPos1 .byte
 ;playerXVel .byte
 ;playerYVel .byte
 
@@ -22,11 +22,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UpdateCharacterX subroutine
 
-    lda p1State,y
+    lda playerState1,y
     cmp PLAYER_SNEAKING
     beq .sneak
 
-    lda p1State,y
+    lda playerState1,y
     cmp PLAYER_SNEAK_HIDING
     beq .sneak
 
@@ -47,8 +47,8 @@ UpdateCharacterX subroutine
 
     clc
     lda playerXVel,y
-    adc playerXPos,y
-    sta playerXPos,y
+    adc playerXPos1,y
+    sta playerXPos1,y
 
 .skip
 
@@ -63,11 +63,11 @@ UpdateCharacterX subroutine
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UpdateCharacterY subroutine
 
-    lda p1State,y
+    lda playerState1,y
     cmp PLAYER_SNEAKING
     beq .sneak
 
-    lda p1State,y
+    lda playerState1,y
     cmp PLAYER_SNEAK_HIDING
     beq .sneak
 
@@ -88,8 +88,8 @@ UpdateCharacterY subroutine
 
     clc
     lda playerYVel,y
-    adc playerYPos,y
-    sta playerYPos,y
+    adc playerYPos1,y
+    sta playerYPos1,y
 
 .skip
 
@@ -105,7 +105,7 @@ SetPlayerPosLeftEdge
     lda #SCREEN_LEFT_EDGE+1
     clc
     adc #1
-    sta playerXPos,y
+    sta playerXPos1,y
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -118,7 +118,7 @@ SetPlayerPosRightEdge
     lda #SCREEN_RIGHT_EDGE-1
     sec
     sbc #1
-    sta playerXPos,y
+    sta playerXPos1,y
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -131,7 +131,7 @@ SetPlayerPosCeiling
     lda #SCREEN_TOP_EDGE-1
     sec
     sbc #1
-    sta playerYPos,y
+    sta playerYPos1,y
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -144,7 +144,7 @@ SetPlayerPosFloor
     lda #SCREEN_BOTTOM_EDGE+1
     clc
     adc #1
-    sta playerYPos,y
+    sta playerYPos1,y
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -156,7 +156,7 @@ SetPlayerPosFloor
 CenterPlayerX
     lda #SCREEN_RIGHT_EDGE
     lsr ;divide by 2
-    sta playerXPos,y
+    sta playerXPos1,y
     rts
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -168,5 +168,5 @@ CenterPlayerX
 CenterPlayerY
     lda #SCREEN_TOP_EDGE
     lsr ;divide by 2
-    sta playerYPos,y
+    sta playerYPos1,y
     rts

@@ -58,7 +58,7 @@ NextFrame
     sta COLUPF
 
     lda #70
-    sta playerYPos
+    sta playerYPos1
 
     TIMER_WAIT
 
@@ -98,7 +98,7 @@ LinesOfFrame
     
      txa                     ; X = current scanline
      sec
-     sbc playerYPos          ; local coordinate
+     sbc playerYPos1          ; local coordinate
      cmp #SPRITE_HEIGHT      ; in sprite?
      bcc InSprite           ; yes
      lda #0                  ; no, use row 0 (transparent)

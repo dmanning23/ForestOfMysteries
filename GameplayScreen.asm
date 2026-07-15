@@ -28,7 +28,7 @@ GameplayScreenLogic subroutine
     jsr SetPlayerAnimation
 
     ;Set the x position of the player
-    lda playerXPos
+    lda playerXPos1
     ldx #0
     jsr SetHorizPos
 

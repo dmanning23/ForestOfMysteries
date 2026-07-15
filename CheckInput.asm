@@ -1,6 +1,6 @@
 CheckInput subroutine
 
-    lda p1Input,y
+    lda playerInput1,y
     bit CONTROLLER_UP
     beq .doneCheckUp
 
@@ -11,7 +11,7 @@ CheckInput subroutine
 
 
 
-    lda p1Input,y
+    lda playerInput1,y
     bit CONTROLLER_DOWN
     beq .doneCheckDown
 
@@ -22,7 +22,7 @@ CheckInput subroutine
 
 
 
-    lda p1Input,y
+    lda playerInput1,y
     bit CONTROLLER_LEFT
     beq .doneCheckLeft
 
@@ -37,7 +37,7 @@ CheckInput subroutine
 
 
 
-    lda p1Input,y
+    lda playerInput1,y
     bit CONTROLLER_RIGHT
     beq .doneCheckRight
 

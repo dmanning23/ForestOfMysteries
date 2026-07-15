@@ -1,7 +1,7 @@
 UpdatePlayerPosition subroutine
-    lda playerXPos
+    lda playerXPos1
     sta playerPrevXPos
-    lda playerYPos
+    lda playerYPos1
     sta playerPrevYPos
     
     jsr UpdateCharacterY
@@ -12,7 +12,7 @@ UpdatePlayerPosition subroutine
 ScreenWraparoundAll subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -22,7 +22,7 @@ ScreenWraparoundAll subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -43,7 +43,7 @@ ScreenWraparoundAll subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -53,7 +53,7 @@ ScreenWraparoundAll subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 
@@ -77,7 +77,7 @@ ScreenWraparoundAll subroutine
 ScreenWraparoundRightBottom subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -87,7 +87,7 @@ ScreenWraparoundRightBottom subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -108,7 +108,7 @@ ScreenWraparoundRightBottom subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -118,7 +118,7 @@ ScreenWraparoundRightBottom subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 
@@ -142,7 +142,7 @@ ScreenWraparoundRightBottom subroutine
 ScreenWraparoundLeftRightBottom subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -152,7 +152,7 @@ ScreenWraparoundLeftRightBottom subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -173,7 +173,7 @@ ScreenWraparoundLeftRightBottom subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -183,7 +183,7 @@ ScreenWraparoundLeftRightBottom subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 
@@ -207,7 +207,7 @@ ScreenWraparoundLeftRightBottom subroutine
 ScreenWraparoundLeftBottom subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -217,7 +217,7 @@ ScreenWraparoundLeftBottom subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -238,7 +238,7 @@ ScreenWraparoundLeftBottom subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -248,7 +248,7 @@ ScreenWraparoundLeftBottom subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 
@@ -272,7 +272,7 @@ ScreenWraparoundLeftBottom subroutine
 ScreenWraparoundRightTopBottom subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -282,7 +282,7 @@ ScreenWraparoundRightTopBottom subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -303,7 +303,7 @@ ScreenWraparoundRightTopBottom subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -313,7 +313,7 @@ ScreenWraparoundRightTopBottom subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 
@@ -337,7 +337,7 @@ ScreenWraparoundRightTopBottom subroutine
 ScreenWraparoundRightTop subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -347,7 +347,7 @@ ScreenWraparoundRightTop subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -368,7 +368,7 @@ ScreenWraparoundRightTop subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -378,7 +378,7 @@ ScreenWraparoundRightTop subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 
@@ -402,7 +402,7 @@ ScreenWraparoundRightTop subroutine
 ScreenWraparoundLeftRightTop subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -412,7 +412,7 @@ ScreenWraparoundLeftRightTop subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -433,7 +433,7 @@ ScreenWraparoundLeftRightTop subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -443,7 +443,7 @@ ScreenWraparoundLeftRightTop subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 
@@ -467,7 +467,7 @@ ScreenWraparoundLeftRightTop subroutine
 ScreenWraparoundLeftTop subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -477,7 +477,7 @@ ScreenWraparoundLeftTop subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -498,7 +498,7 @@ ScreenWraparoundLeftTop subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -508,7 +508,7 @@ ScreenWraparoundLeftTop subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 
@@ -532,7 +532,7 @@ ScreenWraparoundLeftTop subroutine
 ScreenWraparoundLeftTopBottom subroutine
 
     ;check if the player is behind the right wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_RIGHT_EDGE
     beq .leftOfRightEdge
     bcs .rightOfRightEdge
@@ -542,7 +542,7 @@ ScreenWraparoundLeftTopBottom subroutine
     ;If the player is on the left side of the right wall
 
     ;Check if the player is behind the left wall
-    lda playerXPos,y
+    lda playerXPos1,y
     cmp #SCREEN_LEFT_EDGE
     bcc .leftOfLeftEdge
 
@@ -563,7 +563,7 @@ ScreenWraparoundLeftTopBottom subroutine
 .doneX
 
     ;Check if we are above the ceiling
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_TOP_EDGE
     beq .belowCeiling
     bcs .aboveCeiling
@@ -573,7 +573,7 @@ ScreenWraparoundLeftTopBottom subroutine
     ;If the player is below the ceiling
 
     ;Check if the player is below the floor
-    lda playerYPos,y
+    lda playerYPos1,y
     cmp #SCREEN_BOTTOM_EDGE
     bcc .belowFloor
 

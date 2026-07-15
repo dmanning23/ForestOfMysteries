@@ -1,20 +1,20 @@
 SetPlayerState subroutine
 
     ;Check if the button is held
-    lda p1Input,y
+    lda playerInput1,y
     bit CONTROLLER_BUTTON
     beq .buttonNo
 
     ;button is being held
 
-    ;check if p1Input is greater than 1 (player joystick is held)
-    lda p1Input,y
+    ;check if playerInput1 is greater than 1 (player joystick is held)
+    lda playerInput1,y
     cmp #CONTROLLER_BUTTON+1
     bcs .buttonYesJoystickYes
 
     ;button held and joystick not held, set player state to crouching
     lda #PLAYER_CROUCHING
-    sta p1State
+    sta playerState1
 
     jmp .doneInitialSetPlayerStateLogic
 
@@ -22,21 +22,21 @@ SetPlayerState subroutine
 
     ;Button held and player moving, set player state to walking
     lda #PLAYER_SNEAKING
-    sta p1State
+    sta playerState1
 
     jmp .doneInitialSetPlayerStateLogic
 
 .buttonNo
     ;The button is not being held
 
-    ;check if p1Input is greater than 1 (player joystick is held)
-    lda p1Input,y
+    ;check if playerInput1 is greater than 1 (player joystick is held)
+    lda playerInput1,y
     cmp #CONTROLLER_BUTTON+1
     bcs .buttonNoJoystickYes
 
     ;button not held and joystick not held, set player state to walking
     lda #PLAYER_STANDING
-    sta p1State,y
+    sta playerState1,y
 
     jmp .doneInitialSetPlayerStateLogic
 
@@ -44,7 +44,7 @@ SetPlayerState subroutine
 
     ;Button not held and player moving, set player state to walking
     lda #PLAYER_WALKING
-    sta p1State,y
+    sta playerState1,y
 
 .doneInitialSetPlayerStateLogic
 
@@ -53,10 +53,10 @@ SetPlayerState subroutine
     bpl .NoCollion
 
     ;yes, update to the sneaking state
-    lda p1State,y
+    lda playerState1,y
     clc
     adc #PLAYER_STAND_HIDING
-    sta p1State,y
+    sta playerState1,y
 
 .NoCollion
 

@@ -1,6 +1,9 @@
 ;The screen coordinates of the player
-playerXPos .byte
-playerYPos .byte
+playerXPos1 .byte
+playerXPos2 .byte
+
+playerYPos1 .byte
+playerYPos2 .byte
 
 playerPrevXPos .byte
 playerPrevYPos .byte
@@ -15,22 +18,21 @@ screenCol .byte  ; 0-7
 TempWord .word
 
 ;The player's current state. Enumerated in the PLAYER_ constants
-p1State .byte
+playerState1 .byte
+playerState2 .byte
 
 ;The player's input from the previous frame
-p1PrevInput .byte
+playerPrevInput1 .byte
 
 ;The player's input from the current frame
-p1Input .byte
-
-
+playerInput1 .byte
 
 ;This variable is used to mask the controller input to map to p1 or p2
 controllerMask .byte 
 
 ; Pointer used to draw the character
-spritePtr .word
-spriteColorPtr .word
+spritePtr1 .word
+spriteColorPtr1 .word
 
 ; pointer used to draw the background
 backgroundPtr0 .word

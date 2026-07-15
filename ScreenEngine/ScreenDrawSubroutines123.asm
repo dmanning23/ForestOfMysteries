@@ -28,7 +28,7 @@ DrawScreen1 subroutine
     
     txa                     ; X = current scanline
     sec
-    sbc playerYPos          ; local coordinate
+    sbc playerYPos1          ; local coordinate
     cmp #SPRITE_HEIGHT      ; in sprite?
     bcc .InSprite           ; yes
     lda #0                  ; no, use row 0 (transparent)
@@ -39,9 +39,9 @@ DrawScreen1 subroutine
 
     sta WSYNC
 
-    lda (spritePtr),y       ; lookup sprite pattern
+    lda (spritePtr1),y       ; lookup sprite pattern
     sta GRP0                ; write sprite bitmap
-    lda (spriteColorPtr),y  ; lookup sprite color
+    lda (spriteColorPtr1),y  ; lookup sprite color
     sta COLUP0              ; write color
 
     lda #0
