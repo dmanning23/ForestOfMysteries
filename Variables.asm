@@ -31,6 +31,9 @@ playerPrevInput1 .byte
 ;The player's input from the current frame
 playerInput1 .byte
 
+;Whether or not the player is hiding
+playerHiding .byte
+
 ;This variable is used to mask the controller input to map to p1 or p2
 controllerMask .byte 
 

@@ -23,6 +23,8 @@ ResetGameplay subroutine
     sta playerInput1
     ;sta playerInput2
 
+    sta playerHiding
+
     ;jsr CenterPlayerX
     lda #SCREEN_RIGHT_EDGE
     lsr ;divide by 2

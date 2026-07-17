@@ -3,11 +3,11 @@ SetCorrectHorizPos subroutine
     ;is the creep on this screen?
     lda creepScreenRow
     cmp screenRow
-    bne .noCreepOnScreen
+    bne .checkPlayerCollision
 
     lda creepScreenCol
     cmp screenCol
-    bne .noCreepOnScreen
+    bne .checkPlayerCollision
 
     ;The creep is on this screen
 
@@ -16,8 +16,13 @@ SetCorrectHorizPos subroutine
     lsr
     bcs .noCreepOnScreen    ; carry set = bit 0 was 1 = odd
 
+    jsr CheckIfHiding
     jsr SetCreepHorizPos
     jmp .done
+
+.checkPlayerCollision
+
+    jsr CheckIfHiding
 
 .noCreepOnScreen
 
@@ -45,4 +50,25 @@ SetCreepHorizPos
     ldx #1
     jsr SetHorizPos
 
+    rts
+
+CheckIfHiding
+
+    ;Check if the player is hiding
+    bit CXP0FB
+    bpl .NoCollision
+
+    ;yes, update to the sneaking state
+    lda #1
+    sta playerHiding
+    jmp .DoneCollision
+
+.NoCollision
+
+    lda #0
+    sta playerHiding
+
+.DoneCollision
+
+    sta CXCLR ;clear collision
     rts

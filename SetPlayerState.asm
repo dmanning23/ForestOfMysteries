@@ -49,8 +49,9 @@ SetPlayerState subroutine
 .doneInitialSetPlayerStateLogic
 
     ;Check if the player is hiding
-    bit CXP0FB
-    bpl .NoCollion
+    lda playerHiding
+    cmp #0
+    beq .DoneCollision
 
     ;yes, update to the sneaking state
     lda playerState1,y
@@ -58,13 +59,7 @@ SetPlayerState subroutine
     adc #PLAYER_STAND_HIDING
     sta playerState1,y
 
-.NoCollion
-
-    ;no, there is no state change
-
 .DoneCollision
-
-    sta CXCLR ;clear collision
 
     ;Done setting the player's state
     rts
