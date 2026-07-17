@@ -44,7 +44,7 @@ Title screen is at row=7, col=7 (set at startup).
 
 - Position: `playerXPos1`, `playerYPos1` (zero-page)
 - Velocity: `playerXVel`, `playerYVel` (set by `CheckInput`, applied by `UpdatePlayerPosition`)
-- Sprite: double-size pixels, 9 rows tall (`SPRITE_HEIGHT = 9*2`)
+- Sprite: double-size pixels, 9 rows tall (`PLAYER_SPRITE_HEIGHT = 9*2`)
 - Horizontal position set cycle-exactly via `SetHorizPos.dasm`
 
 ### Audio

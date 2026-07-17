@@ -11,8 +11,9 @@ CONTROLLER_LEFT   equ #%00000100
 CONTROLLER_RIGHT  equ #%00001000
 CONTROLLER_DOWN   equ #%00010000
 
-;SPRITE_HEIGHT equ #9 ; single size sprite
-SPRITE_HEIGHT equ #9*2 ; double size pixel
+;PLAYER_SPRITE_HEIGHT equ #9 ; single size sprite
+PLAYER_SPRITE_HEIGHT equ #9*2 ; double size pixel
+CREEP_SPRITE_HEIGHT equ #16*2 ; double size pixel
 
 ;These are the game states used to decide which screen to show
 TITLE_SCREEN equ #0

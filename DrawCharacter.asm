@@ -1,14 +1,14 @@
 
 ; ;Add these to the variables section:
 ; playerYPos1 .byte
-; spritePtr1 .word
-; spriteColorPtr1 .word
+; playerSpritePtr .word
+; playerSpriteColorPtr .word
 
-; ;To store a ROM location in the spritePtr11 pointer:
+; ;To store a ROM location in the playerSpritePtr1 pointer:
 ; lda #<Frame0        ; load low byte of Frame0 address
-; sta spritePtr11
+; sta playerSpritePtr1
 ; lda #>Frame0        ; load high byte of Frame0 address
-; sta spritePtr11+1
+; sta playerSpritePtr1+1
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -22,7 +22,7 @@ DrawPlayer subroutine
     txa ; X -> A
     sec ; set carry for subtract
     sbc playerYPos1,y ; local coordinate
-    cmp #SPRITE_HEIGHT ; in sprite?
+    cmp #PLAYER_SPRITE_HEIGHT ; in sprite?
     bcc .InSprite ; yes, skip to sprite drawing
     lda #0 ; not in sprite, load 0
 .InSprite
@@ -30,22 +30,22 @@ DrawPlayer subroutine
     ;lsr ; Also uncomment this line if 4pixel tall sprite, Shift right again (divide by 4)
     tay ; local coord -> Y
 
-    lda (spritePtr1),y ; lookup sprite pattern
+    lda (playerSpritePtr),y ; lookup sprite pattern
     sta WSYNC
     sta GRP0 ; store bitmap
-    lda (spriteColorPtr1),y ; lookup color
+    lda (playerSpriteColorPtr),y ; lookup color
     sta COLUP0 ; store color
 
     ; ;uncomment these lines for double color sprites
-    ; lda (spritePtr12),y	; lookup color
+    ; lda (playerSpritePtr2),y	; lookup color
     ; sta GRP1	; store bitmap
-    ; lda (spriteColorPtr12),y ; lookup color
+    ; lda (playerSpriteColorPtr2),y ; lookup color
     ; sta COLUP1	; store color
 
     rts
 
     ; ;For double sized sprites:
-    ; SPRITE_HEIGHT equ #8*2
+    ; PLAYER_SPRITE_HEIGHT equ #8*2
 
     ; sta WSYNC ; uncomment this line for 2pixel tall sprites
     ; sta WSYNC ; also uncomment these lines for 4pixel tall sprites

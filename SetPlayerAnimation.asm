@@ -16,14 +16,14 @@ SetPlayerAnimation subroutine
     bne .checkCrouching
 
     lda #<PlayerStand_Hiding1
-    sta spritePtr1
+    sta playerSpritePtr
     lda #>PlayerStand_Hiding1
-    sta spritePtr1+1
+    sta playerSpritePtr+1
 
     lda #<PlayerStand_HidingColor1
-    sta spriteColorPtr1
+    sta playerSpriteColorPtr
     lda #>PlayerStand_HidingColor1
-    sta spriteColorPtr1+1
+    sta playerSpriteColorPtr+1
 
     jmp .done
 
@@ -33,14 +33,14 @@ SetPlayerAnimation subroutine
     bne .checkCrouch_Hiding
 
     lda #<PlayerCrouching1
-    sta spritePtr1
+    sta playerSpritePtr
     lda #>PlayerCrouching1
-    sta spritePtr1+1
+    sta playerSpritePtr+1
 
     lda #<PlayerCrouchingColor1
-    sta spriteColorPtr1
+    sta playerSpriteColorPtr
     lda #>PlayerCrouchingColor1
-    sta spriteColorPtr1+1
+    sta playerSpriteColorPtr+1
 
     jmp .done
 
@@ -50,14 +50,14 @@ SetPlayerAnimation subroutine
     bne .checkWalking
 
     lda #<PlayerCrouch_Hiding1
-    sta spritePtr1
+    sta playerSpritePtr
     lda #>PlayerCrouch_Hiding1
-    sta spritePtr1+1
+    sta playerSpritePtr+1
 
     lda #<PlayerCrouch_HidingColor1
-    sta spriteColorPtr1
+    sta playerSpriteColorPtr
     lda #>PlayerCrouch_HidingColor1
-    sta spriteColorPtr1+1
+    sta playerSpriteColorPtr+1
 
     jmp .done
 
@@ -67,14 +67,14 @@ SetPlayerAnimation subroutine
     bne .checkWalk_Hiding
 
     lda #<PlayerWalking1
-    sta spritePtr1
+    sta playerSpritePtr
     lda #>PlayerWalking1
-    sta spritePtr1+1
+    sta playerSpritePtr+1
 
     lda #<PlayerWalkingColor1
-    sta spriteColorPtr1
+    sta playerSpriteColorPtr
     lda #>PlayerWalkingColor1
-    sta spriteColorPtr1+1
+    sta playerSpriteColorPtr+1
 
     jmp .done
 
@@ -84,14 +84,14 @@ SetPlayerAnimation subroutine
     bne .checkSneaking
 
     lda #<PlayerWalk_Hiding1
-    sta spritePtr1
+    sta playerSpritePtr
     lda #>PlayerWalk_Hiding1
-    sta spritePtr1+1
+    sta playerSpritePtr+1
 
     lda #<PlayerWalk_HidingColor1
-    sta spriteColorPtr1
+    sta playerSpriteColorPtr
     lda #>PlayerWalk_HidingColor1
-    sta spriteColorPtr1+1
+    sta playerSpriteColorPtr+1
 
     jmp .done
 
@@ -101,14 +101,14 @@ SetPlayerAnimation subroutine
     bne .checkSneak_Hiding
 
     lda #<PlayerSneaking1
-    sta spritePtr1
+    sta playerSpritePtr
     lda #>PlayerSneaking1
-    sta spritePtr1+1
+    sta playerSpritePtr+1
 
     lda #<PlayerSneakingColor1
-    sta spriteColorPtr1
+    sta playerSpriteColorPtr
     lda #>PlayerSneakingColor1
-    sta spriteColorPtr1+1
+    sta playerSpriteColorPtr+1
 
     jmp .done
 
@@ -118,14 +118,14 @@ SetPlayerAnimation subroutine
     bne .checkStanding
 
     lda #<PlayerSneak_Hiding1
-    sta spritePtr1
+    sta playerSpritePtr
     lda #>PlayerSneak_Hiding1
-    sta spritePtr1+1
+    sta playerSpritePtr+1
 
     lda #<PlayerSneak_HidingColor1
-    sta spriteColorPtr1
+    sta playerSpriteColorPtr
     lda #>PlayerSneak_HidingColor1
-    sta spriteColorPtr1+1
+    sta playerSpriteColorPtr+1
 
     jmp .done
 
@@ -133,14 +133,14 @@ SetPlayerAnimation subroutine
 
     ;Something happened, default to standing sprite?
     lda #<PlayerStanding1
-    sta spritePtr1
+    sta playerSpritePtr
     lda #>PlayerStanding1
-    sta spritePtr1+1
+    sta playerSpritePtr+1
 
     lda #<PlayerStandingColor1
-    sta spriteColorPtr1
+    sta playerSpriteColorPtr
     lda #>PlayerStandingColor1
-    sta spriteColorPtr1+1
+    sta playerSpriteColorPtr+1
 
 .done
 

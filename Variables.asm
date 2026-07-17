@@ -17,6 +17,10 @@ screenRow .byte  ; 0-3
 screenCol .byte  ; 0-7
 TempWord .word
 
+;The row/column coordinates of the purple creep
+creepScreenRow .byte  ; 0-3
+creepScreenCol .byte  ; 0-7
+
 ;The player's current state. Enumerated in the PLAYER_ constants
 playerState1 .byte
 playerState2 .byte
@@ -31,8 +35,12 @@ playerInput1 .byte
 controllerMask .byte 
 
 ; Pointer used to draw the character
-spritePtr1 .word
-spriteColorPtr1 .word
+playerSpritePtr .word
+playerSpriteColorPtr .word
+
+; Pointer used to draw the Purple Creep
+creepSpritePtr .word
+creepSpriteColorPtr .word
 
 ; pointer used to draw the background
 backgroundPtr0 .word

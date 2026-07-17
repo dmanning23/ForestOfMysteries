@@ -23,11 +23,11 @@
 UpdateCharacterX subroutine
 
     lda playerState1,y
-    cmp PLAYER_SNEAKING
+    cmp #PLAYER_SNEAKING
     beq .sneak
 
     lda playerState1,y
-    cmp PLAYER_SNEAK_HIDING
+    cmp #PLAYER_SNEAK_HIDING
     beq .sneak
 
     ;Only update the characters position every other frame
@@ -64,11 +64,11 @@ UpdateCharacterX subroutine
 UpdateCharacterY subroutine
 
     lda playerState1,y
-    cmp PLAYER_SNEAKING
+    cmp #PLAYER_SNEAKING
     beq .sneak
 
     lda playerState1,y
-    cmp PLAYER_SNEAK_HIDING
+    cmp #PLAYER_SNEAK_HIDING
     beq .sneak
 
     ;Only update the characters position every other frame

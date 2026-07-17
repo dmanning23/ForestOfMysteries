@@ -5,6 +5,10 @@ ResetGameplay subroutine
     sta screenRow
     sta screenCol
 
+    lda #1
+    sta creepScreenRow
+    sta creepScreenCol
+
     ;jsr InitializeScreenInput
     lda #0
     sta screenRow
@@ -15,38 +19,51 @@ ResetGameplay subroutine
     ;jsr InitializeInput
     lda #0
     sta playerPrevInput1
-    ;sta p2PrevInput
+    ;sta playerPrevInput2
     sta playerInput1
-    ;sta p2Input
+    ;sta playerInput2
 
     ;jsr CenterPlayerX
     lda #SCREEN_RIGHT_EDGE
     lsr ;divide by 2
     
     sta playerXPos1 ;center horizontally
+    sta playerXPos2
 
     ;jsr CenterPlayerY
     lda #SCREEN_TOP_EDGE
     lsr ;divide by 2
     sta playerYPos1 ;center vertically
+    sta playerYPos2
 
     lda playerXPos1
     sta playerPrevXPos
     lda playerYPos1
     sta playerPrevYPos
 
+    lda playerXPos2
+    ;sta playerPrevXPos
+    lda playerYPos2
+    ;sta playerPrevYPos
+
     ;initialize the player velocity
     lda #0
     sta playerXVel
     sta playerYVel
     sta playerState1
+    sta playerState2
 
     sta controllerMask
 
-    sta spritePtr1
-    sta spritePtr1+1
-    sta spriteColorPtr1
-    sta spriteColorPtr1+1
+    sta playerSpritePtr
+    sta playerSpritePtr+1
+    sta playerSpriteColorPtr
+    sta playerSpriteColorPtr+1
+
+    sta creepSpritePtr
+    sta creepSpritePtr+1
+    sta creepSpriteColorPtr
+    sta creepSpriteColorPtr+1
 
     sta backgroundPtr0
     sta backgroundPtr0+1

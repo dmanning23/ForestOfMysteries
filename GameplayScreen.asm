@@ -26,14 +26,9 @@ GameplayScreenLogic subroutine
     jsr PerformScreenLogic
 
     jsr SetPlayerAnimation
+    jsr SetCreepAnimation
 
-    ;Set the x position of the player
-    lda playerXPos1
-    ldx #0
-    jsr SetHorizPos
-
-    sta WSYNC	; sync w/ scanline
-    sta HMOVE	; apply fine offsets
+    jsr SetCorrectHorizPos
 
     ;Update the sound engine
     BANK_SWITCH 4,UpdateWhisperingTrees
@@ -77,3 +72,5 @@ GameplayScreenDraw subroutine
 
     include "SetPlayerState.asm"
     include "SetPlayerAnimation.asm"
+    include "SetCreepAnimation.asm"
+    include "SetCorrectHorizPos.asm"
