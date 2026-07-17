@@ -37,20 +37,12 @@ SetPlayerHorizPos
     ldx #0
     jsr SetHorizPos
 
-    ;set to single width pixel
-    lda #0
-    sta NUSIZ0
-
     rts
 
 SetCreepHorizPos
 
     lda playerXPos2
-    ldx #0
+    ldx #1
     jsr SetHorizPos
-
-    ;set to double width pixel
-    lda #5
-    sta NUSIZ0
 
     rts

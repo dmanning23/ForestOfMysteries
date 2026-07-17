@@ -80,4 +80,10 @@ ResetGameplay subroutine
     sta temp
     sta frameCounter
 
+    ;Set the sprite widths
+    lda #0
+    sta NUSIZ0
+    lda #5
+    sta NUSIZ1
+
     rts

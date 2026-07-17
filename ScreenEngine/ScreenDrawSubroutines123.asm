@@ -148,9 +148,9 @@ DrawScreen2 subroutine
     sta WSYNC
 
     lda (creepSpritePtr),y
-    sta GRP0
+    sta GRP1
     lda (creepSpriteColorPtr),y
-    sta COLUP0
+    sta COLUP1
 
     lda #0
     sta PF0

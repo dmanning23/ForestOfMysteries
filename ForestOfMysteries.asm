@@ -234,6 +234,8 @@ OverScan
     lda #0
     sta GRP0
     sta COLUP0
+    sta GRP1
+    sta COLUP1
     sta COLUBK
     sta COLUPF
     sta PF0
