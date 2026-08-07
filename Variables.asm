@@ -1,9 +1,10 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; PLAYER VARIABLES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;The screen coordinates of the player
 playerXPos1 .byte
-playerXPos2 .byte
-
 playerYPos1 .byte
-playerYPos2 .byte
 
 playerPrevXPos .byte
 playerPrevYPos .byte
@@ -17,13 +18,8 @@ screenRow .byte  ; 0-3
 screenCol .byte  ; 0-7
 TempWord .word
 
-;The row/column coordinates of the purple creep
-creepScreenRow .byte  ; 0-3
-creepScreenCol .byte  ; 0-7
-
 ;The player's current state. Enumerated in the PLAYER_ constants
 playerState1 .byte
-playerState2 .byte
 
 ;The player's input from the previous frame
 playerPrevInput1 .byte
@@ -34,24 +30,55 @@ playerInput1 .byte
 ;Whether or not the player is hiding
 playerHiding .byte
 
+playerFlipped .byte
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; PURPLE CREEP VARIABLES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;The row/column coordinates of the purple creep
+creepScreenRow .byte  ; 0-3
+creepScreenCol .byte  ; 0-7
+
+creepXPos .byte
+creepYPos .byte
+
+creepFlipped .byte
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; HELL WATCHER VARIABLES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;Row/Column of the hell watcher
+watcherScreenRow .byte
+watcherScreenCol .byte
+
+watcherXPos .byte
+watcherYPos .byte
+
+watcherFlipped .byte
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; EVERYTHING ELSE VARIABLES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; The current character that is being drawn
+; 0: player
+; 1: Purple Creep
+; 2: Hell Watcher
+currentCharacter .byte
+
 ;This variable is used to mask the controller input to map to p1 or p2
 controllerMask .byte 
 
-; Pointer used to draw the character
-playerSpritePtr .word
-playerSpriteColorPtr .word
-
-; Pointer used to draw the Purple Creep
-creepSpritePtr .word
-creepSpriteColorPtr .word
+; Pointers used to draw the characters
+spritePtr .word
+spriteColorPtr .word
 
 ; pointer used to draw the background
 backgroundPtr0 .word
 backgroundPtr1 .word
 backgroundPtr2 .word
-backgroundPtr3 .word
-backgroundPtr4 .word
-backgroundPtr5 .word
 
 ;variable used to tell which game mode it is
 ;0: title screen

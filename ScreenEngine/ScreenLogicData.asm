@@ -516,21 +516,6 @@ SetupScreen4
     lda #>FoM_4Bitmap2        ; load high byte of Frame0 address
     sta backgroundPtr2+1
 
-    lda #<FoM_4Bitmap3        ; load low byte of Frame0 address
-    sta backgroundPtr3
-    lda #>FoM_4Bitmap3        ; load high byte of Frame0 address
-    sta backgroundPtr3+1
-
-    lda #<FoM_4Bitmap4        ; load low byte of Frame0 address
-    sta backgroundPtr4
-    lda #>FoM_4Bitmap4        ; load high byte of Frame0 address
-    sta backgroundPtr4+1
-
-    lda #<FoM_4Bitmap5        ; load low byte of Frame0 address
-    sta backgroundPtr5
-    lda #>FoM_4Bitmap5        ; load high byte of Frame0 address
-    sta backgroundPtr5+1
-
     rts
 
 SetupScreen5
@@ -548,21 +533,6 @@ SetupScreen5
     sta backgroundPtr2
     lda #>FoM_5Bitmap2        ; load high byte of Frame0 address
     sta backgroundPtr2+1
-
-    lda #<FoM_5Bitmap3        ; load low byte of Frame0 address
-    sta backgroundPtr3
-    lda #>FoM_5Bitmap3        ; load high byte of Frame0 address
-    sta backgroundPtr3+1
-
-    lda #<FoM_5Bitmap4        ; load low byte of Frame0 address
-    sta backgroundPtr4
-    lda #>FoM_5Bitmap4        ; load high byte of Frame0 address
-    sta backgroundPtr4+1
-
-    lda #<FoM_5Bitmap5        ; load low byte of Frame0 address
-    sta backgroundPtr5
-    lda #>FoM_5Bitmap5        ; load high byte of Frame0 address
-    sta backgroundPtr5+1
 
     rts
 
@@ -617,21 +587,6 @@ SetupScreen8
     sta backgroundPtr2
     lda #>FoM_8Bitmap2        ; load high byte of Frame0 address
     sta backgroundPtr2+1
-
-    lda #<FoM_8Bitmap3        ; load low byte of Frame0 address
-    sta backgroundPtr3
-    lda #>FoM_8Bitmap3        ; load high byte of Frame0 address
-    sta backgroundPtr3+1
-
-    lda #<FoM_8Bitmap4        ; load low byte of Frame0 address
-    sta backgroundPtr4
-    lda #>FoM_8Bitmap4        ; load high byte of Frame0 address
-    sta backgroundPtr4+1
-
-    lda #<FoM_8Bitmap5        ; load low byte of Frame0 address
-    sta backgroundPtr5
-    lda #>FoM_8Bitmap5        ; load high byte of Frame0 address
-    sta backgroundPtr5+1
 
     rts
 
@@ -704,20 +659,5 @@ SetupScreen12
     sta backgroundPtr2
     lda #>FoM_12Bitmap2        ; load high byte of Frame0 address
     sta backgroundPtr2+1
-
-    lda #<FoM_12Bitmap3        ; load low byte of Frame0 address
-    sta backgroundPtr3
-    lda #>FoM_12Bitmap3        ; load high byte of Frame0 address
-    sta backgroundPtr3+1
-
-    lda #<FoM_12Bitmap4        ; load low byte of Frame0 address
-    sta backgroundPtr4
-    lda #>FoM_12Bitmap4        ; load high byte of Frame0 address
-    sta backgroundPtr4+1
-
-    lda #<FoM_12Bitmap5        ; load low byte of Frame0 address
-    sta backgroundPtr5
-    lda #>FoM_12Bitmap5        ; load high byte of Frame0 address
-    sta backgroundPtr5+1
 
     rts

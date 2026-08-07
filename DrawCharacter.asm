@@ -1,14 +1,14 @@
 
 ; ;Add these to the variables section:
 ; playerYPos1 .byte
-; playerSpritePtr .word
-; playerSpriteColorPtr .word
+; spritePtr .word
+; spriteColorPtr .word
 
-; ;To store a ROM location in the playerSpritePtr1 pointer:
+; ;To store a ROM location in the spritePtr1 pointer:
 ; lda #<Frame0        ; load low byte of Frame0 address
-; sta playerSpritePtr1
+; sta spritePtr1
 ; lda #>Frame0        ; load high byte of Frame0 address
-; sta playerSpritePtr1+1
+; sta spritePtr1+1
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -30,16 +30,16 @@ DrawPlayer subroutine
     ;lsr ; Also uncomment this line if 4pixel tall sprite, Shift right again (divide by 4)
     tay ; local coord -> Y
 
-    lda (playerSpritePtr),y ; lookup sprite pattern
+    lda (spritePtr),y ; lookup sprite pattern
     sta WSYNC
     sta GRP0 ; store bitmap
-    lda (playerSpriteColorPtr),y ; lookup color
+    lda (spriteColorPtr),y ; lookup color
     sta COLUP0 ; store color
 
     ; ;uncomment these lines for double color sprites
-    ; lda (playerSpritePtr2),y	; lookup color
+    ; lda (spritePtr2),y	; lookup color
     ; sta GRP1	; store bitmap
-    ; lda (playerSpriteColorPtr2),y ; lookup color
+    ; lda (spriteColorPtr2),y ; lookup color
     ; sta COLUP1	; store color
 
     rts

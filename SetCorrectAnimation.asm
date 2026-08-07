@@ -1,4 +1,4 @@
-SetCorrectHorizPos subroutine
+SetCorrectAnimation subroutine
 
     ;is the player the current character?
     lda currentCharacter
@@ -6,7 +6,18 @@ SetCorrectHorizPos subroutine
     bne .checkCreep
 
     ;the player is the current character
-    jsr SetPlayerHorizPos
+
+    ;single width sprite
+    lda #0
+    sta NUSIZ0
+
+    ;set the animation
+    jsr SetPlayerAnimation
+
+    ;flip the character if necesasry
+    lda playerFlipped
+    sta REFP0
+
     jmp .done
 
 .checkCreep
@@ -17,41 +28,25 @@ SetCorrectHorizPos subroutine
     bne .checkWatcher
 
     ;the creep is the current character
-    jsr SetCreepHorizPos
+    lda #5
+    sta NUSIZ0
+    jsr SetCreepAnimation
+    lda creepFlipped
+    sta REFP0
     jmp .done
 
 .checkWatcher
 
     ;the creep is the current character
-    jsr SetWatcherHorizPos
+    lda #5
+    sta NUSIZ0
+    jsr SetWatcherAnimation
+    lda watcherFlipped
+    sta REFP0
 
 .done
 
     sta WSYNC	; sync w/ scanline
     sta HMOVE	; apply fine offsets
-
-    rts
-
-SetPlayerHorizPos
-
-    lda playerXPos1
-    ldx 0
-    jsr SetHorizPos
-
-    rts
-
-SetCreepHorizPos
-
-    lda creepXPos
-    ldx 0
-    jsr SetHorizPos
-
-    rts
-
-SetWatcherHorizPos
-
-    lda watcherXPos
-    ldx 0
-    jsr SetHorizPos
 
     rts

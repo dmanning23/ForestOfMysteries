@@ -14,6 +14,7 @@ CONTROLLER_DOWN   equ #%00010000
 ;PLAYER_SPRITE_HEIGHT equ #9 ; single size sprite
 PLAYER_SPRITE_HEIGHT equ #9*2 ; double size pixel
 CREEP_SPRITE_HEIGHT equ #16*2 ; double size pixel
+WATCHER_SPRITE_HEIGHT equ #18*2 ; double size pixel
 
 ;These are the game states used to decide which screen to show
 TITLE_SCREEN equ #0
@@ -29,3 +30,8 @@ PLAYER_STAND_HIDING equ #4
 PLAYER_CROUCH_HIDING equ #5
 PLAYER_WALK_HIDING equ #6
 PLAYER_SNEAK_HIDING equ #7
+
+;Used to tell which character is being drawn
+PLAYER equ #0
+CREEP equ #1
+WATCHER equ #2

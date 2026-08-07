@@ -1,13 +1,13 @@
 SetCreepAnimation subroutine
 
     lda #<PurpleCreepStanding1
-    sta creepSpritePtr
+    sta spritePtr
     lda #>PurpleCreepStanding1
-    sta creepSpritePtr+1
+    sta spritePtr+1
 
     lda #<PurpleCreepStandingColor1
-    sta creepSpriteColorPtr
+    sta spriteColorPtr
     lda #>PurpleCreepStandingColor1
-    sta creepSpriteColorPtr+1
+    sta spriteColorPtr+1
 
     rts

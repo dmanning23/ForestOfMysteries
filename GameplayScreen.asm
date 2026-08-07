@@ -25,9 +25,13 @@ GameplayScreenLogic subroutine
     tay
     jsr PerformScreenLogic
 
-    jsr SetPlayerAnimation
-    jsr SetCreepAnimation
+    ;If the player was the last character, check if they are hiding
+    jsr CheckIfHiding
 
+    ;Which character is being drawn this refresh?
+    jsr WhichCharacter
+
+    jsr SetCorrectAnimation
     jsr SetCorrectHorizPos
 
     ;Update the sound engine
@@ -52,11 +56,6 @@ DoneWinScreenHack
 
     BANK_SWITCH 0,DoneGameplayScreenLogic
 
-GameplayScreenDraw subroutine
-
-    ;should never get here
-    ;jmp PerformScreenDraw
-
     include "InputEngine.asm"
     include "DrawCharacter.asm"
     include "SetHorizPos.asm"
@@ -70,7 +69,12 @@ GameplayScreenDraw subroutine
     include "ScreenEngine/ScreenLogicData.asm"
     include "ScreenEngine/ScreenLogicEngine.asm"
 
-    include "SetPlayerState.asm"
+    include "SetCorrectAnimation.asm"
     include "SetPlayerAnimation.asm"
     include "SetCreepAnimation.asm"
+    include "SetWatcherAnimation.asm"
+
+    include "SetPlayerState.asm"
     include "SetCorrectHorizPos.asm"
+    include "CheckIfHiding.asm"
+    include "WhichCharacter.asm"

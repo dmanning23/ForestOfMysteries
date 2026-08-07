@@ -31,7 +31,7 @@ CheckInput subroutine
 
     ;flip the player left
     lda #%00001000
-    sta REFP0
+    sta playerFlipped
 
 .doneCheckLeft
 
@@ -46,7 +46,7 @@ CheckInput subroutine
     
     ;flip the player right
     lda #0
-    sta REFP0
+    sta playerFlipped
 
 .doneCheckRight
 

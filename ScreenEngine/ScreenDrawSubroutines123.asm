@@ -1,29 +1,30 @@
 
 DrawCorrectScreen subroutine
 
-    ;is the creep on this screen?
-    lda creepScreenRow
-    cmp screenRow
-    bne .noCreepOnScreen
+    ;is the player the current character?
+    lda currentCharacter
+    cmp #PLAYER
+    bne .checkCreep
 
-    lda creepScreenCol
-    cmp screenCol
-    bne .noCreepOnScreen
+    ;the player is the current character
+    jsr DrawScreenWithPlayer
+    jmp .done
 
-    ;The creep is on this screen
+.checkCreep
 
-    ;Is this an even or odd frame?
-    lda frameCounter
-    lsr
-    bcs .noCreepOnScreen    ; carry set = bit 0 was 1 = odd
+    ;is the creep the current character?
+    lda currentCharacter
+    cmp #CREEP
+    bne .checkWatcher
 
+    ;the creep is the current character
     jsr DrawScreenWithCreep
     jmp .done
 
-.noCreepOnScreen
+.checkWatcher
 
-    ;Only need to draw the player
-    jsr DrawScreenWithPlayer
+    ;the creep is the current character
+    jsr SetWatcherAnimation
 
 .done
 
@@ -64,9 +65,9 @@ DrawScreenWithPlayer subroutine
 
     sta WSYNC
 
-    lda (playerSpritePtr),y       ; lookup sprite pattern
+    lda (spritePtr),y       ; lookup sprite pattern
     sta GRP0                ; write sprite bitmap
-    lda (playerSpriteColorPtr),y  ; lookup sprite color
+    lda (spriteColorPtr),y  ; lookup sprite color
     sta COLUP0              ; write color
 
     lda #0
@@ -95,7 +96,7 @@ DrawScreenWithPlayer subroutine
 
 
 
-;This reoutine draws both the player and the Purple Creep
+;This routine draws the Purple Creep
 DrawScreenWithCreep subroutine
 
     ldy #48
@@ -118,7 +119,7 @@ DrawScreenWithCreep subroutine
     ;Draw the purple creep
     txa
     sec
-    sbc playerYPos2
+    sbc creepYPos
     cmp #CREEP_SPRITE_HEIGHT
     bcc .InCreepSprite
     lda #0
@@ -129,10 +130,10 @@ DrawScreenWithCreep subroutine
 
     sta WSYNC
 
-    lda (creepSpritePtr),y
-    sta GRP1
-    lda (creepSpriteColorPtr),y
-    sta COLUP1
+    lda (spritePtr),y
+    sta GRP0
+    lda (spriteColorPtr),y
+    sta COLUP0
 
     lda #0
     sta PF0
@@ -158,6 +159,70 @@ DrawScreenWithCreep subroutine
 
     rts
 
+
+
+;This routine draws the Hell Watcher
+DrawScreenWithWatcher subroutine
+
+    ldy #48
+    ldx #192
+
+.lvscan
+
+    ; even lines: draw the bitmap background
+    sta WSYNC
+    lda (backgroundPtr0),Y
+    sta PF0
+    lda (backgroundPtr1),Y
+    sta PF1
+    lda (backgroundPtr2),Y
+    sta PF2
+
+    ; odd lines: draw the player sprites
+    sty temp
+    
+    ;Draw the hell watcher
+    txa
+    sec
+    sbc watcherYPos
+    cmp #WATCHER_SPRITE_HEIGHT
+    bcc .InWatcherSprite
+    lda #0
+.InWatcherSprite
+
+    lsr
+    tay
+
+    sta WSYNC
+
+    lda (spritePtr),y
+    sta GRP0
+    lda (spriteColorPtr),y
+    sta COLUP0
+
+    lda #0
+    sta PF0
+    sta PF1
+    sta PF2
+
+    ldy temp
+
+    dex
+    dex
+    txa
+    and #$03
+    bne .notDivisible_by_4
+
+    dey
+
+.notDivisible_by_4
+
+    cpx #0
+    bne .lvscan
+
+    ldy #0
+
+    rts
 
 
 
