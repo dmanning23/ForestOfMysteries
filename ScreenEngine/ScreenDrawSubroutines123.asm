@@ -17,13 +17,13 @@ DrawCorrectScreen subroutine
     lsr
     bcs .noCreepOnScreen    ; carry set = bit 0 was 1 = odd
 
-    jsr DrawScreen2
+    jsr DrawScreenWithCreep
     jmp .done
 
 .noCreepOnScreen
 
     ;Only need to draw the player
-    jsr DrawScreen1
+    jsr DrawScreenWithPlayer
 
 .done
 
@@ -32,7 +32,7 @@ DrawCorrectScreen subroutine
 
 
 ;Draw the screen with just the player
-DrawScreen1 subroutine
+DrawScreenWithPlayer subroutine
 
     ldy #48
     ldx #192
@@ -46,15 +46,6 @@ DrawScreen1 subroutine
     lda (backgroundPtr1),Y
     sta PF1
     lda (backgroundPtr2),Y
-    sta PF2
-    nop
-    ;nop
-    ;nop
-    lda (backgroundPtr3),Y
-    sta PF0
-    lda (backgroundPtr4),Y
-    sta PF1
-    lda (backgroundPtr5),Y
     sta PF2
 
     ; odd lines: draw the player sprite (inlined - no JSR/RTS overhead)
@@ -105,7 +96,7 @@ DrawScreen1 subroutine
 
 
 ;This reoutine draws both the player and the Purple Creep
-DrawScreen2 subroutine
+DrawScreenWithCreep subroutine
 
     ldy #48
     ldx #192
@@ -119,15 +110,6 @@ DrawScreen2 subroutine
     lda (backgroundPtr1),Y
     sta PF1
     lda (backgroundPtr2),Y
-    sta PF2
-    nop
-    ;nop
-    ;nop
-    lda (backgroundPtr3),Y
-    sta PF0
-    lda (backgroundPtr4),Y
-    sta PF1
-    lda (backgroundPtr5),Y
     sta PF2
 
     ; odd lines: draw the player sprites
@@ -178,17 +160,12 @@ DrawScreen2 subroutine
 
 
 
-    include "Assets/Graphics/Backgrounds/FoM_1Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_2Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_3Data.asm"
+
     include "Assets/Graphics/Backgrounds/FoM_4Data.asm"
     include "Assets/Graphics/Backgrounds/FoM_5Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_6Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_7Data.asm"
     include "Assets/Graphics/Backgrounds/FoM_8Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_9Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_10Data.asm"
-    include "Assets/Graphics/Backgrounds/FoM_11Data.asm"
     include "Assets/Graphics/Backgrounds/FoM_12Data.asm"
+    include "Assets/Graphics/Playfields/test.asm"
     include "Assets/Graphics/player_sprite.asm"
     include "Assets/Graphics/PurpleCreep_sprite.asm"
+    include "Assets/Graphics/HellWatcher_sprite.asm"

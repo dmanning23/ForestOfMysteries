@@ -88,4 +88,7 @@ ResetGameplay subroutine
     lda #5
     sta NUSIZ1
 
+    lda #1
+    sta CTRLPF	; symmetry
+
     rts
