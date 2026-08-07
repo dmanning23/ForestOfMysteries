@@ -9,7 +9,6 @@ ResetGameplay subroutine
     sta creepScreenRow
     sta creepScreenCol
     sta watcherScreenRow
-    lda #0
     sta watcherScreenCol
 
     ;jsr InitializeScreenInput

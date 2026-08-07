@@ -7,6 +7,7 @@ WhichCharacter subroutine
     beq .playerTurn
 
     ;is the current characyer the creep?
+    lda currentCharacter
     cmp #CREEP
     beq .checkWatcher
 

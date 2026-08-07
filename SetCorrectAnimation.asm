@@ -46,7 +46,4 @@ SetCorrectAnimation subroutine
 
 .done
 
-    sta WSYNC	; sync w/ scanline
-    sta HMOVE	; apply fine offsets
-
     rts

@@ -24,7 +24,7 @@ DrawCorrectScreen subroutine
 .checkWatcher
 
     ;the creep is the current character
-    jsr SetWatcherAnimation
+    jsr DrawScreenWithWatcher
 
 .done
 

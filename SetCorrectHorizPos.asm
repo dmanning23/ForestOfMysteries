@@ -22,7 +22,7 @@ SetCorrectHorizPos subroutine
 
 .checkWatcher
 
-    ;the creep is the current character
+    ;the watcher is the current character
     jsr SetWatcherHorizPos
 
 .done
@@ -31,6 +31,8 @@ SetCorrectHorizPos subroutine
     sta HMOVE	; apply fine offsets
 
     rts
+
+
 
 SetPlayerHorizPos
 
